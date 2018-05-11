@@ -7,6 +7,8 @@ file = open(ask)
 
 for line in file:
     lines = line.split()
-    for i in range(len(lines)-1, 0, -1):
-        print(lines[i])
+    for item in lines:
+        lines.reverse()
+        print(item)
+ 
 
