@@ -6,6 +6,7 @@ ask = input("Enter the name of a file: ")
 file = open(ask)
 
 for line in file:
-    words = line.split()
-    for i in range(len(line), -1):
-        print(words[i])
+    lines = line.split()
+    for i in range(len(lines)-1, 0, -1):
+        print(lines[i])
+
