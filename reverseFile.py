@@ -4,11 +4,16 @@
 
 ask = input("Enter the name of a file: ")
 file = open(ask)
+lines = []
 
 for line in file:
-    lines = line.split()
-    for item in lines:
-        lines.reverse()
-        print(item)
+    line = line.strip()
+    lines.append(line)
+lines.reverse()
+
+for item in lines:
+    print(item)
  
+
+
 
