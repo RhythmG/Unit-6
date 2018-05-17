@@ -5,5 +5,5 @@
 file = open('engmix.txt')
 
 for line in file:
-    if 'w' and 'a' and 'n' and 'g' in line:
-         print(line)
+    if 'w' in line and 'a' in line and 'n' in line and 'g' in line:
+         print(line.strip())
