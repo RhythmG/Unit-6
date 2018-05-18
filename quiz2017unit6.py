@@ -3,7 +3,6 @@
 #Quiz from last year
 
 file = open('engmix.txt')
-words = []
 
 for line in file:
     line = line.strip()
