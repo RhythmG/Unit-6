@@ -8,7 +8,7 @@
 print('1: Rectangles')
 print('2: Trapezoid')
 print("3: Simpson's Rule")
-
+print('')
 typeapprox = int(input('Enter a number corresponding to your desired approximation: '))
 
 def f(x):
@@ -31,39 +31,48 @@ if typeapprox == 1:
         print(sum)
     
     integral(lower, upper, intervals)
-
+"""
 if typeapprox == 2:
     print('')
-    lower = float(input('Enter a lower bound: '))
-    upper = float(input('Enter an upper bound: '))
+    lower = int(input('Enter a lower bound: '))
+    upper = int(input('Enter an upper bound: '))
     intervals = int(input('Enter a number of trapezoids to approximate: '))
     def trapezoid(a, b, numoftraps):
         width = (b-a)/numoftraps
         sum = 0
         sum += f(a) + f(b)
-        for i in range(numoftraps-2):
+        for i in range(lower+width, upper): #need to fix this for decimals
             height = 2*f(a + i*width)
             area = height*width
             sum += area
         print('')
-        print(sum)
+        print(sum/2) #0.25 for 0,1 10 traps
     
     trapezoid(lower, upper, intervals)
-
+"""
 if typeapprox == 3:
     print('')
     lower = float(input('Enter a lower bound: '))
     upper = float(input('Enter an upper bound: '))
-    intervals = int(input('Enter a number of Simpson shapes to approximate: '))
-    def simpson(a, b, numoftraps):
-        width = (b-a)/numoftraps
+    intervals = int(input('Enter a number of Simpson shapes to approximate: This MUST be an even number '))
+    def simpson(a, b, numofsimps):
+        width = (b-a)/numofsimps
         sum = 0
         for i in range(numoftraps):
             height = f(a + i*width)
             area = height*width
             sum += area
         print('')
-        print(sum)
+        print(sum/3)
     
     simpson(lower, upper, intervals)
-         
+
+else:
+    print('')
+    print("Error -- Please enter a number between 1-3.")
+        
+
+
+
+
+    
