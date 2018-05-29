@@ -3,7 +3,9 @@
 #RAM Calculator
 
 
-#Enter your function after 'return' in line 9: (use ** to denote an exponent)
+#Enter your function after 'return' in line 17: (use ** to denote an exponent)
+
+import math
 
 print('1: Rectangles')
 print('2: Trapezoid')
@@ -31,7 +33,7 @@ if typeapprox == 1:
         print(sum)
     
     integral(lower, upper, intervals)
-"""
+    
 if typeapprox == 2:
     print('')
     lower = int(input('Enter a lower bound: '))
@@ -40,8 +42,13 @@ if typeapprox == 2:
     def trapezoid(a, b, numoftraps):
         width = (b-a)/numoftraps
         sum = 0
-        sum += f(a) + f(b)
-        for i in range(lower+width, upper): #need to fix this for decimals
+        sum += width*f(a) + width*f(b)
+        def frange(start, stop, step):
+            i = start
+            while i < stop:
+                yield i
+                i += step
+        for i in frange(a+width, upper, width): #need to fix this for decimals
             height = 2*f(a + i*width)
             area = height*width
             sum += area
@@ -49,7 +56,8 @@ if typeapprox == 2:
         print(sum/2) #0.25 for 0,1 10 traps
     
     trapezoid(lower, upper, intervals)
-"""
+
+"""    
 if typeapprox == 3:
     print('')
     lower = float(input('Enter a lower bound: '))
@@ -58,7 +66,8 @@ if typeapprox == 3:
     def simpson(a, b, numofsimps):
         width = (b-a)/numofsimps
         sum = 0
-        for i in range(numoftraps):
+        sum += width*f(a) + width*f(b)
+        for i in range(a, b, floor(numofsimps)):
             height = f(a + i*width)
             area = height*width
             sum += area
@@ -66,13 +75,11 @@ if typeapprox == 3:
         print(sum/3)
     
     simpson(lower, upper, intervals)
-
+"""
+"""
 else:
     print('')
     print("Error -- Please enter a number between 1-3.")
+"""
         
 
-
-
-
-    
