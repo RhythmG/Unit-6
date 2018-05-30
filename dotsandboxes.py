@@ -9,15 +9,16 @@ YSLOT = 80
 x = 0
 y = 0
 
-def buildBoard(a):
-    pegs = EllipseAsset(10,50, blackOutline, black)
-    for r in range(0,5): 
-        for c in range(0,5):
-            Sprite(pegs)
-        Sprite()
-        
 board = [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
-buildBoard(board)        
+def buildBoard():
+    for r in range(0,4): 
+        for c in range(0,4):
+            print(board[r][c], end ='')
+        print()
+
+buildBoard()
+
+pegs = EllipseAsset(10,50, blackOutline, black)
 
 def RedrawAll():
     for item in App().spritelist[:]:
