@@ -6,21 +6,22 @@ from ggame import *
 
 XSLOT = 200
 YSLOT = 80
-x = 0
-y = 0
 
-board = [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
+
+
 def buildBoard():
-    for r in range(0,4): 
-        for c in range(0,4):
-            print(board[r][c], end ='')
-        print()
+    return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
 
-buildBoard()
-
+"""
 pegs = EllipseAsset(10,50, blackOutline, black)
+"""
 
 def RedrawAll():
+    x = 0
+    y = 0
+    blackOutline = LineStyle(5, black)
+    vblackLine = LineAsset(0,80, blackOutline)
+    hblackLine = LineAsset(80, 0, blackOutline)
     for item in App().spritelist[:]:
         item.destroy()
     for r in range(0,4):
@@ -43,10 +44,10 @@ if __name__ == '__main__':
     red = Color(0xFF0000, 1)
     blue = Color (0x0000FF, 1)
     black = Color (0x000000, 1)
+    data = {}
+    data['board'] = buildBoard()
     
-    blackOutline = LineStyle(5, black)
-    vblackLine = LineAsset(0,80, blackOutline)
-    hblackLine = LineAsset(80, 0, blackOutline)
+    
     
     App().run()
     RedrawAll()
