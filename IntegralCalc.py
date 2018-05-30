@@ -2,7 +2,7 @@
 #Calculus 10 Essential Problems Project
 #RAM Calculator
 
-#Enter your function after 'return' in line 14: (use ** to denote an exponent)
+#Enter your function after 'return' in line 27: (use ** to denote an exponent)
 
 from math import *
 
