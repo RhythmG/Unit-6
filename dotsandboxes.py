@@ -20,6 +20,7 @@ def RedrawAll():
         item.destroy()
     for r in range(0,4):
             for c in range(0,2):
+                drawCenter(0,0,0,0)
                 pegs = EllipseAsset(10,50, blackOutline, black)
                 data['x'] = data['x'] + 50
                 """
@@ -34,11 +35,10 @@ def RedrawAll():
 def LeftEdge(startx, starty, currentx, currenty):
     data['x'] = 0
     data['y'] = 0
-    c = 0
     for r in range(0,4):
-        if data['board'][r][c] == 0:
-            Sprite(vblackLine,(XSLOT + 50, YSLOT + data['y']))
-            c = c+1
+            for c in range(0,2):
+                data['x'] = data['x'] + 50
+                Sprite(vblackLine,(XSLOT + 50, YSLOT + data['y']))
 
 def RightEdge(startx, starty, currentx, currenty):
     XSLOT = 250
@@ -69,6 +69,14 @@ def LowerEdge(startx, starty, currentx, currenty):
             Sprite(hblackLine,(XSLOT + data['x'], YSLOT + 427))
             c = c+1
 
+def drawCenter(startx, starty, currentx, currenty):
+    data['x'] = 0
+    data['y'] = 0
+    for i in range(1,5):
+        rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, black), (XSLOT+data['x'], YSLOT+data['y']))
+        data['x'] = data['x'] + 80
+
+
 board = buildBoard()
 
 if __name__ == '__main__': 
@@ -79,6 +87,7 @@ if __name__ == '__main__':
     data['board'] = buildBoard()
     data['x'] = 0
     data['y'] = 0
+    data['c'] = 0
     
     blackOutline = LineStyle(1, black)
     vblackLine = LineAsset(0,80, blackOutline)
@@ -86,8 +95,8 @@ if __name__ == '__main__':
     
     
     App().run()
-    RedrawAll()
     LeftEdge(XSLOT, YSLOT, data['x'], data['y'])
     RightEdge(XSLOT, YSLOT, data['x'], data['y'])
+    RedrawAll()
     
     
