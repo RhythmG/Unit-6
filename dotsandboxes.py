@@ -75,6 +75,12 @@ def drawCenter(startx, starty, currentx, currenty):
     for i in range(1,5):
         rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, black), (XSLOT+data['x'], YSLOT+data['y']))
         data['x'] = data['x'] + 80
+    data['y'] = data['y'] + 50
+    for i in range(1,5):    
+        data['x'] = 0
+        rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, black), (XSLOT+data['x'], YSLOT+data['y']))
+        data['x'] = data['x'] + 80
+        
 
 
 board = buildBoard()
