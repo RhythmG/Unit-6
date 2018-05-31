@@ -80,6 +80,9 @@ if __name__ == '__main__':
     data['x'] = 0
     data['y'] = 0
     
+    blackOutline = LineStyle(1, black)
+    vblackLine = LineAsset(0,80, blackOutline)
+    hblackLine = LineAsset(80, 0, blackOutline)    
     
     
     App().run()
