@@ -36,6 +36,7 @@ def LeftEdge(startx, starty, currentx, currenty):
     currenty = 0
     for i in range(1,5):
         for i in range(1,5):
+            blackOutline = LineStyle(5, red)
             vblackLine = LineAsset(0,80, blackOutline)
             Sprite(vblackLine,(startx+currentx, starty+currenty))
             currentx += 80
