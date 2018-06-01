@@ -30,15 +30,16 @@ def RedrawAll():
                 Sprite(hblackLine,(XSLOT + data['x'], YSLOT)) #top edge
                 Sprite(hblackLine,(XSLOT + data['x'], YSLOT + 427)) #bottom edge
                 """
-            print()
             
 def LeftEdge(startx, starty, currentx, currenty):
     data['x'] = 0
     data['y'] = 0
-    for r in range(0,4):
-            for c in range(0,2):
-                data['x'] = data['x'] + 50
-                Sprite(vblackLine,(XSLOT + 50, YSLOT + data['y']))
+    for i in range(1,5):
+        for i in range(1,5):
+            Sprite(vblackLine,(XSLOT+data['x'], YSLOT+data['y']))
+            data['x'] = data['x'] + 80
+        data['y'] = data['y'] + 80
+        data['x'] = 0
 
 def RightEdge(startx, starty, currentx, currenty):
     XSLOT = 250
