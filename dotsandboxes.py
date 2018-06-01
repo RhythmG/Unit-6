@@ -13,7 +13,7 @@ def buildBoard():
 def RedrawAll():
     data['x'] = 0
     data['y'] = 0
-    blackOutline = LineStyle(5, black)
+    blackOutline = LineStyle(5, red)
     vblackLine = LineAsset(0,80, blackOutline)
     hblackLine = LineAsset(80, 0, blackOutline)
     for item in App().spritelist[:]:
@@ -32,14 +32,15 @@ def RedrawAll():
                 """
             
 def LeftEdge(startx, starty, currentx, currenty):
-    data['x'] = 0
-    data['y'] = 0
+    currentx = 0
+    currenty = 0
     for i in range(1,5):
         for i in range(1,5):
-            Sprite(vblackLine,(XSLOT+data['x'], YSLOT+data['y']))
-            data['x'] = data['x'] + 80
-        data['y'] = data['y'] + 80
-        data['x'] = 0
+            vblackLine = LineAsset(0,80, blackOutline)
+            Sprite(vblackLine,(startx+currentx, starty+currenty))
+            currentx += 80
+        currenty += 80
+        currentx = 0
 
 def RightEdge(startx, starty, currentx, currenty):
     XSLOT = 250
