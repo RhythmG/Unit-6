@@ -18,40 +18,40 @@ def RedrawAll():
     hblackLine = LineAsset(80, 0, blackOutline)
     for item in App().spritelist[:]:
         item.destroy()
-    for r in range(0,4):
-            for c in range(0,2):
-                drawCenter(0,0,0,0)
-                pegs = EllipseAsset(10,50, blackOutline, black)
-                data['x'] = data['x'] + 50
-                """
-                Sprite(vblackLine,(XSLOT + 50, YSLOT + data['y'])) #left edge
-                Sprite(vblackLine,(XSLOT + 478, YSLOT + data['y'])) #right edge
-                data['y'] = data['y'] + 50
-                Sprite(hblackLine,(XSLOT + data['x'], YSLOT)) #top edge
-                Sprite(hblackLine,(XSLOT + data['x'], YSLOT + 427)) #bottom edge
-                """
+    drawCenters()
+    LeftEdges()
+    RightEdges()
+    pegs = EllipseAsset(10,50, blackOutline, black)
+    data['x'] = data['x'] + 50
+    """
+    Sprite(vblackLine,(XSLOT + 50, YSLOT + data['y'])) #left edge
+    Sprite(vblackLine,(XSLOT + 478, YSLOT + data['y'])) #right edge
+    data['y'] = data['y'] + 50
+    Sprite(hblackLine,(XSLOT + data['x'], YSLOT)) #top edge
+    Sprite(hblackLine,(XSLOT + data['x'], YSLOT + 427)) #bottom edge
+    """
             
-def LeftEdge(startx, starty, currentx, currenty):
-    currentx = 0
-    currenty = 0
+def LeftEdges():
+    data['x'] = 0
+    data['y'] = 0
     for i in range(1,5):
         for i in range(1,5):
             blackOutline = LineStyle(5, red)
-            vblackLine = LineAsset(0,80, blackOutline)
-            Sprite(vblackLine,(startx+currentx, starty+currenty))
-            currentx += 80
-        currenty += 80
-        currentx = 0
+            leftLine = Sprite(LineAsset(0,80, blackOutline),(XSLOT+data['x'], YSLOT+data['y']))
+            data['x'] += 80
+        data['y'] += 80
+        data['x'] = 0
 
-def RightEdge(startx, starty, currentx, currenty):
-    XSLOT = 250
+def RightEdges():
     data['x'] = 0
     data['y'] = 0
-    c = 0
-    for r in range(0,4):
-        if data['board'][r][c] == 0:
-            Sprite(vblackLine,(XSLOT + 478, YSLOT + data['y']))
-            c = c+1
+    for i in range(1,5):
+        for i in range(1,5):
+            blackOutline = LineStyle(5, red)
+            leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT+60)+data['x'], YSLOT+data['y']))
+            data['x'] += 80
+        data['y'] += 80
+        data['x'] = 0
 
 def UpperEdge(startx, starty, currentx, currenty):
     data['x'] = 0
@@ -72,7 +72,7 @@ def LowerEdge(startx, starty, currentx, currenty):
             Sprite(hblackLine,(XSLOT + data['x'], YSLOT + 427))
             c = c+1
 
-def drawCenter(startx, starty, currentx, currenty):
+def drawCenters():
     data['x'] = 0
     data['y'] = 0
     for i in range(1,5):
@@ -81,7 +81,10 @@ def drawCenter(startx, starty, currentx, currenty):
             data['x'] = data['x'] + 80
         data['y'] = data['y'] + 80
         data['x'] = 0
-
+        
+"""
+def mouseClick(event):
+"""
 
 board = buildBoard()
 
@@ -101,8 +104,9 @@ if __name__ == '__main__':
     
     
     App().run()
-    LeftEdge(XSLOT, YSLOT, data['x'], data['y'])
-    RightEdge(XSLOT, YSLOT, data['x'], data['y'])
     RedrawAll()
     
+    
+    
+
     
