@@ -3,6 +3,7 @@
 #Derivative Calculator
 
 xvalue = float(input('Enter a value of x to approximate the derivative :'))
+
 def f(x):
     return ((x-2)**2)*(x-4) #This is the function used to approximate the derivative
 
