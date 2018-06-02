@@ -2,17 +2,19 @@
 #Calculus 10 Essential Problems Project
 #RAM Calculator
 
-#Enter your function after 'return' in line 27: (use ** to denote an exponent)
+#Instructions: Enter your function after 'return' in line 27: (use ** to denote an exponent)
 
 from math import *
 
+#This section makes sure the input is valid
 def inputValid(a,a0,a1):
     if a <= a1 and a >= a0:
         return True
     else:
         print('Invalid input')
         return False
-            
+
+#This section prints out the message for choosing an approximation method
 print('1: Rectangles')
 print('2: Trapezoid')
 print("3: Simpson's Rule")
@@ -24,8 +26,9 @@ while getInput == False:
 
 
 def f(x):
-    return sin(x)
-            
+    return (x**3 - 2*x) #This is the function for the calculation
+
+#After selecting RAM, this displays a message to choose from one of three methods   
 if typeapprox == 1:
     print('')
     print('1: LRAM')
@@ -48,7 +51,7 @@ if typeapprox == 1:
     lower = float(input('Enter a lower bound: '))
     upper = float(input('Enter an upper bound: '))
     intervals = int(input('Enter a number of rectangles to approximate: '))
-    inputValid(intervals, 1, 1.0E16)
+    inputValid(intervals, 1, 1.0E16) #This prevents a user from inputing an extremely large number
     
     def rectangles(a, b, numofrectangles):
         width = (b-a)/numofrectangles
@@ -91,7 +94,7 @@ elif typeapprox == 2:
     
     trapezoid(lower, upper, intervals)
 
-   
+  
 elif typeapprox == 3:
     print('')
     print("Simpson's Rule Selected")
