@@ -91,7 +91,7 @@ def drawCenters():
 def mouseClick(event):
     if event.x <= 200 and event.y >= 80:
         for i in range(1, 5):
-            if buildBoard([0][i]) == 0:
+            if buildBoard == 0:
                 
     if event.x >= 200 and event.y <= 80:
         for i in range(1, 5):
@@ -120,15 +120,16 @@ if __name__ == '__main__':
     data['x'] = 0
     data['y'] = 0
     data['c'] = 0
+    data['player'] = 1
     
     blackOutline = LineStyle(1, black)
     vblackLine = LineAsset(0,80, blackOutline)
-    hblackLine = LineAsset(80, 0, blackOutline)    
+    hblackLine = LineAsset(80, 0, blackOutline)
     
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
-    
+   
     
     
 
