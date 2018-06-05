@@ -144,7 +144,7 @@ def mouseClick(event):
     
 def checkTurn():  
     data['totalturns'] += 1
-    if data['totalturns']/2 == 0:
+    if data['totalturns']//2 == 1:
         data['player'] = 2
     elif data['totalturns'] == 0.5:
         data['player'] = 1
