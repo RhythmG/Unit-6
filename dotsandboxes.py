@@ -105,11 +105,13 @@ def drawCenters():
         data['x'] = 0
 
 def mouseClick(event):
+    checkTurn()
     for i in range(1,5):
         movex = event.x//CELL_SIZE
         movey = event.y//CELL_SIZE
         board[i-1][movex-1][movey-1] = data['player']
         RedrawAll()
+    print(board)
        
     
 def checkTurn():  
