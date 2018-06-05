@@ -111,6 +111,7 @@ def mouseClick(event):
         movey = event.y//CELL_SIZE
         board[i-1][movex-1][movey-1] = data['player']
         RedrawAll()
+        UpdateLeftEdges(movex, movey)
     print(board)
        
     
