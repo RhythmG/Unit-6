@@ -39,7 +39,7 @@ def LeftEdges():
     for i in range(1,5):
         for j in range(1,5):
             if board[0][i-1][j-1] == 0:
-                blackOutline = LineStyle(5, black)
+                blackOutline = LineStyle(8, black)
                 leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
             elif board[0][i-1][j-1] == 1 and data['player'] == 1:
@@ -58,7 +58,7 @@ def RightEdges():
     data['y'] = 0
     for i in range(1,5):
         for i in range(1,5):
-            blackOutline = LineStyle(5, black)
+            blackOutline = LineStyle(8, black)
             leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
             data['x'] += 80
         data['y'] += 80
@@ -69,7 +69,7 @@ def UpperEdges():
     data['y'] = 0
     for i in range(1,5):
         for i in range(1,5):
-            blackOutline = LineStyle(5, black)
+            blackOutline = LineStyle(8, black)
             leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
             data['x'] += 80
         data['y'] += 80
@@ -80,7 +80,7 @@ def LowerEdges():
     data['y'] = 0
     for i in range(1,5):
         for i in range(1,5):
-            blackOutline = LineStyle(5, black)
+            blackOutline = LineStyle(8, black)
             leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
             data['x'] += 80
         data['y'] += 80
@@ -126,8 +126,8 @@ def mouseClick(event):
             else:
                 print("This line is already taken.")
                 break
+    data['player'] = 2
     
-
 board = buildBoard()
 
 if __name__ == '__main__': 
