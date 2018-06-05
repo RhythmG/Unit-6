@@ -105,7 +105,7 @@ def drawCenters():
         data['x'] = 0
 
 def mouseClick(event):
-    data['totalturns'] += 1
+    checkTurn()
     if event.x <= XSLOT and event.y >= YSLOT:
         for i in range(1, 5):
             if board[0][i-1][0] == 0:
@@ -135,7 +135,10 @@ def mouseClick(event):
             else:
                 print("This line is already taken.")
                 break
-    if data['totalturns']//2 == 0:
+    
+def checkTurn():  
+    data['totalturns'] += 1
+    if data['totalturns']/2 == 0:
         data['player'] = 2
     else:
         data['player'] = 1
@@ -161,6 +164,7 @@ if __name__ == '__main__':
     
     App().listenMouseEvent('click', mouseClick)
     App().run()
+    checkTurn()
     RedrawAll()
    
     
