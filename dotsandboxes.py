@@ -4,8 +4,9 @@
 
 from ggame import *
 
-XSLOT = 200
-YSLOT = 80
+XSLOT = 0
+YSLOT = 0
+CELL_SIZE = 70
 
 def buildBoard():
     return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
@@ -105,7 +106,7 @@ def drawCenters():
         data['x'] = 0
 
 def mouseClick(event):
-    if event.x <= XSLOT and event.y >= YSLOT:
+    if event.x/CELL_SIZE <= XSLOT and event.y >= YSLOT:
         checkTurn()
         for i in range(1, 5):
             if board[0][i-1][0] == 0:
