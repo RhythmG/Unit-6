@@ -44,7 +44,6 @@ def LeftEdges():
                 leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
             elif board[0][i-1][j-1] == 1 and data['player'] == 1:
-                
                 data['x'] += 80
             elif board[0][i-1][j-1] == 2 and data['player'] == 2:
                 blueOutline = LineStyle(5, blue)
@@ -106,39 +105,12 @@ def drawCenters():
         data['x'] = 0
 
 def mouseClick(event):
-    if event.x/CELL_SIZE and event.y/CELL_SIZE:
-        checkTurn()
-        for i in range(1, 5):
-            if board[0][i-1][0] == 0:
-                UpdateLeftEdges(event.x, event.y)
-            else:
-                print("This line is already taken.")
-                break
-    elif event.x >= XSLOT and event.y <= YSLOT:
-        checkTurn()
-        for i in range(1, 5):
-            if board[1][i-1][1] == 0:
-                UpperEdges()
-            else:
-                print("This line is already taken.")
-                break
-    elif event.x <= XSLOT and event.y >= 80:
-        checkTurn()
-        for i in range(1, 5):
-            for j in range(1,5):
-                if board[2][i-1][2] == 0:
-                    RightEdges()
-            else:
-                print("This line is already taken.")
-                break
-    elif event.x >= 480 and event.y >= YSLOT:
-        checkTurn()
-        for i in range(1, 5):
-            if board[3][i-1][3] == 0:
-                LowerEdges()
-            else:
-                print("This line is already taken.")
-                break
+    for i in range(1,5):
+        movex = event.x//CELL_SIZE
+        movey = event.y//CELL_SIZE
+        board[i-1][movex-1][movey-1] = data['player']
+        RedrawAll()
+       
     
 def checkTurn():  
     data['totalturns'] += 1
