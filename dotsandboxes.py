@@ -105,6 +105,7 @@ def drawCenters():
         data['x'] = 0
 
 def mouseClick(event):
+    data['totalturns'] += 1
     if event.x <= XSLOT and event.y >= YSLOT:
         for i in range(1, 5):
             if board[0][i-1][0] == 0:
@@ -134,7 +135,10 @@ def mouseClick(event):
             else:
                 print("This line is already taken.")
                 break
-    data['player'] = 2
+    if data['totalturns']//2 == 0:
+        data['player'] = 2
+    else:
+        data['player'] = 1
     
 board = buildBoard()
 
@@ -148,6 +152,7 @@ if __name__ == '__main__':
     data['x'] = 0
     data['y'] = 0
     data['c'] = 0
+    data['totalturns'] = 0
     data['player'] = 1
     
     blackOutline = LineStyle(1, black)
