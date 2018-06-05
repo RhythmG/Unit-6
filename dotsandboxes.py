@@ -42,11 +42,11 @@ def LeftEdges():
                 blackOutline = LineStyle(5, black)
                 leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
-            elif board[0][i-1][j-1] == 1:
+            elif board[0][i-1][j-1] == 1 and data['player'] == 1:
                 redOutline = LineStyle(5, red)
                 leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
-            elif board[0][i-1][j-1] == 2:
+            elif board[0][i-1][j-1] == 2 and data['player'] == 2:
                 blueOutline = LineStyle(5, blue)
                 leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
@@ -99,33 +99,30 @@ def drawCenters():
 def mouseClick(event):
     if event.x <= XSLOT and event.y >= YSLOT:
         for i in range(1, 5):
-            for j in range(1,5):
-                if board[0][i-1][j-1] == 0:
-                    LeftEdges()
+            if board[0][i-1][0] == 0:
+                LeftEdges()
             else:
                 print("This line is already taken.")
                 break
     elif event.x >= XSLOT and event.y <= YSLOT:
          for i in range(1, 5):
-            for j in range(1,5):
-                if board[1][i-1][j-1] == 0:
-                    UpperEdges()
+            if board[1][i-1][1] == 0:
+                UpperEdges()
             else:
                 print("This line is already taken.")
                 break
     elif event.x <= XSLOT and event.y >= 80:
        for i in range(1, 5):
             for j in range(1,5):
-                if board[2][i-1][j-1] == 0:
+                if board[2][i-1][2] == 0:
                     RightEdges()
             else:
                 print("This line is already taken.")
                 break
     elif event.x >= 480 and event.y >= YSLOT:
         for i in range(1, 5):
-            for j in range(1,5):
-                if board[1][i-1][j-1] == 0:
-                    LowerEdges()
+            if board[3][i-1][3] == 0:
+                LowerEdges()
             else:
                 print("This line is already taken.")
                 break
