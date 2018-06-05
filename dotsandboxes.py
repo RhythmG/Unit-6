@@ -96,10 +96,10 @@ def drawCenters():
         data['x'] = 0
 
 def UpdateLeftEdges(a,b):
-    if data['player'] == 1:
+    if data['totalturns'] == 0:
         redOutline = LineStyle(5, red)
         leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
-    elif data['player'] == 2:
+    elif data['totalturns'] == 0.5:
         blueOutline = LineStyle(5, blue)
         leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
 
@@ -131,10 +131,10 @@ def UpdateLowerEdges(a,b):
 def mouseClick(event):
     checkTurn()
     for i in range(1,5):
+        RedrawAll()
         movex = event.x//CELL_SIZE
         movey = event.y//CELL_SIZE
         board[i-1][movex-1][movey-1] = data['player']
-        RedrawAll()
         UpdateLeftEdges(movex, movey)
         UpdateRightEdges(movex, movey)
         UpdateUpperEdges(movex, movey)
