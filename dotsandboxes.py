@@ -100,20 +100,20 @@ def drawCenters():
 def mouseClick(event):
     if event.x <= 200 and event.y >= 80:
         for i in range(1, 5):
-            if buildBoard == 0:
+            if board == 0:
                 
     if event.x >= 200 and event.y <= 80:
         for i in range(1, 5):
-            if buildBoard([1][i])
+            if board([1][i])
     if event.x <= 200 and event.y >= 80:
         for i in range(1, 5):
-            if buildBoard([2][i]) == 0:
+            if board([2][i]) == 0:
     if event.x >= 480 and event.y >= 80:
         for i in range(1, 5):
-            if buildBoard([3][i])
+            if board([3][i])
     if event.x >= 480 and event.y >= 560:
         for i in range(1, 5):
-            if buildBoard([4][i])
+            if board([4][i])
 """
     
 
