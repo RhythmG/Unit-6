@@ -43,8 +43,7 @@ def LeftEdges():
                 leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
             elif board[0][i-1][j-1] == 1 and data['player'] == 1:
-                redOutline = LineStyle(5, red)
-                leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
+                
                 data['x'] += 80
             elif board[0][i-1][j-1] == 2 and data['player'] == 2:
                 blueOutline = LineStyle(5, blue)
@@ -86,11 +85,13 @@ def LowerEdges():
         data['y'] += 80
         data['x'] = 0
         
-def UpdateLeftEdges():
+def UpdateLeftEdges(a,b):
     if data['player'] == 1:
-        
+        redOutline = LineStyle(5, red)
+        leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
     elif data['player'] == 2:
-        
+        blueOutline = LineStyle(5, blue)
+        leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
     
 
 def drawCenters():
@@ -107,7 +108,7 @@ def mouseClick(event):
     if event.x <= XSLOT and event.y >= YSLOT:
         for i in range(1, 5):
             if board[0][i-1][0] == 0:
-                UpdateLeftEdges()
+                UpdateLeftEdges(event.x, event.y)
             else:
                 print("This line is already taken.")
                 break
