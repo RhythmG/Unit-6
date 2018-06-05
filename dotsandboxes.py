@@ -85,6 +85,13 @@ def LowerEdges():
             data['x'] += 80
         data['y'] += 80
         data['x'] = 0
+        
+def UpdateLeftEdges():
+    if data['player'] == 1:
+        
+    elif data['player'] == 2:
+        
+    
 
 def drawCenters():
     data['x'] = 0
@@ -100,7 +107,7 @@ def mouseClick(event):
     if event.x <= XSLOT and event.y >= YSLOT:
         for i in range(1, 5):
             if board[0][i-1][0] == 0:
-                LeftEdges()
+                UpdateLeftEdges()
             else:
                 print("This line is already taken.")
                 break
