@@ -96,10 +96,10 @@ def drawCenters():
         data['x'] = 0
 
 def UpdateLeftEdges(a,b):
-    if data['totalturns'] == 0:
+    if data['player'] == 1:
         redOutline = LineStyle(5, red)
         leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
-    elif data['totalturns'] == 0.5:
+    elif data['player'] == 2:
         blueOutline = LineStyle(5, blue)
         leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
 
@@ -134,7 +134,8 @@ def mouseClick(event):
         RedrawAll()
         movex = event.x//CELL_SIZE
         movey = event.y//CELL_SIZE
-        board[i-1][movex-1][movey-1] = data['player']
+        if board[i-1][movex-1][movey-1] == 0:
+            board[i-1][movex-1][movey-1] = data['player']
         UpdateLeftEdges(movex, movey)
         UpdateRightEdges(movex, movey)
         UpdateUpperEdges(movex, movey)
@@ -172,6 +173,16 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
+   
+    
+    
+
+    
+    
+    
+
+    
+
    
     
     
