@@ -105,8 +105,8 @@ def drawCenters():
         data['x'] = 0
 
 def mouseClick(event):
-    checkTurn()
     if event.x <= XSLOT and event.y >= YSLOT:
+        checkTurn()
         for i in range(1, 5):
             if board[0][i-1][0] == 0:
                 UpdateLeftEdges(event.x, event.y)
@@ -114,14 +114,16 @@ def mouseClick(event):
                 print("This line is already taken.")
                 break
     elif event.x >= XSLOT and event.y <= YSLOT:
-         for i in range(1, 5):
+        checkTurn()
+        for i in range(1, 5):
             if board[1][i-1][1] == 0:
                 UpperEdges()
             else:
                 print("This line is already taken.")
                 break
     elif event.x <= XSLOT and event.y >= 80:
-       for i in range(1, 5):
+        checkTurn()
+        for i in range(1, 5):
             for j in range(1,5):
                 if board[2][i-1][2] == 0:
                     RightEdges()
@@ -129,6 +131,7 @@ def mouseClick(event):
                 print("This line is already taken.")
                 break
     elif event.x >= 480 and event.y >= YSLOT:
+        checkTurn()
         for i in range(1, 5):
             if board[3][i-1][3] == 0:
                 LowerEdges()
@@ -140,8 +143,9 @@ def checkTurn():
     data['totalturns'] += 1
     if data['totalturns']/2 == 0:
         data['player'] = 2
-    else:
+    elif data['totalturns'] == 0.5:
         data['player'] = 1
+    print(data['totalturns'])
     
 board = buildBoard()
 
@@ -164,7 +168,6 @@ if __name__ == '__main__':
     
     App().listenMouseEvent('click', mouseClick)
     App().run()
-    checkTurn()
     RedrawAll()
    
     
