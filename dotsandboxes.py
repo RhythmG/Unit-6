@@ -43,12 +43,12 @@ def LeftEdges():
                 leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
             elif board[0][i-1] == 1:
-                blackOutline = LineStyle(5, red)
-                leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
+                redOutline = LineStyle(5, red)
+                leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
             elif board[0][i-1] == 2:
-                blackOutline = LineStyle(5, blue)
-                leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
+                blueOutline = LineStyle(5, blue)
+                leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
         data['y'] += 80
         data['x'] = 0
