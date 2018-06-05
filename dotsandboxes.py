@@ -144,9 +144,9 @@ def mouseClick(event):
     
 def checkTurn():  
     data['totalturns'] += 1
-    if data['totalturns']//2 == 1:
+    if data['totalturns']/2 == int(data['totalturns']/2):
         data['player'] = 2
-    elif data['totalturns'] == 0.5:
+    else:
         data['player'] = 1
     print(data['totalturns'])
     
@@ -173,11 +173,4 @@ if __name__ == '__main__':
     App().run()
     RedrawAll()
    
-    
-    
-
-    
-    
-    
-
-    
+   
