@@ -15,4 +15,4 @@ def derivative(x):
     return slope
 
 print('')
-print('Derivative at x =', xvalue, ':', derivative(3))
+print('Derivative at x =', xvalue, ':', derivative(3)) #Prints out the value of the derivative
