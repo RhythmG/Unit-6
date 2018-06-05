@@ -24,7 +24,7 @@ def RedrawAll():
     RightEdges()
     UpperEdges()
     LowerEdges()
-    pegs = EllipseAsset(10,50, blackOutline, black)
+    """pegs = EllipseAsset(10,50, blackOutline, black)"""
     data['x'] = data['x'] + 50
     """
     Sprite(vblackLine,(XSLOT + 50, YSLOT + data['y'])) #left edge
@@ -98,34 +98,34 @@ def drawCenters():
 def UpdateLeftEdges(a,b):
     if data['totalturns'] == 0:
         redOutline = LineStyle(5, red)
-        leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
+        leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
     elif data['totalturns'] == 0.5:
         blueOutline = LineStyle(5, blue)
-        leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
+        leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
 
 def UpdateRightEdges(a,b):
     if data['player'] == 1:
         redOutline = LineStyle(5, red)
-        leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
+        leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
     elif data['player'] == 2:
         blueOutline = LineStyle(5, blue)
-        leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
+        leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
 
 def UpdateUpperEdges(a,b):
     if data['player'] == 1:
         redOutline = LineStyle(5, red)
-        leftLine = Sprite(LineAsset(80,0, redOutline),(a,b))
+        leftLine = Sprite(LineAsset(80,0, redOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
     elif data['player'] == 2:
         blueOutline = LineStyle(5, blue)
-        leftLine = Sprite(LineAsset(80,0, blueOutline),(a,b))
+        leftLine = Sprite(LineAsset(80,0, blueOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
         
 def UpdateLowerEdges(a,b):
     if data['player'] == 1:
         redOutline = LineStyle(5, red)
-        leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
+        leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
     elif data['player'] == 2:
         blueOutline = LineStyle(5, blue)
-        leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
+        leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
     
     
 def mouseClick(event):
@@ -173,4 +173,11 @@ if __name__ == '__main__':
     App().run()
     RedrawAll()
    
-   
+    
+    
+
+    
+    
+    
+
+    
