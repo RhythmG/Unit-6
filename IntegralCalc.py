@@ -28,13 +28,14 @@ while getInput == False:
 def f(x):
     return (x**3 - 2*x) #This is the function for the calculation
 
-#After selecting RAM, this displays a message to choose from one of three methods   
+#After selecting RAM, this displays a message to choose from one of the three methods  
 if typeapprox == 1:
     print('')
     print('1: LRAM')
     print('2: RRAM')
     print("3: MRAM")
-    getInput = False
+    #This makes sure the user inputs between 1 and 3, or else the input window pops up again
+    getInput = False 
     while getInput == False:
         ramselect = int(input('Enter a number corresponding to your desired RAM approximation: '))
         getInput = inputValid(ramselect, 1, 3)
