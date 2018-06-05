@@ -106,7 +106,7 @@ def drawCenters():
         data['x'] = 0
 
 def mouseClick(event):
-    if event.x/CELL_SIZE <= XSLOT and event.y >= YSLOT:
+    if event.x <= XSLOT and event.y >= YSLOT:
         checkTurn()
         for i in range(1, 5):
             if board[0][i-1][0] == 0:
