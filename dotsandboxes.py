@@ -8,7 +8,7 @@ XSLOT = 200
 YSLOT = 80
 
 def buildBoard():
-    return [[[1,2,1,2,0],[1,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
+    return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
 
 def RedrawAll():
     data['x'] = 0
@@ -96,25 +96,39 @@ def drawCenters():
         data['y'] = data['y'] + 80
         data['x'] = 0
 
-"""        
 def mouseClick(event):
-    if event.x <= 200 and event.y >= 80:
+    if event.x <= XSLOT and event.y >= YSLOT:
         for i in range(1, 5):
-            if board == 0:
-                
-    if event.x >= 200 and event.y <= 80:
+            for j in range(1,5):
+                if board[0][i-1][j-1] == 0:
+                    LeftEdges()
+            else:
+                print("This line is already taken.")
+                break
+    elif event.x >= XSLOT and event.y <= YSLOT:
+         for i in range(1, 5):
+            for j in range(1,5):
+                if board[1][i-1][j-1] == 0:
+                    UpperEdges()
+            else:
+                print("This line is already taken.")
+                break
+    elif event.x <= XSLOT and event.y >= 80:
+       for i in range(1, 5):
+            for j in range(1,5):
+                if board[2][i-1][j-1] == 0:
+                    RightEdges()
+            else:
+                print("This line is already taken.")
+                break
+    elif event.x >= 480 and event.y >= YSLOT:
         for i in range(1, 5):
-            if board([1][i])
-    if event.x <= 200 and event.y >= 80:
-        for i in range(1, 5):
-            if board([2][i]) == 0:
-    if event.x >= 480 and event.y >= 80:
-        for i in range(1, 5):
-            if board([3][i])
-    if event.x >= 480 and event.y >= 560:
-        for i in range(1, 5):
-            if board([4][i])
-"""
+            for j in range(1,5):
+                if board[1][i-1][j-1] == 0:
+                    LowerEdges()
+            else:
+                print("This line is already taken.")
+                break
     
 
 board = buildBoard()
@@ -135,9 +149,7 @@ if __name__ == '__main__':
     vblackLine = LineAsset(0,80, blackOutline)
     hblackLine = LineAsset(80, 0, blackOutline)
     
-    """
     App().listenMouseEvent('click', mouseClick)
-    """
     App().run()
     RedrawAll()
    
