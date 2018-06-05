@@ -84,15 +84,6 @@ def LowerEdges():
             data['x'] += 80
         data['y'] += 80
         data['x'] = 0
-        
-def UpdateLeftEdges(a,b):
-    if data['player'] == 1:
-        redOutline = LineStyle(5, red)
-        leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
-    elif data['player'] == 2:
-        blueOutline = LineStyle(5, blue)
-        leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
-    
 
 def drawCenters():
     data['x'] = 0
@@ -104,6 +95,39 @@ def drawCenters():
         data['y'] = data['y'] + 80
         data['x'] = 0
 
+def UpdateLeftEdges(a,b):
+    if data['player'] == 1:
+        redOutline = LineStyle(5, red)
+        leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
+    elif data['player'] == 2:
+        blueOutline = LineStyle(5, blue)
+        leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
+
+def UpdateRightEdges(a,b):
+    if data['player'] == 1:
+        redOutline = LineStyle(5, red)
+        leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
+    elif data['player'] == 2:
+        blueOutline = LineStyle(5, blue)
+        leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
+
+def UpdateUpperEdges(a,b):
+    if data['player'] == 1:
+        redOutline = LineStyle(5, red)
+        leftLine = Sprite(LineAsset(80,0, redOutline),(a,b))
+    elif data['player'] == 2:
+        blueOutline = LineStyle(5, blue)
+        leftLine = Sprite(LineAsset(80,0, blueOutline),(a,b))
+        
+def UpdateLowerEdges(a,b):
+    if data['player'] == 1:
+        redOutline = LineStyle(5, red)
+        leftLine = Sprite(LineAsset(0,80, redOutline),(a,b))
+    elif data['player'] == 2:
+        blueOutline = LineStyle(5, blue)
+        leftLine = Sprite(LineAsset(0,80, blueOutline),(a,b))
+    
+    
 def mouseClick(event):
     checkTurn()
     for i in range(1,5):
@@ -112,6 +136,9 @@ def mouseClick(event):
         board[i-1][movex-1][movey-1] = data['player']
         RedrawAll()
         UpdateLeftEdges(movex, movey)
+        UpdateRightEdges(movex, movey)
+        UpdateUpperEdges(movex, movey)
+        UpdateLowerEdges(movex, movey)
     print(board)
        
     
