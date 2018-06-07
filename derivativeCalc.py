@@ -2,6 +2,8 @@
 #Calculus 10 Essential Problems Project - Chapter 3
 #Derivative Calculator
 
+from math import *
+
 xvalue = float(input('Enter a value of x to approximate the derivative :')) #at what value of x for the derivative?
 
 def f(x):
