@@ -73,7 +73,8 @@ if typeapprox == 1:
         print('Area: ', sum)
     
     rectangles(lower, upper, intervals)
-    
+
+#Trapezoidal Rule
 elif typeapprox == 2:
     print('')
     print('Trapezoids Selected')
@@ -95,7 +96,7 @@ elif typeapprox == 2:
     
     trapezoid(lower, upper, intervals)
 
-  
+#Simpson's Rule  
 elif typeapprox == 3:
     print('')
     print("Simpson's Rule Selected")
