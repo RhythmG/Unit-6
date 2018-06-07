@@ -16,7 +16,9 @@ def derivative(x):
     slope = rise/run #definition of derivative
     return slope
 
-print("The function is not differentiable at x = ", xvalue)
+def checksides(x):
+    if (derivative(xvalue+h)+derivative(xvalue-h))/2 != slope:
+        print("The function is not differentiable at x = ", xvalue)
 
 print('')
 print('Derivative at x =', xvalue, ':', round(derivative(xvalue), 2)) #Prints out the value of the derivative
