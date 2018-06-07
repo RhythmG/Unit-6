@@ -8,7 +8,7 @@ xvalue = float(input('Enter a value of x to approximate the derivative :')) #at 
 
 
 def f(x):
-    return abs(x) #This is the function used to approximate the derivative
+    return x**2 #This is the function used to approximate the derivative
 
 
 def derivative(x):
