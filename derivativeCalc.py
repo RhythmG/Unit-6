@@ -10,6 +10,14 @@ xvalue = float(input('Enter a value of x to approximate the derivative :')) #at 
 def f(x):
     return abs(x) #This is the function used to approximate the derivative
 
+def checksides(x): #This is to check if the one-sided derivatives are equal
+    h = 1/1000
+    rise = f(x+h)-f(x) 
+    run = h
+    slope = rise/run 
+    if rise - (f(x-h)-f(x)) <= h:
+        print("The function is not differentiable at this point.")
+
 def derivative(x):
     h = 1/1000
     rise = f(x+h)-f(x) 
@@ -17,14 +25,7 @@ def derivative(x):
     slope = rise/run #definition of derivative
     return slope
 
-def checksides(x): #this is to check if the one-sided derivatives are equal
-    h = 1/1000
-    rise = f(x+h)-f(x) 
-    run = h
-    slope = rise/run 
-    if ((derivative(xvalue+h)+derivative(xvalue-h))/2) != slope:
-        print("The function is not differentiable at this point.")
-        print((derivative(xvalue+h)+derivative(xvalue-h))/2)
+
 
 print('')
 checksides(xvalue)
