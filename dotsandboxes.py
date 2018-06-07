@@ -39,15 +39,15 @@ def LeftEdges():
     data['y'] = 0
     for i in range(1,5):
         for j in range(1,5):
-            if board[i-1][j-1][0] == 0:
+            if board[0][i-1][j-1] == 0:
                 blackOutline = LineStyle(8, black)
                 leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
-            elif board[i-1][j-1][0] == 1:
+            elif board[0][i-1][j-1] == 1:
                 redOutline = LineStyle(5, red)
                 leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
-            elif board[i-1][j-1][0] == 2:
+            elif board[0][i-1][j-1]== 2:
                 blueOutline = LineStyle(5, blue)
                 leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['x'] += 80
@@ -187,5 +187,21 @@ if __name__ == '__main__':
     App().run()
     RedrawAll()
    
-  
- 
+    
+    
+
+    
+    
+    
+
+    
+
+   
+    
+    
+
+    
+    
+    
+
+    
