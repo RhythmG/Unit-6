@@ -7,7 +7,7 @@ from math import *
 xvalue = float(input('Enter a value of x to approximate the derivative :')) #at what value of x for the derivative?
 
 def f(x):
-    return x**2 #This is the function used to approximate the derivative
+    return abs(x) #This is the function used to approximate the derivative
 
 try:
     def derivative(x):
