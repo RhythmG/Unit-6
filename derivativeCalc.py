@@ -7,7 +7,7 @@ from math import *
 xvalue = float(input('Enter a value of x to approximate the derivative :')) #at what value of x for the derivative?
 
 def f(x):
-    return ((x-2)**2)*(x-4) #This is the function used to approximate the derivative
+    return x**2 #This is the function used to approximate the derivative
 
 def derivative(x):
     h = 1/1000
@@ -17,4 +17,4 @@ def derivative(x):
     return slope
 
 print('')
-print('Derivative at x =', xvalue, ':', derivative(3)) #Prints out the value of the derivative
+print('Derivative at x =', xvalue, ':', round(derivative(xvalue), 2)) #Prints out the value of the derivative
