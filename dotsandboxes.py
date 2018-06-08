@@ -63,17 +63,17 @@ def UpperEdges():
             if board[i-1][j-1][1] == 0:
                 blackOutline = LineStyle(8, black)
                 leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
-                data['x'] += 75
+                data['y'] += 75
             elif board[i-1][j-1][1] == 1:
                 redOutline = LineStyle(8, red)
                 leftLine = Sprite(LineAsset(80,0, redOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
-                data['x'] += 75
+                data['y'] += 75
             elif board[i-1][j-1][1] == 2:   
                 blueOutline = LineStyle(8, blue)
                 leftLine = Sprite(LineAsset(80,0, blueOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
-                data['x'] += 75
-        data['y'] += 75
-        data['x'] = 0
+                data['y'] += 75
+        data['x'] += 75
+        data['y'] = 0
 
 def RightEdges():
     data['x'] = 0
@@ -103,25 +103,35 @@ def LowerEdges():
             if board[i-1][j-1][3] == 0:
                 blackOutline = LineStyle(8, black)
                 leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
-                data['x'] += 70
+                data['y'] += 72
             elif board[i-1][j-1][3] == 1:
                 redOutline = LineStyle(8, red)
                 leftLine = Sprite(LineAsset(80,0, redOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
-                data['x'] += 75
+                data['y'] += 72
             elif board[i-1][j-1][3] == 2:
                 blueOutline = LineStyle(8, blue)
                 leftLine = Sprite(LineAsset(80,0, blueOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
-                data['x'] += 71
-        data['y'] += 75
-        data['x'] = 0
+                data['y'] += 72
+        data['x'] += 75
+        data['y'] = 0
 
 def drawCenters():
     data['x'] = 0
     data['y'] = 0
     for i in range(1,5):
-        for i in range(1,5):
-            rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, gray), (XSLOT+data['x'], YSLOT+data['y']))
-            data['x'] = data['x'] + 75
+        for j in range(1,5):
+            if board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 1:
+                blackOutline = LineStyle(0, black)
+                rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, red), (XSLOT+data['x'], YSLOT+data['y']))
+                data['x'] = data['x'] + 75
+            elif board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 2:
+                blackOutline = LineStyle(0, black)
+                rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, blue), (XSLOT+data['x'], YSLOT+data['y']))
+                data['x'] = data['x'] + 75
+            else:
+                blackOutline = LineStyle(0, black)
+                rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, gray), (XSLOT+data['x'], YSLOT+data['y']))
+                data['x'] = data['x'] + 75
         data['y'] += 75
         data['x'] = 0
 
@@ -151,12 +161,6 @@ def UpdateLowerEdges(a,b):
     elif data['player'] == 2:
         board[a][b][3] = 2
     print("right")
-def UpdateCenters(a,b):
-    if data['player'] == 1:
-        board[a][b][4] = 1
-    elif data['player'] == 2:
-        board[a][b][4] = 2
-    
     
 def mouseClick(event):
     checkTurn()
@@ -164,14 +168,14 @@ def mouseClick(event):
     movey = event.y//CELL_SIZE
     adjustx = event.x/CELL_SIZE
     adjusty = event.y/CELL_SIZE
-    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) <= 1:
+    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 1:
         UpdateLeftEdges(movex, movey)
-    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 0.2:
-        UpdateRightEdges(movex, movey)
-    if abs(adjustx - movex) < 0.7 and abs(adjusty - movey) < 0.2:
+    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 0.5:
+        UpdateRightEdges(movex-1, movey)
+    if abs(adjustx - movex) <= 1 and abs(adjusty - movey) < 0.15:
         UpdateUpperEdges(movex, movey)
-    if abs(adjustx - movex) < 1 and abs(adjusty - movey) < 0.2:
-        UpdateLowerEdges(movex, movey)
+    if abs(adjustx - movex) < 0.5 and abs(adjusty - movey) < 0.15:
+        UpdateLowerEdges(movex, movey-1)
     RedrawAll()
     print(movex, movey)
     print(adjustx,adjusty)
