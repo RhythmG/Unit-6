@@ -6,7 +6,7 @@ from ggame import *
 
 XSLOT = 0
 YSLOT = 0
-CELL_SIZE = 60
+CELL_SIZE = 70
 
 def buildBoard():
     return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
@@ -39,19 +39,40 @@ def LeftEdges():
     data['y'] = 0
     for i in range(1,5):
         for j in range(1,5):
-            if board[0][i-1][j-1] == 0:
+            if board[i-1][j-1][0] == 0:
                 blackOutline = LineStyle(8, black)
                 leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
-                data['x'] += 80
-            elif board[0][i-1][j-1] == 1:
+                data['y'] += 72
+            elif board[i-1][j-1][0] == 1:
                 redOutline = LineStyle(5, red)
                 leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
-                data['x'] += 80
-            elif board[0][i-1][j-1]== 2:
+                data['y'] += 72
+            elif board[i-1][j-1][0]== 2:
                 blueOutline = LineStyle(5, blue)
                 leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
-                data['x'] += 80
-        data['y'] += 80
+                data['y'] += 72
+        data['x'] += 72
+        data['y'] = 0
+
+
+def UpperEdges():
+    data['x'] = 0
+    data['y'] = 0
+    for i in range(1,5):
+        for j in range(1,5):
+            if board[i-1][j-1][1] == 0:
+                blackOutline = LineStyle(8, black)
+                leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
+                data['x'] += 75
+            elif board[i-1][j-1][1] == 1:
+                redOutline = LineStyle(8, red)
+                leftLine = Sprite(LineAsset(80,0, redOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
+                data['x'] += 75
+            elif board[i-1][j-1][1] == 2:   
+                blueOutline = LineStyle(8, blue)
+                leftLine = Sprite(LineAsset(80,0, blueOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
+                data['x'] += 75
+        data['y'] += 75
         data['x'] = 0
 
 def RightEdges():
@@ -59,39 +80,39 @@ def RightEdges():
     data['y'] = 0
     for i in range(1,5):
         for j in range(1,5):
-            if board[i-1][j-1][1] == 0:
+            if board[i-1][j-1][2] == 0:
                 blackOutline = LineStyle(8, black)
                 leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
-                data['x'] += 80
-            elif board[i-1][j-1][0] == 1:
-                data['x'] += 80
-            elif board[i-1][j-1][j-1] == 2:
+                data['y'] += 72
+            elif board[i-1][j-1][2] == 1:
+                redOutline = LineStyle(5, red)
+                leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
+                data['y'] += 72
+            elif board[i-1][j-1][2] == 2:
                 blueOutline = LineStyle(5, blue)
-                leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
-                data['x'] += 80
-        data['y'] += 80
-        data['x'] = 0
-
-def UpperEdges():
-    data['x'] = 0
-    data['y'] = 0
-    for i in range(1,5):
-        for i in range(1,5):
-            blackOutline = LineStyle(8, black)
-            leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
-            data['x'] += 80
-        data['y'] += 80
-        data['x'] = 0
+                leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
+                data['y'] += 72
+        data['x'] += 72
+        data['y'] = 0
             
 def LowerEdges():
     data['x'] = 0
     data['y'] = 0
     for i in range(1,5):
-        for i in range(1,5):
-            blackOutline = LineStyle(8, black)
-            leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
-            data['x'] += 80
-        data['y'] += 80
+        for j in range(1,5):
+            if board[i-1][j-1][3] == 0:
+                blackOutline = LineStyle(8, black)
+                leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
+                data['x'] += 70
+            elif board[i-1][j-1][3] == 1:
+                redOutline = LineStyle(8, red)
+                leftLine = Sprite(LineAsset(80,0, redOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
+                data['x'] += 75
+            elif board[i-1][j-1][3] == 2:
+                blueOutline = LineStyle(8, blue)
+                leftLine = Sprite(LineAsset(80,0, blueOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
+                data['x'] += 71
+        data['y'] += 75
         data['x'] = 0
 
 def drawCenters():
@@ -100,8 +121,8 @@ def drawCenters():
     for i in range(1,5):
         for i in range(1,5):
             rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, gray), (XSLOT+data['x'], YSLOT+data['y']))
-            data['x'] = data['x'] + 80
-        data['y'] = data['y'] + 81
+            data['x'] = data['x'] + 75
+        data['y'] += 75
         data['x'] = 0
 
 def UpdateLeftEdges(a,b):
@@ -111,19 +132,19 @@ def UpdateLeftEdges(a,b):
         board[a][b][0] = 2
     print("left")
 
-def UpdateRightEdges(a,b):
+def UpdateUpperEdges(a,b):
     if data['player'] == 1:
         board[a][b][1] = 1
     elif data['player'] == 2:
         board[a][b][1] = 2
-    print("right")
+    print("upper")
 
-def UpdateUpperEdges(a,b):
+def UpdateRightEdges(a,b):
     if data['player'] == 1:
         board[a][b][2] = 1
     elif data['player'] == 2:
         board[a][b][2] = 2
-    print("upper")    
+    print("right")    
 def UpdateLowerEdges(a,b):
     if data['player'] == 1:
         board[a][b][3] = 1
@@ -143,16 +164,17 @@ def mouseClick(event):
     movey = event.y//CELL_SIZE
     adjustx = event.x/CELL_SIZE
     adjusty = event.y/CELL_SIZE
-    if adjustx - movex < 0.15 and adjusty - movey <= 1:
+    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) <= 1:
         UpdateLeftEdges(movex, movey)
-    if adjustx - movex < 1 and adjusty - movey < 0.2:
+    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 0.2:
         UpdateRightEdges(movex, movey)
-    if adjustx - movex < 1 and adjusty - movey < 0.2:
+    if abs(adjustx - movex) < 0.7 and abs(adjusty - movey) < 0.2:
         UpdateUpperEdges(movex, movey)
-    if adjustx - movex < 1 and adjusty - movey < 0.2:
+    if abs(adjustx - movex) < 1 and abs(adjusty - movey) < 0.2:
         UpdateLowerEdges(movex, movey)
     RedrawAll()
     print(movex, movey)
+    print(adjustx,adjusty)
     print(board)
        
     
@@ -186,22 +208,3 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
-   
-    
-    
-
-    
-    
-    
-
-    
-
-   
-    
-    
-
-    
-    
-    
-
-    
