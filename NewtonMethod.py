@@ -10,10 +10,11 @@ guess = float(input('Enter an initial point: '))
 
 
 def NewtonMethod(a):
-    firststep = a
+    firststep = a 
     for i in range(1, (order+1)):
         firststep -= (f(a)/derivative(a))
-        print(firststep)
+        nextstep += firststep
+        print(nextstep)
 
 def derivative(a):
     h = 1/1000
