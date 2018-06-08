@@ -13,13 +13,11 @@ def NewtonMethod(a):
     firststep = a 
     for i in range(1, (order+1)):
         firststep -= (f(a)/derivative(a))
-        nextstep += firststep
-        print(nextstep)
 
 def derivative(a):
     h = 1/1000
     rise = f(a+h)-f(a) 
-    run = h
+    run = h1
     slope = rise/run
     return slope
 
