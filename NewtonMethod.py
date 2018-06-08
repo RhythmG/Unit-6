@@ -10,14 +10,15 @@ guess = float(input('Enter an initial point: '))
 
 
 def NewtonMethod(a):
-    firststep = a 
+    estimation = 0
     for i in range(1, (order+1)):
-        firststep -= (f(a)/derivative(a))
+        estimation += (a - (f(a)/derivative(a)))
+    print(estimation)
 
 def derivative(a):
     h = 1/1000
     rise = f(a+h)-f(a) 
-    run = h1
+    run = h
     slope = rise/run
     return slope
 
