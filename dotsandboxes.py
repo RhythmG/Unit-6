@@ -116,10 +116,12 @@ def drawCenters():
                 blackOutline = LineStyle(0, black)
                 rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, red), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
+                data['playeronescore'] += 1
             elif board[i-1][j-1][4] == 2:
                 blackOutline = LineStyle(0, black)
                 rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, blue), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
+                data['playertwoscore'] += 1
             else:
                 blackOutline = LineStyle(0, black)
                 rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, gray), (XSLOT+data['x'], YSLOT+data['y']))
@@ -169,9 +171,15 @@ def mouseClick(event):
         UpdateLowerEdges(movex, movey-1) 
     UpdateCenters(movex, movey)
     RedrawAll()
+    drawScore()
     print(board)
-       
     
+def drawScore():
+    playeronetext = TextAsset(data['playeronescore'], fill = red, style = "bold 40pt Times")
+    playertwotext = TextAsset(data['playertwoscore'], fill = blue, style = "bold 40pt Times")
+    Sprite(playeronetext, (700, 100))
+    Sprite(playertwotext, (700, 200))
+
 def checkTurn():  
     data['totalturns'] += 1
     if data['totalturns']/2 == int(data['totalturns']/2):
@@ -193,6 +201,8 @@ if __name__ == '__main__':
     data['c'] = 0
     data['totalturns'] = 0
     data['player'] = 1
+    data['playeronescore'] = 0
+    data['playertwoscore'] = 0
     
     blackOutline = LineStyle(1, black)
     vblackLine = LineAsset(0,80, blackOutline)
@@ -201,4 +211,5 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
+    drawScore()
    
