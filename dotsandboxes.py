@@ -175,10 +175,14 @@ def mouseClick(event):
     print(board)
     
 def drawScore():
-    playeronetext = TextAsset(data['playeronescore'], fill = red, style = "bold 40pt Times")
-    playertwotext = TextAsset(data['playertwoscore'], fill = blue, style = "bold 40pt Times")
-    Sprite(playeronetext, (700, 100))
-    Sprite(playertwotext, (700, 200))
+    playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
+    playertwotext = TextAsset("Player 2:", fill = blue, style = "bold 18pt Times")
+    playeronetext2 = TextAsset(data['playeronescore'], fill = red, style = "bold 40pt Times")
+    playertwotext2 = TextAsset(data['playertwoscore'], fill = blue, style = "bold 40pt Times")
+    Sprite(playeronetext, (580, 115))
+    Sprite(playertwotext, (580, 215))
+    Sprite(playeronetext2, (700, 100))
+    Sprite(playertwotext2, (700, 200))
 
 def checkTurn():  
     data['totalturns'] += 1
