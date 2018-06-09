@@ -24,7 +24,6 @@ def RedrawAll():
     RightEdges()
     UpperEdges()
     LowerEdges()
-    """pegs = EllipseAsset(10,50, blackOutline, black)"""
     data['x'] = data['x'] + 50
             
 def LeftEdges():
@@ -153,7 +152,7 @@ def UpdateCenters(a,b):
         board[a][b][4] = 1
     elif board[a][b][0] != 0 and board[a][b][1] != 0 and board[a][b][2] != 0 and board[a][b][3] != 0 and data['player'] == 2 and board[a][b][4] == 0:
         board[a][b][4] = 2
-    
+        
 def mouseClick(event):
     checkTurn()
     movex = event.x//CELL_SIZE
