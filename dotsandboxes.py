@@ -120,47 +120,46 @@ def drawCenters():
     data['y'] = 0
     for i in range(1,5):
         for j in range(1,5):
-            if board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 1:
+            if board[i-1][j-1][4] == 1:
                 blackOutline = LineStyle(0, black)
                 rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, red), (XSLOT+data['x'], YSLOT+data['y']))
-                data['x'] = data['x'] + 75
-            elif board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 2:
+                data['y'] += 75
+            elif board[i-1][j-1][4] == 2:
                 blackOutline = LineStyle(0, black)
                 rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, blue), (XSLOT+data['x'], YSLOT+data['y']))
-                data['x'] = data['x'] + 75
+                data['y'] += 75
             else:
                 blackOutline = LineStyle(0, black)
                 rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, gray), (XSLOT+data['x'], YSLOT+data['y']))
-                data['x'] = data['x'] + 75
-        data['y'] += 75
-        data['x'] = 0
+                data['y'] += 75
+        data['x'] += 75
+        data['y'] = 0
 
 def UpdateLeftEdges(a,b):
-    if data['player'] == 1:
+    if data['player'] == 1 and board[a][b][0] == 0:
         board[a][b][0] = 1
-    elif data['player'] == 2:
+    elif data['player'] == 2 and board[a][b][0] == 0:
         board[a][b][0] = 2
-    print("left")
-
 def UpdateUpperEdges(a,b):
-    if data['player'] == 1:
+    if data['player'] == 1 and board[a][b][1] == 0:
         board[a][b][1] = 1
-    elif data['player'] == 2:
+    elif data['player'] == 2 and board[a][b][1] == 0:
         board[a][b][1] = 2
-    print("upper")
-
 def UpdateRightEdges(a,b):
-    if data['player'] == 1:
+    if data['player'] == 1 and board[a][b][2] == 0:
         board[a][b][2] = 1
-    elif data['player'] == 2:
+    elif data['player'] == 2 and board[a][b][2] == 0:
         board[a][b][2] = 2
-    print("right")    
 def UpdateLowerEdges(a,b):
-    if data['player'] == 1:
+    if data['player'] == 1 and board[a][b][3] == 0:
         board[a][b][3] = 1
-    elif data['player'] == 2:
+    elif data['player'] == 2 and board[a][b][3] == 0:
         board[a][b][3] = 2
-    print("right")
+def UpdateCenters(a,b):
+    if board[a][b][0] != 0 and board[a][b][1] != 0 and board[a][b][2] != 0 and board[a][b][3] != 0 and data['player'] == 1 and board[a][b][4] == 0:
+        board[a][b][4] = 1
+    elif board[a][b][0] != 0 and board[a][b][1] != 0 and board[a][b][2] != 0 and board[a][b][3] != 0 and data['player'] == 2 and board[a][b][4] == 0:
+        board[a][b][4] = 2
     
 def mouseClick(event):
     checkTurn()
@@ -175,10 +174,9 @@ def mouseClick(event):
     if abs(adjustx - movex) <= 1 and abs(adjusty - movey) < 0.15:
         UpdateUpperEdges(movex, movey)
     if abs(adjustx - movex) < 0.5 and abs(adjusty - movey) < 0.15:
-        UpdateLowerEdges(movex, movey-1)
+        UpdateLowerEdges(movex, movey-1) 
+    UpdateCenters(movex, movey)
     RedrawAll()
-    print(movex, movey)
-    print(adjustx,adjusty)
     print(board)
        
     
@@ -188,7 +186,6 @@ def checkTurn():
         data['player'] = 2
     else:
         data['player'] = 1
-    print(data['totalturns'])
     
 board = buildBoard()
 
@@ -212,3 +209,4 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
+   
