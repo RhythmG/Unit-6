@@ -26,13 +26,6 @@ def RedrawAll():
     LowerEdges()
     """pegs = EllipseAsset(10,50, blackOutline, black)"""
     data['x'] = data['x'] + 50
-    """
-    Sprite(vblackLine,(XSLOT + 50, YSLOT + data['y'])) #left edge
-    Sprite(vblackLine,(XSLOT + 478, YSLOT + data['y'])) #right edge
-    data['y'] = data['y'] + 50
-    Sprite(hblackLine,(XSLOT + data['x'], YSLOT)) #top edge
-    Sprite(hblackLine,(XSLOT + data['x'], YSLOT + 427)) #bottom edge
-    """
             
 def LeftEdges():
     data['x'] = 0
