@@ -101,11 +101,9 @@ def drawCenters():
             if board[i-1][j-1][4] == 1:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
-                data['playeronescore'] +=1
             elif board[i-1][j-1][4] == 2:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
-                data['playertwoscore'] += 1 #add totalturns by 1 to give player another turn
             else:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], gray), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
@@ -163,8 +161,10 @@ def checkFace():
         for j in range(1,5):
             if board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 1 and board[i-1][j-1][4] == 0:
                 board[i-1][j-1][4] = 1
+                data['playeronescore'] += 1
             elif board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 2 and board[i-1][j-1][4] == 0:
                 board[i-1][j-1][4] = 2
+                data['playertwoscore'] += 1
     
 def drawScore():
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
