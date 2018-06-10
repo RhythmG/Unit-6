@@ -7,9 +7,9 @@ from ggame import *
 DIMENSION = 4
 XSLOT = 0
 YSLOT = 0
-linesize = 80
 CELL_SIZE = 75
 linethickness = 1
+linesize = CELL_SIZE + linethickness
 
 def buildBoard():
     return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
@@ -25,7 +25,6 @@ def RedrawAll():
     UpperEdges()
     LowerEdges()
     drawScore()
-    data['x'] = data['x'] + 50
             
 def LeftEdges():
     data['x'] = 0
