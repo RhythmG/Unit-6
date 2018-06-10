@@ -149,11 +149,11 @@ def UpdateLowerEdges(a,b):
         board[a][b][3] = 1
     elif data['player'] == 2 and board[a][b][3] == 0:
         board[a][b][3] = 2
-def UpdateCenters(a,b):
+"""def UpdateCenters(a,b):
     if board[a][b][0] != 0 and board[a][b][1] != 0 and board[a][b][2] != 0 and board[a][b][3] != 0 and data['player'] == 1 and board[a][b][4] == 0:
         board[a][b][4] = 1
     elif board[a][b][0] != 0 and board[a][b][1] != 0 and board[a][b][2] != 0 and board[a][b][3] != 0 and data['player'] == 2 and board[a][b][4] == 0:
-        board[a][b][4] = 2
+        board[a][b][4] = 2"""
         
 def mouseClick(event):
     checkTurn()
@@ -169,7 +169,10 @@ def mouseClick(event):
         UpdateUpperEdges(movex, movey)
     if abs(adjustx - movex) < 0.5 and abs(adjusty - movey) < 0.15 and movey != 0:
         UpdateLowerEdges(movex, movey-1) 
-    UpdateCenters(movex, movey)
+    if board[movex][movey][0] != 0 and board[movex][movey][1] != 0 and board[movex][movey][2] != 0 and board[movex][movey][3] != 0 and data['player'] == 1 and board[movex][movey][4] == 0:
+        board[movex][movey][4] = 1
+    elif board[movex][movey][0] != 0 and board[movex][movey][1] != 0 and board[movex][movey][2] != 0 and board[movex][movey][3] != 0 and data['player'] == 2 and board[movex][movey][4] == 0:
+        board[movex][movey][4] = 2
     RedrawAll()
     print(board)
     
