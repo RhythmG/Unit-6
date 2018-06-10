@@ -111,7 +111,7 @@ def drawCenters():
                 rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], gray), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
         data['x'] += CELL_SIZE + linethickness
-        data['y'] = 0
+        data['y'] = linethickness
  
 
 def UpdateLeftEdges(a,b):
