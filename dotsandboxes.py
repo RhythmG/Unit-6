@@ -98,19 +98,22 @@ def drawCenters():
     data['y'] = 0
     for i in range(1,5):
         for j in range(1,5):
-            if board[i-1][j-1][4] == 1:
+            if board[i-1][j-1][4] == 1 and board[i-1][j-1][4] != 3:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
+                board[i-1][j-1][4] == 3
                 data['playeronescore'] += 1
-            elif board[i-1][j-1][4] == 2:
+            elif board[i-1][j-1][4] == 2 and board[i-1][j-1] != 3:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
                 data['playertwoscore'] += 1 #add totalturns by 1 to keep the player
+                board[i-1][j-1][4] == 3
             else:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], gray), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
         data['x'] += 75
         data['y'] = 0
+ 
 
 def UpdateLeftEdges(a,b):
     if data['player'] == 1 and board[a][b][0] == 0:
