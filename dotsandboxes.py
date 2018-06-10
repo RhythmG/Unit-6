@@ -167,7 +167,7 @@ def mouseClick(event):
         UpdateRightEdges(movex-1, movey)
     if abs(adjustx - movex) <= 1 and abs(adjusty - movey) < 0.15:
         UpdateUpperEdges(movex, movey)
-    if abs(adjustx - movex) < 0.5 and abs(adjusty - movey) < 0.15:
+    if abs(adjustx - movex) < 0.5 and abs(adjusty - movey) < 0.15 and movey!= 0:
         UpdateLowerEdges(movex, movey-1) 
     UpdateCenters(movex, movey)
     RedrawAll()
