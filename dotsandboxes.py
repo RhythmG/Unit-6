@@ -4,10 +4,10 @@
 
 from ggame import *
 
+DIMENSION = 4
 XSLOT = 0
 YSLOT = 0
 linesize = 80
-shift = 72
 CELL_SIZE = 75
 linethickness = 1
 
@@ -30,8 +30,8 @@ def RedrawAll():
 def LeftEdges():
     data['x'] = 0
     data['y'] = 0
-    for i in range(1,5):
-        for j in range(1,5):
+    for i in range(1,DIMENSION + 1):
+        for j in range(1,DIMENSION + 1):
             if board[i-1][j-1][0] == 0:
                 leftLine = Sprite(LineAsset(0,linesize, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
@@ -47,8 +47,8 @@ def LeftEdges():
 def UpperEdges():
     data['x'] = 0
     data['y'] = 0
-    for i in range(1,5):
-        for j in range(1,5):
+    for i in range(1,DIMENSION + 1):
+        for j in range(1,DIMENSION + 1):
             if board[i-1][j-1][1] == 0:
                 leftLine = Sprite(LineAsset(linesize,0, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['x'] += CELL_SIZE + linethickness
@@ -64,8 +64,8 @@ def UpperEdges():
 def RightEdges():
     data['x'] = CELL_SIZE + linethickness
     data['y'] = 0
-    for i in range(1,5):
-        for j in range(1,5):
+    for i in range(1,DIMENSION+1):
+        for j in range(1,DIMENSION+1):
             if board[i-1][j-1][2] == 0:
                 leftLine = Sprite(LineAsset(0,linesize, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
@@ -81,8 +81,8 @@ def RightEdges():
 def LowerEdges():
     data['x'] = 0
     data['y'] = CELL_SIZE + linethickness
-    for i in range(1,5):
-        for j in range(1,5):
+    for i in range(1,DIMENSION+1):
+        for j in range(1,DIMENSION+1):
             if board[i-1][j-1][3] == 0:
                 leftLine = Sprite(LineAsset(linesize,0, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['x'] += CELL_SIZE + linethickness
@@ -99,8 +99,8 @@ def drawCenters():
     checkFace()
     data['x'] = linethickness
     data['y'] = linethickness
-    for i in range(1,5):
-        for j in range(1,5):
+    for i in range(1,DIMENSION+1):
+        for j in range(1,DIMENSION+1):
             if board[i-1][j-1][4] == 1:
                 rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
