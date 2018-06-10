@@ -104,7 +104,7 @@ def drawCenters():
             elif board[i-1][j-1][4] == 2:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
-                data['playertwoscore'] += 1
+                data['playertwoscore'] += 1 #add totalturns by 1 to keep the same player
             else:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], gray), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
