@@ -197,10 +197,6 @@ if __name__ == '__main__':
     data['playeronescore'] = 0
     data['playertwoscore'] = 0
     
-    blackOutline = LineStyle(1, black)
-    vblackLine = LineAsset(0,80, blackOutline)
-    hblackLine = LineAsset(80, 0, blackOutline)
-    
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
