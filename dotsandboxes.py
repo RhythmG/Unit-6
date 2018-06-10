@@ -169,12 +169,15 @@ def mouseClick(event):
         UpdateUpperEdges(movex, movey)
     if abs(adjustx - movex) < 0.5 and abs(adjusty - movey) < 0.15 and movey != 0:
         UpdateLowerEdges(movex, movey-1) 
+    RedrawAll()
+    print(board) 
+
+def checkFace():
     if board[movex][movey][0] != 0 and board[movex][movey][1] != 0 and board[movex][movey][2] != 0 and board[movex][movey][3] != 0 and data['player'] == 1 and board[movex][movey][4] == 0:
         board[movex][movey][4] = 1
     elif board[movex][movey][0] != 0 and board[movex][movey][1] != 0 and board[movex][movey][2] != 0 and board[movex][movey][3] != 0 and data['player'] == 2 and board[movex][movey][4] == 0:
         board[movex][movey][4] = 2
     RedrawAll()
-    print(board)
     
 """def drawScore():
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
