@@ -96,7 +96,6 @@ def LowerEdges():
         data['x'] = 0
 
 def drawCenters():
-    checkFace()
     data['x'] = linethickness
     data['y'] = linethickness
     for i in range(1,DIMENSION+1):
@@ -148,27 +147,39 @@ def mouseClick(event):
                 UpdateRightEdges(movex-1, movey)
         else:
             UpdateRightEdges(movex-1, movey)
+        checkFace(movex,movey)
+        if movex>0:
+            checkFace(movex,movey)
     elif abs(adjusty - movey) < tolerance:
         if movey < DIMENSION - 1:
             UpdateUpperEdges(movex, movey)
             if movey > 0:
                 UpdateLowerEdges(movex, movey-1) 
         else:
-            UpdateLowerEdges(movex, movey-1) 
+            UpdateLowerEdges(movex, movey-1)
+        checkFace(movex,movey)
+        if movey>0:
+            checkFace(movex,movey-1)
     RedrawAll()
     print(event.x, event.y)
     print(adjustx- movex, adjusty-movey)
     print(movex, movey)
+    print(board)
 
-def checkFace():
-    for i in range(1,DIMENSION+1):
-        for j in range(1,DIMENSION+1):
-            if board[i-1][j-1][0] != 0 and board[j-1][i-1][1] != 0 and board[i-1][j-1][2] != 0 and board[j-1][i-1][3] != 0 and data['player'] == 1 and board[i-1][j-1][4] == 0:
-                board[i-1][j-1][DIMENSION] = 1
-                data['playeronescore'] += 1
-            elif board[i-1][j-1][0] != 0 and board[j-1][i-1][1] != 0 and board[i-1][j-1][2] != 0 and board[j-1][i-1][3] != 0 and data['player'] == 2 and board[i-1][j-1][4] == 0:
-                board[i-1][j-1][DIMENSION] = 2
-                data['playertwoscore'] += 1
+def checkFace(id,jd):
+            turnface = True
+            for k in range(1, 5):
+                if board[id-1][jd-1][k] == 0:
+                    turnface = False
+                    break
+            if turnface == True:
+                if data['player'] == 1:
+                    board[id-1][jd-1][DIMENSION] = 1
+                    data['playeronescore'] += 1
+                else:
+                    board[id-1][jd-1][DIMENSION] = 2
+                    data['playertwoscore'] += 1
+            return turnface
     
 def drawScore():
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
