@@ -137,21 +137,21 @@ def UpdateLowerEdges(a,b):
 
 def mouseClick(event):
     checkTurn()
-    movex = event.x//(CELL_SIZE+linethickness)
-    movey = event.y//(CELL_SIZE+linethickness)
+    movex = event.x//(CELL_SIZE+linethickness) 
+    movey = event.y//(CELL_SIZE+linethickness) 
     adjustx = event.x/(CELL_SIZE+linethickness)
-    adjusty = event.y/(CELL_SIZE+linethickness)
+    adjusty = event.y/(CELL_SIZE+linethickness) 
     if abs(adjustx - movex) < tolerance:
-        if movex < DIMENSION:
+        if movex < DIMENSION - 1:
             UpdateLeftEdges(movex, movey)
-            if movex > 1:
+            if movex > 0:
                 UpdateRightEdges(movex-1, movey)
         else:
-            UpdateRightEdges(movex, movey)
+            UpdateRightEdges(movex-1, movey)
     elif abs(adjusty - movey) < tolerance:
-        if movey < DIMENSION:
+        if movey < DIMENSION - 1:
             UpdateUpperEdges(movex, movey)
-            if movey > 1:
+            if movey > 0:
                 UpdateLowerEdges(movex, movey-1) 
         else:
             UpdateLowerEdges(movex, movey-1) 
