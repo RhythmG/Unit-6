@@ -21,6 +21,7 @@ def RedrawAll():
     RightEdges()
     UpperEdges()
     LowerEdges()
+    drawScore()
     data['x'] = data['x'] + 50
             
 def LeftEdges():
