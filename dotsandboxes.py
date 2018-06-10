@@ -11,6 +11,8 @@ CELL_SIZE = 75
 def buildBoard():
     return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
 
+def centerMatrix():
+    return [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
 def RedrawAll():
     data['x'] = 0
     data['y'] = 0
@@ -93,17 +95,18 @@ def LowerEdges():
         data['y'] = 0
 
 def drawCenters():
+    checkCenterclick()
     checkFace()
     data['x'] = 0
     data['y'] = 0
     for i in range(1,5):
         for j in range(1,5):
-            if board[i-1][j-1][4] == 1 and board[i-1][j-1][4] != 3:
+            if board[i-1][j-1][4] == 1 and board[i-1][j-1][4] != 3 and central[i-1][j-1] != 3:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
                 board[i-1][j-1][4] == 3
                 data['playeronescore'] += 1
-            elif board[i-1][j-1][4] == 2 and board[i-1][j-1] != 3:
+            elif board[i-1][j-1][4] == 2 and board[i-1][j-1] != 3 and central[i-1][j-1] != 3:
                 rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
                 data['playertwoscore'] += 1 #add totalturns by 1 to keep the player
@@ -158,8 +161,14 @@ def mouseClick(event):
     print(adjustx - movex)
     print(movex)
     print(adjusty - movey)
-    print(board) 
 
+def checkCenterclick():
+    for i in range(1,5):
+        for j in range(1,5):
+            if board[i-1][j-1][4] == 1 or board[i-1][j-1][4] == 2:
+                central[i-1][j-1] == 3
+    print(central)
+            
 def checkFace():
     for i in range(1,5):
         for j in range(1,5):
@@ -187,6 +196,7 @@ def checkTurn():
     print(data['totalturns'])
     
 board = buildBoard()
+central = centerMatrix()
 
 if __name__ == '__main__': 
     red = Color(0xFF0000, 1)
