@@ -10,6 +10,7 @@ YSLOT = 0
 CELL_SIZE = 75
 linethickness = 1
 linesize = CELL_SIZE + linethickness
+tolerance = 0.1
 
 def buildBoard():
     return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
@@ -136,12 +137,17 @@ def UpdateLowerEdges(a,b):
 
 def mouseClick(event):
     checkTurn()
-    movex = event.x//CELL_SIZE
-    movey = event.y//CELL_SIZE
-    adjustx = event.x/CELL_SIZE
-    adjusty = event.y/CELL_SIZE
-    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 1:
-        UpdateLeftEdges(movex, movey)
+    movex = event.x//(CELL_SIZE+linethickness)
+    movey = event.y//(CELL_SIZE+linethickness)
+    adjustx = event.x/(CELL_SIZE+linethickness)
+    adjusty = event.y/(CELL_SIZE+linethickness)
+    if abs(adjustx - movex) < tolerance:
+        if movex < DIMENSION:
+            UpdateLeftEdges(movex, movey)
+            if movex > 1:
+                UpdateRightEdges(movex-1, movey)
+        else:
+            UpdateRightEdges(movex, movey)
     if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 1 and movex != 0:
         UpdateRightEdges(movex-1, movey)
     if abs(adjustx - movex) <= 1 and abs(adjusty - movey) < 0.15:
