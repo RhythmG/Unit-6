@@ -164,10 +164,10 @@ def checkFace():
     for i in range(1,DIMENSION+1):
         for j in range(1,DIMENSION+1):
             if board[i-1][j-1][0] != 0 and board[j-1][i-1][1] != 0 and board[i-1][j-1][2] != 0 and board[j-1][i-1][3] != 0 and data['player'] == 1 and board[i-1][j-1][4] == 0:
-                board[i-1][j-1][4] = 1
+                board[i-1][j-1][DIMENSION] = 1
                 data['playeronescore'] += 1
             elif board[i-1][j-1][0] != 0 and board[j-1][i-1][1] != 0 and board[i-1][j-1][2] != 0 and board[j-1][i-1][3] != 0 and data['player'] == 2 and board[i-1][j-1][4] == 0:
-                board[i-1][j-1][4] = 2
+                board[i-1][j-1][DIMENSION] = 2
                 data['playertwoscore'] += 1
     
 def drawScore():
