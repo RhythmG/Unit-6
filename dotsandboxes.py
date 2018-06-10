@@ -152,6 +152,7 @@ def UpdateLowerEdges(a,b):
         board[a][b][3] = 2
         
 def mouseClick(event):
+    checkTurn()
     movex = event.x//CELL_SIZE
     movey = event.y//CELL_SIZE
     adjustx = event.x/CELL_SIZE
@@ -191,6 +192,7 @@ def checkTurn():
         data['player'] = 2
     else:
         data['player'] = 1
+    print(data['totalturns'])
     
 board = buildBoard()
 
@@ -216,5 +218,3 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
-    checkTurn()
-   
