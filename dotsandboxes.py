@@ -144,7 +144,7 @@ def mouseClick(event):
     floory = event.y//(CELL_SIZE+linethickness)
     
     if abs(adjustx - roundx) < tolerance:
-        if roundx < DIMENSION - 1:
+        if roundx < DIMENSION:
             UpdateLeftEdges(roundx, floory)
             print("left edge of face", roundx +1, floory +1, "updated")
             if roundx > 0:
@@ -158,9 +158,9 @@ def mouseClick(event):
             checkFace(roundx-1,floory)
         print(roundx,floory)
     elif abs(adjusty - roundy) < tolerance:
-        if roundy < DIMENSION - 1:
+        if roundy < DIMENSION:
             UpdateUpperEdges(floorx, roundy)
-            print("lower edge of face", floorx+1, roundy+1, "updated")
+            print("upper edge of face", floorx+1, roundy+1, "updated")
             if roundy > 0:
                 UpdateLowerEdges(floorx, roundy-1) 
                 print("lower edge of face", floorx+1, roundy, "updated")
