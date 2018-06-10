@@ -163,7 +163,7 @@ def mouseClick(event):
     adjusty = event.y/CELL_SIZE
     if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 1:
         UpdateLeftEdges(movex, movey)
-    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 1:
+    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 1 and movex != 0:
         UpdateRightEdges(movex-1, movey)
     if abs(adjustx - movex) <= 1 and abs(adjusty - movey) < 0.15:
         UpdateUpperEdges(movex, movey)
