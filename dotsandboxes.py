@@ -161,8 +161,6 @@ def mouseClick(event):
         if movey>0:
             checkFace(movex,movey-1)
     RedrawAll()
-    print(event.x, event.y)
-    print(adjustx- movex, adjusty-movey)
     print(movex, movey)
     print(board)
 
