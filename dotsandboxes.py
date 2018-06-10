@@ -40,7 +40,6 @@ def LeftEdges():
         data['x'] += 72
         data['y'] = 0
 
-
 def UpperEdges():
     data['x'] = 0
     data['y'] = 0
@@ -132,7 +131,7 @@ def UpdateLowerEdges(a,b):
         board[a][b][3] = 1
     elif data['player'] == 2 and board[a][b][3] == 0:
         board[a][b][3] = 2
-        
+
 def mouseClick(event):
     checkTurn()
     movex = event.x//CELL_SIZE
@@ -200,3 +199,4 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
+    
