@@ -21,10 +21,10 @@ def RedrawAll():
     for item in App().spritelist[:]:
         item.destroy()
     drawCenters()
-    """LeftEdges()
+    """LeftEdges()"""
     RightEdges()
-    UpperEdges()"""
-    LowerEdges()
+    """UpperEdges()
+    LowerEdges()"""
     drawScore()
             
 def LeftEdges():
