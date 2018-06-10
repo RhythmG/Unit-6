@@ -19,7 +19,7 @@ def RedrawAll():
     data['y'] = 0
     for item in App().spritelist[:]:
         item.destroy()
-    """drawCenters()"""
+    drawCenters()
     LeftEdges()
     RightEdges()
     UpperEdges()
@@ -97,20 +97,20 @@ def LowerEdges():
 
 def drawCenters():
     checkFace()
-    data['x'] = 0
-    data['y'] = 0
+    data['x'] = linethickness
+    data['y'] = linethickness
     for i in range(1,5):
         for j in range(1,5):
             if board[i-1][j-1][4] == 1:
-                rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
-                data['y'] += CELL_SIZE
+                rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
+                data['y'] += CELL_SIZE + linethickness
             elif board[i-1][j-1][4] == 2:
-                rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
-                data['y'] += CELL_SIZE
+                rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
+                data['y'] += CELL_SIZE + linethickness
             else:
-                rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], gray), (XSLOT+data['x'], YSLOT+data['y']))
-                data['y'] += CELL_SIZE
-        data['x'] += CELL_SIZE
+                rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], gray), (XSLOT+data['x'], YSLOT+data['y']))
+                data['y'] += CELL_SIZE + linethickness
+        data['x'] += CELL_SIZE + linethickness
         data['y'] = 0
  
 
