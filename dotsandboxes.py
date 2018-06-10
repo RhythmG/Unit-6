@@ -163,7 +163,7 @@ def mouseClick(event):
     adjusty = event.y/CELL_SIZE
     if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 1:
         UpdateLeftEdges(movex, movey)
-    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 0.5:
+    if abs(adjustx - movex) < 0.15 and abs(adjusty - movey) < 1:
         UpdateRightEdges(movex-1, movey)
     if abs(adjustx - movex) <= 1 and abs(adjusty - movey) < 0.15:
         UpdateUpperEdges(movex, movey)
@@ -171,10 +171,9 @@ def mouseClick(event):
         UpdateLowerEdges(movex, movey-1) 
     UpdateCenters(movex, movey)
     RedrawAll()
-    drawScore()
     print(board)
     
-def drawScore():
+"""def drawScore():
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
     playertwotext = TextAsset("Player 2:", fill = blue, style = "bold 18pt Times")
     playeronetext2 = TextAsset(data['playeronescore'], fill = red, style = "bold 40pt Times")
@@ -182,7 +181,7 @@ def drawScore():
     Sprite(playeronetext, (580, 115))
     Sprite(playertwotext, (580, 215))
     Sprite(playeronetext2, (700, 100))
-    Sprite(playertwotext2, (700, 200))
+    Sprite(playertwotext2, (700, 200))"""
 
 def checkTurn():  
     data['totalturns'] += 1
@@ -215,5 +214,4 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
-    drawScore()
    
