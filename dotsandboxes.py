@@ -21,10 +21,10 @@ def RedrawAll():
     for item in App().spritelist[:]:
         item.destroy()
     drawCenters()
-    """LeftEdges()"""
+    LeftEdges()
     RightEdges()
-    """UpperEdges()
-    LowerEdges()"""
+    UpperEdges()
+    LowerEdges()
     drawScore()
             
 def LeftEdges():
@@ -136,47 +136,59 @@ def UpdateLowerEdges(a,b):
 
 def mouseClick(event):
     checkTurn()
-    movex = event.x//(CELL_SIZE+linethickness) 
-    movey = event.y//(CELL_SIZE+linethickness) 
     adjustx = event.x/(CELL_SIZE+linethickness)
-    adjusty = event.y/(CELL_SIZE+linethickness) 
-    if abs(adjustx - movex) < tolerance:
-        if movex < DIMENSION - 1:
-            UpdateLeftEdges(movex, movey)
-            if movex > 0:
-                UpdateRightEdges(movex-1, movey)
+    adjusty = event.y/(CELL_SIZE+linethickness)
+    roundx = round(adjustx, 0)
+    roundy = round(adjusty, 0) 
+    floorx = event.x//(CELL_SIZE+linethickness)
+    floory = event.y//(CELL_SIZE+linethickness)
+    
+    if abs(adjustx - roundx) < tolerance:
+        if roundx < DIMENSION - 1:
+            UpdateLeftEdges(roundx, floory)
+            print("left edge of face", roundx +1, floory +1, "updated")
+            if roundx > 0:
+                UpdateRightEdges(roundx-1, floory)
+                print("right edge of face", roundx, floory +1, "updated")
         else:
-            UpdateRightEdges(movex-1, movey)
-        checkFace(movex,movey)
-        if movex>0:
-            checkFace(movex,movey)
-    elif abs(adjusty - movey) < tolerance:
-        if movey < DIMENSION - 1:
-            UpdateUpperEdges(movey, movex)
-            if movey > 0:
-                UpdateLowerEdges(movey-1, movex) 
+            UpdateRightEdges(roundx-1, floory)
+            print("right edge of face", roundx, floory +1, "updated")
+        checkFace(roundx,floory)
+        if roundx>0:
+            checkFace(roundx-1,floory)
+        print(roundx,floory)
+    elif abs(adjusty - roundy) < tolerance:
+        if roundy < DIMENSION - 1:
+            UpdateUpperEdges(floorx, roundy)
+            print("lower edge of face", floorx+1, roundy+1, "updated")
+            if roundy > 0:
+                UpdateLowerEdges(floorx, roundy-1) 
+                print("lower edge of face", floorx+1, roundy, "updated")
         else:
-            UpdateLowerEdges(movey-1, movex)
-        checkFace(movex,movey)
-        if movey>0:
-            checkFace(movex,movey-1)
+            UpdateLowerEdges(floorx, roundy-1)
+            print("lower edge of face", floorx+1, roundy, "updated")
+        checkFace(floorx,roundy)
+        if roundy>0:
+            checkFace(floorx,roundy-1)
+        print(floorx,roundy)
     RedrawAll()
-    print(movex, movey)
+    
+    print(adjustx,adjusty)
     print(board)
 
 def checkFace(id,jd):
-            turnface = True
-            for k in range(1, 5):
-                if board[id-1][jd-1][k] == 0:
-                    turnface = False
-                    break
-            if turnface == True:
-                if data['player'] == 1:
-                    board[id-1][jd-1][DIMENSION] = 1
-                    data['playeronescore'] += 1
-                else:
-                    board[id-1][jd-1][DIMENSION] = 2
-                    data['playertwoscore'] += 1
+    turnface = True
+    for k in range(1, 5):
+        if board[id-1][jd-1][k] == 0:
+            turnface = False
+            break
+    if turnface == True:
+        if data['player'] == 1:
+            board[id-1][jd-1][4] = 1
+            data['playeronescore'] += 1
+        else:
+            board[id-1][jd-1][4] = 2
+            data['playertwoscore'] += 1
     
 def drawScore():
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
