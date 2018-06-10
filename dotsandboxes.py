@@ -14,9 +14,6 @@ def buildBoard():
 def RedrawAll():
     data['x'] = 0
     data['y'] = 0
-    blackOutline = LineStyle(5, black)
-    vblackLine = LineAsset(0,80, blackOutline)
-    hblackLine = LineAsset(80, 0, blackOutline)
     for item in App().spritelist[:]:
         item.destroy()
     drawCenters()
@@ -32,16 +29,13 @@ def LeftEdges():
     for i in range(1,5):
         for j in range(1,5):
             if board[i-1][j-1][0] == 0:
-                blackOutline = LineStyle(8, black)
-                leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(0,80, data['blackOutline']),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 72
             elif board[i-1][j-1][0] == 1:
-                redOutline = LineStyle(5, red)
-                leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(0,80, data['redOutline']),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 72
             elif board[i-1][j-1][0]== 2:
-                blueOutline = LineStyle(5, blue)
-                leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(0,80, data['blueOutline']),((XSLOT-5)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 72
         data['x'] += 72
         data['y'] = 0
@@ -53,16 +47,13 @@ def UpperEdges():
     for i in range(1,5):
         for j in range(1,5):
             if board[i-1][j-1][1] == 0:
-                blackOutline = LineStyle(8, black)
-                leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(80,0, data['blackOutline']),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 75
             elif board[i-1][j-1][1] == 1:
-                redOutline = LineStyle(8, red)
-                leftLine = Sprite(LineAsset(80,0, redOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(80,0, data['redOutline']),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 75
             elif board[i-1][j-1][1] == 2:   
-                blueOutline = LineStyle(8, blue)
-                leftLine = Sprite(LineAsset(80,0, blueOutline),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(80,0, data['blueOutline']),((XSLOT-10)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 75
         data['x'] += 75
         data['y'] = 0
@@ -73,16 +64,13 @@ def RightEdges():
     for i in range(1,5):
         for j in range(1,5):
             if board[i-1][j-1][2] == 0:
-                blackOutline = LineStyle(8, black)
-                leftLine = Sprite(LineAsset(0,80, blackOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(0,80, data['blackOutline']),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 72
             elif board[i-1][j-1][2] == 1:
-                redOutline = LineStyle(5, red)
-                leftLine = Sprite(LineAsset(0,80, redOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(0,80, data['redOutline']),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 72
             elif board[i-1][j-1][2] == 2:
-                blueOutline = LineStyle(5, blue)
-                leftLine = Sprite(LineAsset(0,80, blueOutline),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
+                leftLine = Sprite(LineAsset(0,80, data['blueOutline']),((XSLOT+55)+data['x'], (YSLOT-5)+data['y']))
                 data['y'] += 72
         data['x'] += 72
         data['y'] = 0
@@ -93,16 +81,13 @@ def LowerEdges():
     for i in range(1,5):
         for j in range(1,5):
             if board[i-1][j-1][3] == 0:
-                blackOutline = LineStyle(8, black)
-                leftLine = Sprite(LineAsset(80,0, blackOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
+                leftLine = Sprite(LineAsset(80,0, data['blackOutline']),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
                 data['y'] += 72
             elif board[i-1][j-1][3] == 1:
-                redOutline = LineStyle(8, red)
-                leftLine = Sprite(LineAsset(80,0, redOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
+                leftLine = Sprite(LineAsset(80,0, data['redOutline']),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
                 data['y'] += 72
             elif board[i-1][j-1][3] == 2:
-                blueOutline = LineStyle(8, blue)
-                leftLine = Sprite(LineAsset(80,0, blueOutline),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
+                leftLine = Sprite(LineAsset(80,0, data['blueOutline']),((XSLOT-10)+data['x'], (YSLOT+60)+data['y']))
                 data['y'] += 72
         data['x'] += 75
         data['y'] = 0
@@ -114,18 +99,15 @@ def drawCenters():
     for i in range(1,5):
         for j in range(1,5):
             if board[i-1][j-1][4] == 1:
-                blackOutline = LineStyle(0, black)
-                rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, red), (XSLOT+data['x'], YSLOT+data['y']))
+                rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
                 data['playeronescore'] += 1
             elif board[i-1][j-1][4] == 2:
-                blackOutline = LineStyle(0, black)
-                rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, blue), (XSLOT+data['x'], YSLOT+data['y']))
+                rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
                 data['playertwoscore'] += 1
             else:
-                blackOutline = LineStyle(0, black)
-                rectangleAsset = Sprite(RectangleAsset(60,60, blackOutline, gray), (XSLOT+data['x'], YSLOT+data['y']))
+                rectangleAsset = Sprite(RectangleAsset(60,60, data['noOutline'], gray), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += 75
         data['x'] += 75
         data['y'] = 0
@@ -206,6 +188,10 @@ if __name__ == '__main__':
     data['x'] = 0
     data['y'] = 0
     data['c'] = 0
+    data['noOutline'] = LineStyle(0, black)
+    data['blackOutline'] = LineStyle(6, black)
+    data['redOutline'] = LineStyle(6, red)
+    data['blueOutline'] = LineStyle(6, blue)
     data['totalturns'] = 0
     data['player'] = 1
     data['playeronescore'] = 0
