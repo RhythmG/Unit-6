@@ -6,6 +6,9 @@ from ggame import *
 
 XSLOT = 0
 YSLOT = 0
+shiftx = 72
+shifty = 72
+
 CELL_SIZE = 75
 
 def buildBoard():
