@@ -108,6 +108,7 @@ def LowerEdges():
         data['y'] = 0
 
 def drawCenters():
+    checkFace()
     data['x'] = 0
     data['y'] = 0
     for i in range(1,5):
@@ -156,7 +157,6 @@ def UpdateLowerEdges(a,b):
         board[a][b][4] = 2"""
         
 def mouseClick(event):
-    checkTurn()
     movex = event.x//CELL_SIZE
     movey = event.y//CELL_SIZE
     adjustx = event.x/CELL_SIZE
@@ -173,11 +173,12 @@ def mouseClick(event):
     print(board) 
 
 def checkFace():
-    if board[movex][movey][0] != 0 and board[movex][movey][1] != 0 and board[movex][movey][2] != 0 and board[movex][movey][3] != 0 and data['player'] == 1 and board[movex][movey][4] == 0:
-        board[movex][movey][4] = 1
-    elif board[movex][movey][0] != 0 and board[movex][movey][1] != 0 and board[movex][movey][2] != 0 and board[movex][movey][3] != 0 and data['player'] == 2 and board[movex][movey][4] == 0:
-        board[movex][movey][4] = 2
-    RedrawAll()
+    for i in range(1,5):
+        for j in range(1,5):
+            if board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 1 and board[i-1][j-1][4] == 0:
+                board[i-1][j-1][4] = 1
+            elif board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 2 and board[i-1][j-1][4] == 0:
+                board[i-1][j-1][4] = 2
     
 """def drawScore():
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
@@ -220,4 +221,5 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
+    checkTurn()
    
