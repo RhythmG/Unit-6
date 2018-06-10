@@ -150,11 +150,6 @@ def UpdateLowerEdges(a,b):
         board[a][b][3] = 1
     elif data['player'] == 2 and board[a][b][3] == 0:
         board[a][b][3] = 2
-"""def UpdateCenters(a,b):
-    if board[a][b][0] != 0 and board[a][b][1] != 0 and board[a][b][2] != 0 and board[a][b][3] != 0 and data['player'] == 1 and board[a][b][4] == 0:
-        board[a][b][4] = 1
-    elif board[a][b][0] != 0 and board[a][b][1] != 0 and board[a][b][2] != 0 and board[a][b][3] != 0 and data['player'] == 2 and board[a][b][4] == 0:
-        board[a][b][4] = 2"""
         
 def mouseClick(event):
     movex = event.x//CELL_SIZE
