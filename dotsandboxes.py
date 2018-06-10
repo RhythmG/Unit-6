@@ -49,13 +49,13 @@ def UpperEdges():
     data['y'] = 0
     for i in range(1,DIMENSION + 1):
         for j in range(1,DIMENSION + 1):
-            if board[i-1][j-1][1] == 0:
+            if board[j-1][i-1][1] == 0:
                 leftLine = Sprite(LineAsset(linesize,0, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['x'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][1] == 1:
+            elif board[j-1][i-1][1] == 1:
                 leftLine = Sprite(LineAsset(linesize, 0, data['redOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['x'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][1]== 2:
+            elif board[j-1][i-1][1]== 2:
                 leftLine = Sprite(LineAsset(linesize, 0, data['blueOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['x'] += CELL_SIZE + linethickness
         data['y'] += CELL_SIZE + linethickness
@@ -83,13 +83,13 @@ def LowerEdges():
     data['y'] = CELL_SIZE + linethickness
     for i in range(1,DIMENSION+1):
         for j in range(1,DIMENSION+1):
-            if board[i-1][j-1][3] == 0:
+            if board[j-1][i-1][3] == 0:
                 leftLine = Sprite(LineAsset(linesize,0, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['x'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][3] == 1:
+            elif board[j-1][i-1][3] == 1:
                 leftLine = Sprite(LineAsset(linesize, 0, data['redOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['x'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][3]== 2:
+            elif board[j-1][i-1][3]== 2:
                 leftLine = Sprite(LineAsset(linesize, 0, data['blueOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['x'] += CELL_SIZE + linethickness
         data['y'] += CELL_SIZE + linethickness
@@ -157,15 +157,16 @@ def mouseClick(event):
             UpdateLowerEdges(movex, movey-1) 
     RedrawAll()
     print(event.x, event.y)
+    print(adjustx- movex, adjusty-movey)
     print(movex, movey)
 
 def checkFace():
-    for i in range(1,5):
-        for j in range(1,5):
-            if board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 1 and board[i-1][j-1][4] == 0:
+    for i in range(1,DIMENSION+1):
+        for j in range(1,DIMENSION+1):
+            if board[i-1][j-1][0] != 0 and board[j-1][i-1][1] != 0 and board[i-1][j-1][2] != 0 and board[j-1][i-1][3] != 0 and data['player'] == 1 and board[i-1][j-1][4] == 0:
                 board[i-1][j-1][4] = 1
                 data['playeronescore'] += 1
-            elif board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 2 and board[i-1][j-1][4] == 0:
+            elif board[i-1][j-1][0] != 0 and board[j-1][i-1][1] != 0 and board[i-1][j-1][2] != 0 and board[j-1][i-1][3] != 0 and data['player'] == 2 and board[i-1][j-1][4] == 0:
                 board[i-1][j-1][4] = 2
                 data['playertwoscore'] += 1
     
