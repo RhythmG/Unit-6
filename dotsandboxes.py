@@ -164,7 +164,7 @@ def checkFace():
             elif board[i-1][j-1][0] != 0 and board[i-1][j-1][1] != 0 and board[i-1][j-1][2] != 0 and board[i-1][j-1][3] != 0 and data['player'] == 2 and board[i-1][j-1][4] == 0:
                 board[i-1][j-1][4] = 2
     
-"""def drawScore():
+def drawScore():
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
     playertwotext = TextAsset("Player 2:", fill = blue, style = "bold 18pt Times")
     playeronetext2 = TextAsset(data['playeronescore'], fill = red, style = "bold 40pt Times")
@@ -172,7 +172,7 @@ def checkFace():
     Sprite(playeronetext, (580, 115))
     Sprite(playertwotext, (580, 215))
     Sprite(playeronetext2, (700, 100))
-    Sprite(playertwotext2, (700, 200))"""
+    Sprite(playertwotext2, (700, 200))
 
 def checkTurn():  
     data['totalturns'] += 1
