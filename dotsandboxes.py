@@ -195,6 +195,7 @@ def checkFace(id,jd):
             turnface = False
             break
     if turnface == True:
+        data['totalturns'] += 1
         if data['player'] == 1:
             board[id][jd][4] = 1
             data['playeronescore'] += 1
