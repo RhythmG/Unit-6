@@ -185,7 +185,7 @@ def checkFace(id,jd):
         elif data['playeronescore'] + data['playertwoscore'] >= 16 and data['playertwoscore'] > data['playeronescore']:
             playertwowins = TextAsset("Player 2 Wins!", fill = blue, style = "bold 18pt Times")
             Sprite(playeronewins, (500, 300)) """
-        elif data['player'] == 1:
+        if data['player'] == 1:
             board[id][jd][4] = 1
             data['playeronescore'] += 1
         else:
