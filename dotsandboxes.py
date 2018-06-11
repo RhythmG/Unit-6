@@ -83,13 +83,13 @@ def LowerEdges():
     data['y'] = CELL_SIZE + linethickness
     for i in range(0,DIMENSION):
         for j in range(0,DIMENSION):
-            if board[i][j][1] == 0:
+            if board[i][j][3] == 0:
                 leftLine = Sprite(LineAsset(linesize,0, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i][j][1] == 1:
+            elif board[i][j][3] == 1:
                 leftLine = Sprite(LineAsset(linesize, 0, data['redOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i][j][1]== 2:
+            elif board[i][j][3]== 2:
                 leftLine = Sprite(LineAsset(linesize, 0, data['blueOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
         data['x'] += CELL_SIZE + linethickness
