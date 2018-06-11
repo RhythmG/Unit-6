@@ -233,7 +233,6 @@ if __name__ == '__main__':
     data['board'] = buildBoard()
     data['x'] = 0
     data['y'] = 0
-    data['c'] = 0
     data['noOutline'] = LineStyle(0, black)
     data['blackOutline'] = LineStyle(linethickness, black)
     data['redOutline'] = LineStyle(linethickness, red)
