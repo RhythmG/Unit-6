@@ -101,10 +101,10 @@ def drawCenters():
     for i in range(0,DIMENSION):
         for j in range(0,DIMENSION):
             if board[i][j][4] == 1:
-                rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
+                rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], lightred), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
             elif board[i][j][4] == 2:
-                rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
+                rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], lightblue), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
             else:
                 rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], gray), (XSLOT+data['x'], YSLOT+data['y']))
@@ -214,7 +214,9 @@ board = buildBoard()
 
 if __name__ == '__main__': 
     red = Color(0xFF0000, 1)
-    blue = Color (0x0000FF, 1)
+    lightred = Color(0xF08080, 1)
+    blue = Color(0x0000FF, 1)
+    lightblue = Color(0xA6CCFF, 1)
     gray = Color(0xD3D3D3, 1)
     black = Color (0x000000, 1)
     data = {}
