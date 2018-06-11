@@ -14,7 +14,7 @@ tolerance = 0.1
 
 def buildBoard():
     return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
-    """return [[0 for j in range (DIMENSION)] for i in range(DIMENSION)]"""
+
 def RedrawAll():
     data['x'] = 0
     data['y'] = 0
@@ -159,24 +159,14 @@ def mouseClick(event):
     elif abs(adjusty - roundy) < tolerance:
         if roundy < DIMENSION:
             UpdateUpperEdges(floorx, roundy)
-            print("upper edge of face", floorx+1, roundy+1, "updated")
             turnFace = checkFace(floorx,roundy)
-            print("face",floorx+1, roundy+1, "turn status checked to be",turnFace)
             if roundy > 0:
-                UpdateLowerEdges(floorx, roundy-1) 
-                print("lower edge of face", floorx+1, roundy, "updated")
+                UpdateLowerEdges(floorx, roundy-1)
                 turnFace = checkFace(floorx,roundy-1)
-                print("face",floorx+1, roundy, "turn status checked to be",turnFace)
         else:
             UpdateLowerEdges(floorx, roundy-1)
-            print("lower edge of face", floorx+1, roundy, "updated")
             turnFace = checkFace(floorx,roundy-1)
-            print("face",floorx+1, roundy, "turn status checked to be",turnFace)
-        print(floorx,roundy)
     RedrawAll()
-    
-    print(adjustx,adjusty)
-    print(board)
 
 def checkFace(id,jd):
     if id > DIMENSION-1 or jd > DIMENSION-1:
@@ -238,4 +228,3 @@ if __name__ == '__main__':
     App().listenMouseEvent('click', mouseClick)
     App().run()
     RedrawAll()
-    
