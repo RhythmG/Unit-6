@@ -4,24 +4,34 @@
 
 from math import *
 
+def f(x):
+    return x
+
+def derivative(x):
+    h = 1/1000
+    rise = f(x+h)-f(x) 
+    run = h
+    slope = rise/run #definition of derivative
+    return slope
+    
+def lenf(x):
+    return sqrt(1+derivative(x))
+
+lower = float(input('Enter a lower bound: '))
+upper = float(input('Enter an upper bound: '))
+    
 def rectangles(a, b, numofrectangles):
         width = (b-a)/numofrectangles
         sum = 0
         for i in range(numofrectangles):
-            if ramselect == 1:
-                i0 = i
-            elif ramselect == 2:
-                i0 = i+1
-            elif ramselect == 3:
                 i0 = i+0.5
             else:
-                print("Error -- input is not in range")
-            height = f(a + i0*width)
-            area = height*width
-            sum += area
+                height = lenf(a + i0*width)
+                area = height*width
+                sum += area
         print('')
         print('Area: ', sum)
     
-    rectangles(lower, upper, intervals)
+    rectangles(lower, upper, 10000)
 
 
