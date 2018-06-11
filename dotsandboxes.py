@@ -203,7 +203,6 @@ def checkTurn():
         data['player'] = 2
     else:
         data['player'] = 1
-    print(data['totalturns'])
     
 board = buildBoard()
 
