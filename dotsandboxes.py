@@ -200,7 +200,11 @@ def drawScore():
 
 def checkTurn():  
     data['totalturns'] += 1
-    if data['totalturns']/2 == int(data['totalturns']/2):
+    if data['playeronescore'] + data['playertwoscore'] >= 16 and data['playeronescore'] > data['playertwoscore']:
+        print('Player 1 Wins!')
+    if data['playeronescore'] + data['playertwoscore'] >= 16 and data['playertwoscore'] > data['playeronescore']:
+        print('Player 1 Wins!')
+    elif data['totalturns']/2 == int(data['totalturns']/2):
         data['player'] = 2
     else:
         data['player'] = 1
