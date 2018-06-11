@@ -198,13 +198,14 @@ def drawScore():
     Sprite(playertwotext2, (700, 200))
     if data['playeronescore'] + data['playertwoscore'] >= 16 and data['playeronescore'] > data['playertwoscore']:
         playeronewins = TextAsset("Player 1 Wins!", fill = red, style = "bold 18pt Times")
+        Sprite(playeronewins, (400, 300))
     elif data['playeronescore'] + data['playertwoscore'] >= 16 and data['playertwoscore'] > data['playeronescore']:
         playertwowins = TextAsset("Player 2 Wins!", fill = blue, style = "bold 18pt Times")
-            
+        Sprite(playeronewins, (500, 300))    
 
 def checkTurn():  
     data['totalturns'] += 1
-    elif data['totalturns']/2 == int(data['totalturns']/2):
+    if data['totalturns']/2 == int(data['totalturns']/2):
         data['player'] = 2
     else:
         data['player'] = 1
