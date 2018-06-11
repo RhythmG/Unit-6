@@ -196,6 +196,7 @@ def drawScore():
     Sprite(playertwotext, (580, 215))
     Sprite(playeronetext2, (700, 100))
     Sprite(playertwotext2, (700, 200))
+            
 
 def checkTurn():  
     data['totalturns'] += 1
