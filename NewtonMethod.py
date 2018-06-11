@@ -5,7 +5,7 @@
 from math import * 
 
 def f(x):
-    return x*cos(x) - (x**2)
+    return (x**3)-7*(x**2)+(8*x)-3
 
 order = int(input('Enter a number of iterations to estimate the point: '))
 guess = float(input('Enter an initial point: '))
