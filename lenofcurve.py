@@ -25,13 +25,13 @@ def rectangles(a, b, numofrectangles):
         sum = 0
         for i in range(numofrectangles):
                 i0 = i+0.5
-            else:
-                height = lenf(a + i0*width)
-                area = height*width
-                sum += area
+        else:
+            height = lenf(a + i0*width)
+            area = height*width
+            sum += area
         print('')
-        print('Area: ', sum)
+        print('Area: ', sum*)
     
-    rectangles(lower, upper, 10000)
+rectangles(lower, upper, 10000)
 
 
