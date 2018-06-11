@@ -30,15 +30,15 @@ def RedrawAll():
 def LeftEdges():
     data['x'] = 0
     data['y'] = 0
-    for i in range(1,DIMENSION + 1):
-        for j in range(1,DIMENSION + 1):
-            if board[i-1][j-1][0] == 0:
+    for i in range(0,DIMENSION):
+        for j in range(0,DIMENSION):
+            if board[i][j][0] == 0:
                 leftLine = Sprite(LineAsset(0,linesize, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][0] == 1:
+            elif board[i][j][0] == 1:
                 leftLine = Sprite(LineAsset(0,linesize, data['redOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][0]== 2:
+            elif board[i][j][0]== 2:
                 leftLine = Sprite(LineAsset(0,linesize, data['blueOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
         data['x'] += CELL_SIZE + linethickness
@@ -47,15 +47,15 @@ def LeftEdges():
 def UpperEdges():
     data['x'] = 0
     data['y'] = 0
-    for i in range(1,DIMENSION + 1):
-        for j in range(1,DIMENSION + 1):
-            if board[i-1][j-1][1] == 0:
+    for i in range(0,DIMENSION):
+        for j in range(0,DIMENSION):
+            if board[i][j][1] == 0:
                 leftLine = Sprite(LineAsset(linesize,0, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][1] == 1:
+            elif board[i][j][1] == 1:
                 leftLine = Sprite(LineAsset(linesize, 0, data['redOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][1]== 2:
+            elif board[i][j][1]== 2:
                 leftLine = Sprite(LineAsset(linesize, 0, data['blueOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
         data['x'] += CELL_SIZE + linethickness
@@ -64,15 +64,15 @@ def UpperEdges():
 def RightEdges():
     data['x'] = CELL_SIZE + linethickness
     data['y'] = 0
-    for i in range(1,DIMENSION+1):
-        for j in range(1,DIMENSION+1):
-            if board[i-1][j-1][2] == 0:
+    for i in range(0,DIMENSION):
+        for j in range(0,DIMENSION):
+            if board[i][j][2] == 0:
                 leftLine = Sprite(LineAsset(0,linesize, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][2] == 1:
+            elif board[i][j][2] == 1:
                 leftLine = Sprite(LineAsset(0,linesize, data['redOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][2]== 2:
+            elif board[i][j][2]== 2:
                 leftLine = Sprite(LineAsset(0,linesize, data['blueOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
         data['x'] += CELL_SIZE + linethickness
@@ -81,15 +81,15 @@ def RightEdges():
 def LowerEdges():
     data['x'] = 0
     data['y'] = CELL_SIZE + linethickness
-    for i in range(1,DIMENSION + 1):
-        for j in range(1,DIMENSION + 1):
-            if board[i-1][j-1][1] == 0:
+    for i in range(0,DIMENSION):
+        for j in range(0,DIMENSION):
+            if board[i][j][1] == 0:
                 leftLine = Sprite(LineAsset(linesize,0, data['blackOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][1] == 1:
+            elif board[i][j][1] == 1:
                 leftLine = Sprite(LineAsset(linesize, 0, data['redOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][1]== 2:
+            elif board[i][j][1]== 2:
                 leftLine = Sprite(LineAsset(linesize, 0, data['blueOutline']),(XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
         data['x'] += CELL_SIZE + linethickness
@@ -98,12 +98,12 @@ def LowerEdges():
 def drawCenters():
     data['x'] = linethickness
     data['y'] = linethickness
-    for i in range(1,DIMENSION+1):
-        for j in range(1,DIMENSION+1):
-            if board[i-1][j-1][4] == 1:
+    for i in range(0,DIMENSION):
+        for j in range(0,DIMENSION):
+            if board[i][j][4] == 1:
                 rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], red), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
-            elif board[i-1][j-1][4] == 2:
+            elif board[i][j][4] == 2:
                 rectangleAsset = Sprite(RectangleAsset(CELL_SIZE,CELL_SIZE, data['noOutline'], blue), (XSLOT+data['x'], YSLOT+data['y']))
                 data['y'] += CELL_SIZE + linethickness
             else:
