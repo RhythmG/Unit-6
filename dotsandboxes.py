@@ -143,19 +143,23 @@ def mouseClick(event):
     floorx = event.x//(CELL_SIZE+linethickness)
     floory = event.y//(CELL_SIZE+linethickness)
     
+    if roundx > DIMENSION or roundy > DIMENSION:
+        print("out of board")
+        return
     if abs(adjustx - roundx) < tolerance:
         if roundx < DIMENSION:
             UpdateLeftEdges(roundx, floory)
             print("left edge of face", roundx +1, floory +1, "updated")
+            turnFace = checkFace(roundx,floory)
+            print("face",roundx+1, floory+1, "turn status checked to be",turnFace)
             if roundx > 0:
                 UpdateRightEdges(roundx-1, floory)
                 print("right edge of face", roundx, floory +1, "updated")
+                turnFace = checkFace(roundx-1,floory)
+                print("face",roundx, floory+1, "turn status checked to be",turnFace)
         else:
             UpdateRightEdges(roundx-1, floory)
             print("right edge of face", roundx, floory +1, "updated")
-        turnFace = checkFace(roundx,floory)
-        print("face",roundx+1, floory+1, "turn status checked to be",turnFace)
-        if roundx>0:
             turnFace = checkFace(roundx-1,floory)
             print("face",roundx, floory+1, "turn status checked to be",turnFace)
         print(roundx,floory)
@@ -163,18 +167,18 @@ def mouseClick(event):
         if roundy < DIMENSION:
             UpdateUpperEdges(floorx, roundy)
             print("upper edge of face", floorx+1, roundy+1, "updated")
+            turnFace = checkFace(floorx,roundy)
+            print("face",floorx+1, roundy+1, "turn status checked to be",turnFace)
             if roundy > 0:
                 UpdateLowerEdges(floorx, roundy-1) 
                 print("lower edge of face", floorx+1, roundy, "updated")
+                turnFace = (floorx,roundy-1)
+                print("face",floorx+1, roundy, "turn status checked to be",turnFace)
         else:
             UpdateLowerEdges(floorx, roundy-1)
             print("lower edge of face", floorx+1, roundy, "updated")
-        turnFace = checkFace(floorx,roundy)
-        print("face",floorx+1, roundy+1, "turn status checked to be",turnFace)
-        if roundy>0:
             turnFace = (floorx,roundy-1)
             print("face",floorx+1, roundy, "turn status checked to be",turnFace)
-            
         print(floorx,roundy)
     RedrawAll()
     
@@ -182,8 +186,11 @@ def mouseClick(event):
     print(board)
 
 def checkFace(id,jd):
+    if id > DIMENSION-1 or jd > DIMENSION-1:
+        print ("face index out of range")
+        return False
     turnface = True
-    for k in range(0, 3):
+    for k in range(0, 4):
         if board[id][jd][k] == 0:
             turnface = False
             break
