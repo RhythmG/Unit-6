@@ -153,9 +153,11 @@ def mouseClick(event):
         else:
             UpdateRightEdges(roundx-1, floory)
             print("right edge of face", roundx, floory +1, "updated")
-        checkFace(roundx,floory)
+        turnFace = checkFace(roundx,floory)
+        print("face",roundx+1, floory+1, "turn status checked to be",turnFace)
         if roundx>0:
-            checkFace(roundx-1,floory)
+            turnFace = checkFace(roundx-1,floory)
+            print("face",roundx, floory+1, "turn status checked to be",turnFace)
         print(roundx,floory)
     elif abs(adjusty - roundy) < tolerance:
         if roundy < DIMENSION:
@@ -167,9 +169,12 @@ def mouseClick(event):
         else:
             UpdateLowerEdges(floorx, roundy-1)
             print("lower edge of face", floorx+1, roundy, "updated")
-        checkFace(floorx,roundy)
+        turnFace = checkFace(floorx,roundy)
+        print("face",floorx+1, roundy+1, "turn status checked to be",turnFace)
         if roundy>0:
-            checkFace(floorx,roundy-1)
+            turnFace = (floorx,roundy-1)
+            print("face",floorx+1, roundy, "turn status checked to be",turnFace)
+            
         print(floorx,roundy)
     RedrawAll()
     
@@ -178,17 +183,18 @@ def mouseClick(event):
 
 def checkFace(id,jd):
     turnface = True
-    for k in range(1, 5):
-        if board[id-1][jd-1][k] == 0:
+    for k in range(0, 3):
+        if board[id][jd][k] == 0:
             turnface = False
             break
     if turnface == True:
         if data['player'] == 1:
-            board[id-1][jd-1][4] = 1
+            board[id][jd][4] = 1
             data['playeronescore'] += 1
         else:
-            board[id-1][jd-1][4] = 2
+            board[id][jd][4] = 2
             data['playertwoscore'] += 1
+    return turnface
     
 def drawScore():
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
