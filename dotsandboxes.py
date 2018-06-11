@@ -172,12 +172,12 @@ def mouseClick(event):
             if roundy > 0:
                 UpdateLowerEdges(floorx, roundy-1) 
                 print("lower edge of face", floorx+1, roundy, "updated")
-                turnFace = (floorx,roundy-1)
+                turnFace = checkFace(floorx,roundy-1)
                 print("face",floorx+1, roundy, "turn status checked to be",turnFace)
         else:
             UpdateLowerEdges(floorx, roundy-1)
             print("lower edge of face", floorx+1, roundy, "updated")
-            turnFace = (floorx,roundy-1)
+            turnFace = checkFace(floorx,roundy-1)
             print("face",floorx+1, roundy, "turn status checked to be",turnFace)
         print(floorx,roundy)
     RedrawAll()
