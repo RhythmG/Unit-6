@@ -5,7 +5,7 @@
 from math import *
 
 def f(x):
-    return (2/3)*((x**2 + 1)**(3/2))
+    return x**3
 
 def derivative(x):
     h = 1/1000
@@ -31,7 +31,6 @@ def rectangles(a, b, numofrectangles):
             sum += area
         print('')
         print('Area: ', sum*numofrectangles)
-    
-rectangles(lower, upper, 10000)
+rectangles(lower, upper, 100000)
 
 
