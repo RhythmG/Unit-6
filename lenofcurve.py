@@ -30,7 +30,7 @@ def rectangles(a, b, numofrectangles):
             area = height*width
             sum += area
         print('')
-        print('Area: ', sum*)
+        print('Area: ', sum*numofrectangles)
     
 rectangles(lower, upper, 10000)
 
