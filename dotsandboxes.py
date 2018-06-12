@@ -5,8 +5,8 @@
 from ggame import *
 
 DIMENSION = 4 
-XSLOT = 50 #starting x to draw board
-YSLOT = 53 #starting y to draw board
+XSLOT = 50 #x-origin of the draw board
+YSLOT = 53 #y-origin of the draw board
 CELL_SIZE = 75
 linethickness = 1
 linesize = CELL_SIZE + linethickness
@@ -164,8 +164,8 @@ def mouseClick(event):
         print("Out of board")
         return 
     if abs(adjustx - roundx) < tolerance: 
-        turnForward = False
-        if roundx < DIMENSION:
+        turnForward = False #indicates if the player will go again after scoring at least 1 point
+        if roundx < DIMENSION: 
             UpdateLeftEdges(roundx, floory)
             turnFace = checkFace(roundx,floory)
             if turnFace:
@@ -183,7 +183,7 @@ def mouseClick(event):
         if turnForward:
             data['totalturns'] += 1
     elif abs(adjusty - roundy) < tolerance:
-        turnForward = False
+        turnForward = False #indicates if the player will go again after scoring at least 1 point
         if roundy < DIMENSION:
             UpdateUpperEdges(floorx, roundy)
             turnFace = checkFace(floorx,roundy)
