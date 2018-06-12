@@ -24,14 +24,13 @@ def rectangles(a, b, numofrectangles):
     width = (b-a)/numofrectangles
     sum = 0
     a+=(0.5*width)
-    i0=0
     while a<=b:
         height = lenf(a)
         area = height*width
         sum += area
         a += width
     print('')
-    print('Area: ', sum*numofrectangles)
+    print('Length: ', sum)
     
 rectangles(lower, upper, 100000)
 
