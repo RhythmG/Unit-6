@@ -23,13 +23,13 @@ upper = float(input('Enter an upper bound: '))
 def rectangles(a, b, numofrectangles):
     width = (b-a)/numofrectangles
     sum = 0
+    a+=0.5
     i0=0
     while a<=b:
-        i0 += a
-        a += 0.5
-        height = lenf(i0)
+        height = lenf(a)
         area = height*width
         sum += area
+        a += 1
     print('')
     print('Area: ', sum*numofrectangles)
     
