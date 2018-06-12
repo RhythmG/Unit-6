@@ -135,15 +135,16 @@ def UpdateLowerEdges(a,b):
         board[a][b][3] = 2
         
 def GameFinish(ascore, bscore):
-    if ascore > 8:
-        print('Player 1 Wins!')
-    elif bscore > 8:
-        print('Player 2 Wins!')
-        
     if ascore + bscore == 16:
-        if ascore == bscore:
+        if ascore > bscore:
+            print('Player 1 Wins!')
+            return True
+        elif ascore < bscore:
+            print('Player 2 Wins!')
+            return True
+        else:
             print('Tie Game!')
-        return True
+            return True
     else:
         return False
 
