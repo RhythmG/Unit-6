@@ -5,7 +5,7 @@
 from math import *
 
 def f(x):
-    return x**3
+    return x**2
 
 def derivative(x):
     h = 1/1000
@@ -15,7 +15,7 @@ def derivative(x):
     return slope
     
 def lenf(x):
-    return sqrt(1+derivative(f(x)))
+    return sqrt(1+(derivative(f(x)))**2)
 
 lower = float(input('Enter a lower bound: '))
 upper = float(input('Enter an upper bound: '))
