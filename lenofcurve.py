@@ -5,7 +5,7 @@
 from math import *
 
 def f(x):
-    return x**2
+    return x**3
 
 def derivative(x):
     h = 1/1000
@@ -15,7 +15,7 @@ def derivative(x):
     return slope
     
 def lenf(x):
-    return sqrt(1+(derivative(f(x)))**2)
+    return sqrt(1+(derivative(f(x))**2))
 
 lower = float(input('Enter a lower bound: '))
 upper = float(input('Enter an upper bound: '))
@@ -24,8 +24,7 @@ def rectangles(a, b, numofrectangles):
         width = (b-a)/numofrectangles
         sum = 0
         for i in range(numofrectangles):
-                i0 = i+0.5
-        else:
+            i0 = i+0.5
             height = lenf(a + i0*width)
             area = height*width
             sum += area
