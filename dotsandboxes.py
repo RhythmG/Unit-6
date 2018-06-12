@@ -4,30 +4,30 @@
 
 from ggame import *
 
-DIMENSION = 4
-XSLOT = 50
-YSLOT = 53
+DIMENSION = 4 
+XSLOT = 50 #starting x to draw board
+YSLOT = 53 #starting y to draw board
 CELL_SIZE = 75
 linethickness = 1
 linesize = CELL_SIZE + linethickness
-tolerance = 0.1
+tolerance = 0.1 #how off the click can be
 
-def buildBoard():
+def buildBoard(): #building matrix of the board
     return [[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]] 
 
-def RedrawAll():
+def RedrawAll(): #update all graphics
     data['x'] = XSLOT
     data['y'] = YSLOT
     for item in App().spritelist[:]:
         item.destroy()
-    drawCenters()
-    LeftEdges()
-    RightEdges()
-    UpperEdges()
-    LowerEdges()
-    drawScore()
+    drawCenters() #draws the center squares
+    LeftEdges() #draws the left edges
+    RightEdges() #draws the right edges
+    UpperEdges() #draws the upper edges
+    LowerEdges() #draws the lower edges
+    drawScore() #draws the score on the right
             
-def LeftEdges():
+def LeftEdges(): 
     data['x'] = XSLOT
     data['y'] = YSLOT
     for i in range(0,DIMENSION):
