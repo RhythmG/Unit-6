@@ -203,7 +203,7 @@ def mouseClick(event):
     RedrawAll()
 
 def checkFace(id,jd):
-    if id > DIMENSION-1 or jd > DIMENSION-1:
+    if id > DIMENSION-1 or jd > DIMENSION-1 or id < 0 or jd < 0:
         print ("face index out of range")
         return False
     turnface = True
@@ -211,7 +211,7 @@ def checkFace(id,jd):
         if board[id][jd][k] == 0:
             turnface = False
             break
-    if board[id][jd][k] != 0:
+    if board[id][jd][4] != 0:
         turnface = False
     if turnface == True:
         if data['player'] == 1:
