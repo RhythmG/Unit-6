@@ -170,7 +170,7 @@ def mouseClick(event):
             turnFace = checkFace(roundx,floory)
             if turnFace:
                 turnForward = True
-            if roundx > 0:
+            if roundx > 0: 
                 UpdateRightEdges(roundx-1, floory)
                 turnFace = checkFace(roundx-1,floory)
                 if turnFace:
