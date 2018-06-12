@@ -5,8 +5,8 @@
 from ggame import *
 
 DIMENSION = 4
-XSLOT = 30
-YSLOT = 30
+XSLOT = 50
+YSLOT = 53
 CELL_SIZE = 75
 linethickness = 1
 linesize = CELL_SIZE + linethickness
@@ -138,12 +138,19 @@ def GameFinish(ascore, bscore):
     if ascore + bscore == 16:
         if ascore > bscore:
             print('Player 1 Wins!')
+            return True
         elif ascore < bscore:
             print('Player 2 Wins!')
+            return True
         else:
             print('Tie Game!')
+            return True
+    else:
+        return False
 
 def mouseClick(event):
+    if GameFinish(data['playeronescore'], data['playertwoscore']):
+        return
     checkTurn()
     adjustx = (event.x-XSLOT)/(CELL_SIZE+linethickness)
     adjusty = (event.y-YSLOT)/(CELL_SIZE+linethickness)
@@ -156,30 +163,44 @@ def mouseClick(event):
         print("Out of board")
         return 
     if abs(adjustx - roundx) < tolerance:
+        turnForward = False
         if roundx < DIMENSION:
             UpdateLeftEdges(roundx, floory)
             turnFace = checkFace(roundx,floory)
+            if turnFace:
+                turnForward = True
             if roundx > 0:
                 UpdateRightEdges(roundx-1, floory)
                 turnFace = checkFace(roundx-1,floory)
+                if turnFace:
+                    turnForward = True
         else:
             UpdateRightEdges(roundx-1, floory)
             turnFace = checkFace(roundx-1,floory)
+            if turnFace:
+                    turnForward = True
+        if turnForward:
+            data['totalturns'] += 1
     elif abs(adjusty - roundy) < tolerance:
+        turnForward = False
         if roundy < DIMENSION:
             UpdateUpperEdges(floorx, roundy)
             turnFace = checkFace(floorx,roundy)
+            if turnFace:
+                    turnForward = True
             if roundy > 0:
                 UpdateLowerEdges(floorx, roundy-1)
                 turnFace = checkFace(floorx,roundy-1)
+                if turnFace:
+                    turnForward = True
         else:
             UpdateLowerEdges(floorx, roundy-1)
             turnFace = checkFace(floorx,roundy-1)
+            if turnFace:
+                    turnForward = True
+        if turnForward:
+            data['totalturns'] += 1           
     RedrawAll()
-    print("Coord:",event.x, event.y)
-    print("Round:", roundx, roundy)
-    print("Adjust: ", adjustx, adjusty)
-    print("Floor: ", floorx, floory)
 
 def checkFace(id,jd):
     if id > DIMENSION-1 or jd > DIMENSION-1:
@@ -191,7 +212,6 @@ def checkFace(id,jd):
             turnface = False
             break
     if turnface == True:
-        data['totalturns'] += 1
         if data['player'] == 1:
             board[id][jd][4] = 1
             data['playeronescore'] += 1
