@@ -113,7 +113,8 @@ def drawCenters():
         data['y'] = YSLOT + linethickness
  
 
-def UpdateLeftEdges(a,b):
+#Update functions for the corresponding edges
+def UpdateLeftEdges(a,b): 
     if data['player'] == 1 and board[a][b][0] == 0:
         board[a][b][0] = 1
     elif data['player'] == 2 and board[a][b][0] == 0:
@@ -134,7 +135,7 @@ def UpdateLowerEdges(a,b):
     elif data['player'] == 2 and board[a][b][3] == 0:
         board[a][b][3] = 2
         
-def GameFinish(ascore, bscore):
+def GameFinish(ascore, bscore): #Is the game over?
     if ascore + bscore == 16:
         if ascore > bscore:
             print('Player 1 Wins!')
@@ -152,17 +153,17 @@ def mouseClick(event):
     if GameFinish(data['playeronescore'], data['playertwoscore']):
         return
     checkTurn()
-    adjustx = (event.x-XSLOT)/(CELL_SIZE+linethickness)
+    adjustx = (event.x-XSLOT)/(CELL_SIZE+linethickness) 
     adjusty = (event.y-YSLOT)/(CELL_SIZE+linethickness)
     roundx = round(adjustx, 0)
     roundy = round(adjusty, 0) 
     floorx = (event.x-XSLOT)//(CELL_SIZE+linethickness)
     floory = (event.y-YSLOT)//(CELL_SIZE+linethickness)
     
-    if roundx > DIMENSION or roundy > DIMENSION:
+    if roundx > DIMENSION or roundy > DIMENSION: #prevents glitches if the user clicks far away
         print("Out of board")
         return 
-    if abs(adjustx - roundx) < tolerance:
+    if abs(adjustx - roundx) < tolerance: 
         turnForward = False
         if roundx < DIMENSION:
             UpdateLeftEdges(roundx, floory)
@@ -175,7 +176,7 @@ def mouseClick(event):
                 if turnFace:
                     turnForward = True
         else:
-            UpdateRightEdges(roundx-1, floory)
+            UpdateRightEdges(roundx-1, floory) 
             turnFace = checkFace(roundx-1,floory)
             if turnFace:
                     turnForward = True
@@ -202,7 +203,7 @@ def mouseClick(event):
             data['totalturns'] += 1           
     RedrawAll()
 
-def checkFace(id,jd):
+def checkFace(id,jd): #checks to make sure center faces are updated correctly
     if id > DIMENSION-1 or jd > DIMENSION-1 or id < 0 or jd < 0:
         print ("face index out of range")
         return False
@@ -224,7 +225,7 @@ def checkFace(id,jd):
             GameFinish(data['playeronescore'], data['playertwoscore'])
     return turnface
     
-def drawScore():
+def drawScore(): #updates the score
     playeronetext = TextAsset("Player 1:", fill = red, style = "bold 18pt Times")
     playeronetext2 = TextAsset(data['playeronescore'], fill = red, style = "bold 40pt Times")
     playertwotext = TextAsset("Player 2:", fill = blue, style = "bold 18pt Times")
@@ -235,7 +236,7 @@ def drawScore():
     Sprite(playertwotext2, (700, 200))
     
 
-def checkTurn():  
+def checkTurn(): #checks whose turn it is
     data['totalturns'] += 1
     if data['totalturns']/2 == int(data['totalturns']/2):
         data['player'] = 2
@@ -245,7 +246,7 @@ def checkTurn():
 board = buildBoard()
 
 if __name__ == '__main__': 
-    red = Color(0xFF0000, 1)
+    red = Color(0xFF0000, 1) 
     lightred = Color(0xF08080, 1)
     blue = Color(0x0000FF, 1)
     lightblue = Color(0xA6CCFF, 1)
