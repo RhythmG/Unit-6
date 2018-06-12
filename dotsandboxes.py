@@ -133,6 +133,15 @@ def UpdateLowerEdges(a,b):
         board[a][b][3] = 1
     elif data['player'] == 2 and board[a][b][3] == 0:
         board[a][b][3] = 2
+        
+def GameFinish(ascore, bscore):
+    if ascore + bscore == 16:
+        if ascore > bscore:
+            print('Player 1 Wins!')
+        elif ascore < bscore:
+            print('Player 2 Wins!')
+        else:
+            print('Tie Game!')
 
 def mouseClick(event):
     checkTurn()
@@ -183,18 +192,14 @@ def checkFace(id,jd):
             break
     if turnface == True:
         data['totalturns'] += 1
-        """if data['playeronescore'] + data['playertwoscore'] >= 16 and data['playeronescore'] > data['playertwoscore']:
-            playeronewins = TextAsset("Player 1 Wins!", fill = red, style = "bold 18pt Times")
-            Sprite(playeronewins, (400, 300))
-        elif data['playeronescore'] + data['playertwoscore'] >= 16 and data['playertwoscore'] > data['playeronescore']:
-            playertwowins = TextAsset("Player 2 Wins!", fill = blue, style = "bold 18pt Times")
-            Sprite(playeronewins, (500, 300)) """
         if data['player'] == 1:
             board[id][jd][4] = 1
             data['playeronescore'] += 1
+            GameFinish(data['playeronescore'], data['playertwoscore'])
         else:
             board[id][jd][4] = 2
             data['playertwoscore'] += 1
+            GameFinish(data['playeronescore'], data['playertwoscore'])
     return turnface
     
 def drawScore():
