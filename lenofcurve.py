@@ -5,7 +5,7 @@
 from math import *
 
 def f(x):
-    return x**2
+    return sin(x)
 
 def derivative(x):
     h = 1/10000
@@ -23,7 +23,7 @@ upper = float(input('Enter an upper bound: '))
 def rectangles(a, b, numofrectangles):
     width = (b-a)/numofrectangles
     sum = 0
-    a+=(0.5*width)
+    a+= width
     while a<=b:
         height = lenf(a)
         area = height*width
