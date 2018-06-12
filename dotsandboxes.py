@@ -211,6 +211,8 @@ def checkFace(id,jd):
         if board[id][jd][k] == 0:
             turnface = False
             break
+    if board[id][jd][k] != 0:
+        turnface = False
     if turnface == True:
         if data['player'] == 1:
             board[id][jd][4] = 1
