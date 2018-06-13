@@ -5,7 +5,7 @@
 from math import *
 
 def df(x):
-    return sin(x)
+    return e**(x**2)
 
 initialx = float(input('Enter an initial x value: '))
 initialy=float(input("enter an initial y value: "))
@@ -16,10 +16,11 @@ def euler(initialx,initialy,dx,finalx):
     x=initialx
     y=initialy
     while x!=finalx:
-        dy=derivative(y)*dx
+        dy=df(x)*dx
         y+=dy
         x+=dx
         print("(",x,",",y,")")
+    print("(",x,",",y,")")
 
 
 euler(initialx,initialy,dx,finalx)
