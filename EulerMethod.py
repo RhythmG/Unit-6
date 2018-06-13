@@ -19,8 +19,8 @@ def euler(initialx,initialy,dx,finalx):
         dy=df(x)*dx
         y+=dy
         x+=dx
-        print("(",x,",",round(y,4),")")
-    print("(",x,",",y,")")
+        print("(",round(x,4),",",round(y,4),")")
+    print("(",round(x,4),",",round(y,4),")")
 
 
 euler(initialx,initialy,dx,finalx)
