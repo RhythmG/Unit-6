@@ -15,12 +15,11 @@ finalx=float(input("Enter a final x value: "))
 def euler(initialx,initialy,dx,finalx):
     x=initialx
     y=initialy
-    while x<finalx:
+    while x<(finalx-dx):
         dy=df(x)*dx
         y+=dy
         x+=dx
         print("(",round(x,4),",",round(y,4),")")
-    print("(",round(x,4),",",round(y,4),")")
 
 
 euler(initialx,initialy,dx,finalx)
