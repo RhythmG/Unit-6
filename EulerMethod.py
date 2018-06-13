@@ -4,24 +4,22 @@
 
 from math import *
 
-def f(x):
+def df(x):
     return sin(x)
 
-def derivative(x):
-    h = 1/1000
-    rise = f(x+h)-f(x) 
-    run = h
-    slope = rise/run 
-    return slope
-
-initialx = int(input('Enter an initial x value: '))
+initialx = float(input('Enter an initial x value: '))
+initialy=float(input("enter an initial y value: "))
 dx=float(input("Enter a dx value: "))
-finalx=int(input("Enter a final x value: "))
+finalx=float(input("Enter a final x value: "))
 
-def euler():
+def euler(initialx,initialy,dx,finalx):
+    x=initialx
+    y=initialy
     while x!=finalx:
-        y=f(initialx)
         dy=derivative(y)*dx
         y+=dy
         x+=dx
-        print("(",x,",",y,")"
+        print("(",x,",",y,")")
+
+
+euler(initialx,initialy,dx,finalx)
