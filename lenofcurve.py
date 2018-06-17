@@ -27,14 +27,14 @@ def rectangles(a, b, numofrectangles):
     sum = 0
     x = a
     dx = (b-a)/numofrectangles
-    while x<b:
+    n = 0
+    while n < numofrectangles:
         rate = lenf(x)
         ds = rate*dx
         sum += ds
         x += dx
+        n += 1
     print('')
-    print('Length: ', sum)
+    print('Length: ', abs(sum))
     
 rectangles(lower, upper, nInterval)
-
-
