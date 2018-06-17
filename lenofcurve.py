@@ -4,11 +4,13 @@
 
 from math import *
 
+nInterval = 10000000000
+
 def f(x):
     return sin(x)
 
 def derivative(x):
-    h = 1/10000
+    h = 1.0/nInterval
     rise = f(x+h)-f(x) 
     run = h
     slope = rise/run #definition of derivative
@@ -21,17 +23,17 @@ lower = float(input('Enter a lower bound: '))
 upper = float(input('Enter an upper bound: '))
     
 def rectangles(a, b, numofrectangles):
-    width = (b-a)/numofrectangles
     sum = 0
-    a+= width
-    while a<=b:
-        height = lenf(a)
-        area = height*width
-        sum += area
-        a += width
+    x = a
+    dx = (b-a)/numofrectangles
+    while x<b:
+        rate = lenf(x)
+        ds = rate*dx
+        sum += ds
+        x += dx
     print('')
     print('Length: ', sum)
     
-rectangles(lower, upper, 100000)
+rectangles(lower, upper, nInterval)
 
 
