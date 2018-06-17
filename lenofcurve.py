@@ -4,20 +4,21 @@
 
 from math import *
 
-nInterval = 10000000000
+nInterval = 10000
 
 def f(x):
     return sin(x)
 
 def derivative(x):
     h = 1.0/nInterval
-    rise = f(x+h)-f(x) 
+    rise = (f(x+h)-f(x-h))*0.5
     run = h
     slope = rise/run #definition of derivative
     return slope
     
 def lenf(x):
-    return sqrt(1+(derivative(f(x))**2))
+    df = derivative(x)
+    return sqrt(1+(df*df))
 
 lower = float(input('Enter a lower bound: '))
 upper = float(input('Enter an upper bound: '))
