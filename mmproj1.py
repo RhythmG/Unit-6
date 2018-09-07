@@ -5,7 +5,7 @@
 from random import randint
 
 n = int(input('Enter a number of birds: ')) #number of birds on wire
-t = int(input('How many times do you want to run the simulation?')) #repeat simulation t times
+t = int(input('How many times do you want to run the simulation? ')) #repeat simulation t times
 #average number of birds not looked at
 print('')
 nlaavg = []
@@ -33,7 +33,7 @@ def birds():
 for i in range(1, t+1):
     birds()
     
-print(sum(nlaavg)/n)
+print('Avg. Not looked at: ', sum(nlaavg)/n)
     
 
 
