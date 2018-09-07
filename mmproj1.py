@@ -34,6 +34,7 @@ for i in range(1, t+1):
     birds()
     
 print('Avg. Not looked at: ', sum(nlaavg)/t)
+print("% of birds not looked at: ", round(100*(sum(nlaavg)/t)/n, 4),"%")
     
 
 
