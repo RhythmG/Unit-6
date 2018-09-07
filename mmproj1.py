@@ -14,6 +14,10 @@ print(L)
 for i in range(1, n+1):
     if L[i-1] == 2 and L[i+1] == 1:
         notlookedat = notlookedat + 1
+    elif L[1] == 1:
+        notlookedat = notlookedat + 1
+    elif L[n-1] == 2:
+        notlookedat = notlookedat + 1
 
 print(notlookedat)
 
