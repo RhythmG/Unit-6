@@ -1,37 +1,35 @@
 #Math Modeling Proj #1
 #Problem 5: Birds on a Wire
+#Looking direction: 1 = Right, 2 = Left
 
 from random import randint
 
+n = int(input('Enter a number of birds: ')) #number of birds on wire
+t = 10 #repeat simulation this many times
+nlaavg = 0 #average number of birds not looked at
+print('')
+
 def birds():
-    notlookedat = 0
-    j= 0
-    k= 0
-    l= 0
-    
-    L = [1]
-    n = int(input('Enter a number of birds: '))
-    
+    notlookedat = 0 #how many not looked at?
+    L = [1] #first bird always looks right
     for i in range(1, n+1):
         L.append(randint(1,2))
     
-    L.append(2)
+    L.append(2) #last bird always looks left
     print(L)
     
-    for i in range(1, n):
+    for i in range(1, n): #Cases where bird is not looked at 11, 22, 221, 211
         if L[i-1] == 2 and L[i+1] == 1:
             notlookedat = notlookedat + 1
-            j = j+1
     if L[0] == 1 and L[1] == 1:
         notlookedat = notlookedat + 1
-        k = k+1
     if L[n] == 2 and L[n+1] == 2:
         notlookedat = notlookedat + 1
-        l = l+1
     
-    print("Not looked at:", notlookedat)
-    print(j,k,l)
+    print(notlookedat)
 
-for i in range(1, 10):
+for i in range(1, t+1):
     birds()
+    
+
 
