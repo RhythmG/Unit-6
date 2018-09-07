@@ -19,10 +19,10 @@ for i in range(1, n):
         notlookedat = notlookedat + 1
         j = j+1
 
-elif L[0] == 1 and L[1] == 1:
+if L[0] == 1 and L[1] == 1:
     notlookedat = notlookedat + 1
     k = k+1
-elif L[n] == 2 and L[n+1] == 2:
+if L[n] == 2 and L[n+1] == 2:
     notlookedat = notlookedat + 1
     l = l+1
 
