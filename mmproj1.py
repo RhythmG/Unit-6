@@ -5,7 +5,7 @@
 from random import randint
 
 n = int(input('Enter a number of birds: ')) #number of birds on wire
-t = 10 #repeat simulation this many times
+t = int(input('How many times do you want to run the simulation?')) #repeat simulation t times
 nlaavg = 0 #average number of birds not looked at
 print('')
 
@@ -25,7 +25,6 @@ def birds():
         notlookedat = notlookedat + 1
     if L[n] == 2 and L[n+1] == 2:
         notlookedat = notlookedat + 1
-    
     print(notlookedat)
 
 for i in range(1, t+1):
