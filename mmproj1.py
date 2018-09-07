@@ -18,12 +18,13 @@ for i in range(1, n):
     if L[i-1] == 2 and L[i+1] == 1:
         notlookedat = notlookedat + 1
         j = j+1
-    elif L[0] == 1 and L[1] == 1:
-        notlookedat = notlookedat + 1
-        k = k+1
-    elif L[n+1] == 2 and L[n] == 2:
-        notlookedat = notlookedat + 1
-        l = l+1
+
+elif L[0] == 1 and L[1] == 1:
+    notlookedat = notlookedat + 1
+    k = k+1
+elif L[n] == 2 and L[n+1] == 2:
+    notlookedat = notlookedat + 1
+    l = l+1
 
 print("Not looked at:", notlookedat)
 print(j)
