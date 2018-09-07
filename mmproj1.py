@@ -28,10 +28,12 @@ def birds():
         notlookedat = notlookedat + 1
     nlaavg.append(notlookedat)
     print(notlookedat)
-    print(nlaavg)
+    print('')
 
 for i in range(1, t+1):
     birds()
+    
+print(sum(nlaavg)/n)
     
 
 
