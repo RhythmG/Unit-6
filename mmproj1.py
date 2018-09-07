@@ -33,7 +33,7 @@ def birds():
 for i in range(1, t+1):
     birds()
     
-print('Avg. Not looked at: ', sum(nlaavg)/n)
+print('Avg. Not looked at: ', sum(nlaavg)/t)
     
 
 
