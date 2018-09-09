@@ -8,18 +8,18 @@ n = int(input('Enter a number of birds: ')) #number of birds on wire
 t = int(input('How many times do you want to run the simulation? ')) #repeat simulation t times
 #average number of birds not looked at
 print('')
-nlaavg = []
+nlaavg = [] #list of how many birds not looked for each value t
 
 def birds():
     notlookedat = 0 #how many not looked at?
     L = [1] #first bird always looks right
     for i in range(1, n+1):
-        L.append(randint(1,2))
+        L.append(randint(1,2)) #the directions the middle birds look in is randomized because the distances are randomized
     
     L.append(2) #last bird always looks left
     print(L)
     
-    for i in range(1, n): #Cases where bird is not looked at 11, 22, 221, 211
+    for i in range(1, n): #Cases where bird is not looked at: 11, 22, 221, 211
         if L[i-1] == 2 and L[i+1] == 1:
             notlookedat = notlookedat + 1
     if L[0] == 1 and L[1] == 1:
@@ -30,11 +30,9 @@ def birds():
     print(notlookedat)
     print('')
 
-for i in range(1, t+1):
+for i in range(1, t+1): 
     birds()
     
 print('Avg. Not looked at: ', sum(nlaavg)/t)
 print("% of birds not looked at: ", round(100*(sum(nlaavg)/t)/n, 4),"%")
-    
-
 
