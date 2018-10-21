@@ -13,6 +13,8 @@ saveddigits = []
 print("Enter a fraction in the form of A/B")
 numerator = int(input("Enter your numerator: "))
 denominator = int(input("Enter your denominator: "))
+repeatedindex = 0
+numofrepeateddigits = 0
 
 firstTime = True
     
@@ -32,6 +34,8 @@ while remainder != 0:
         remainder = numerator%denominator
         print('remainder = ', remainder)
         if remainder in visitednum:
+            repeatedindex = visitednum.index(remainder)
+            numofrepeateddigits = len(visitednum) - repeatedindex
             print('Finished!')
             break
         visitednum.append(remainder)
@@ -44,21 +48,27 @@ while remainder != 0:
             firstTime = False
         visitednum.append(numerator)
         print('remainder = ', numerator)
+        if decimal < 1.0:
+            saveddigits.append(0)
         numerator = numerator*10
         decimal = decimal * 0.1
         """print('decimal = ',decimal)"""
     
 if remainder != 0:
     print('')
-    print("# of repeating digits: ", digit)
+    print("# of repeating digits: ", numofrepeateddigits)
+    print("# of non-repeating digits: ", len(visitednum)-numofrepeateddigits)
     print("The answer is: ", unit,".", end="")
     for i in range(len(saveddigits)):
         print(saveddigits[i], end='')
+    for i in range(len(saveddigits)):
+        if i > repeatedindex-1:
+            print(saveddigits[i], end='')
     print('...')
     
 elif remainder == 0:
     print('')
-    print("# of non-repeating digits: ", digit)
+    print("# of non-repeating digits: ", digits)
     print("The answer is: ", unit,".", end="")
     for i in range(len(saveddigits)):
         print(saveddigits[i], end='')
