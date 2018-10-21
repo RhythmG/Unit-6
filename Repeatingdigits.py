@@ -2,27 +2,50 @@
 #Math Modeling Project 3, Homework Question 1
 import math
 
-print("Enter a fraction in the form of A/B")
-numerator = int(input("Enter your numerator: "))
-denominator = int(input("Enter your denominator: "))
 decimal = 1
 ans = 0
 digit = 0
+floor = 0
 remainder = -1
 visitednum = []
+print("Enter a fraction in the form of A/B")
+numerator = int(input("Enter your numerator: "))
+denominator = int(input("Enter your denominator: "))
 
-while remainder not in visitednum and remainder != 0:
-    floor = 0
+firstTime = True
+    
+while remainder != 0:
     if numerator > denominator:
+        print('divide')
         floor = decimal * math.floor(numerator/denominator)
+        print('floor = ', floor)
+        ans = ans + floor
+        if not firstTime:
+            digit += 1
+            print('digit = ', digit)
+        else:
+            firstTime = False
+            print('firstTime')
         remainder = numerator%denominator
+        if remainder in visitednum:
+            break
         visitednum.append(remainder)
-        digit += 1
+        print('remainder = ', remainder)
+        numerator = remainder * 10
+        print('numerator = ', numerator)
+        decimal = decimal * 0.1
+        print('decimal =', decimal)
+        
     else:
+        if firstTime:
+            firstTime = False
+        print('inflate numerator')
+        visitednum.append(numerator)
         numerator = numerator*10
-        decimal = decimal*0.1
-    ans = ans + floor
-
+        decimal = decimal * 0.1
+        print('numerator = ', numerator)
+        print('decimal = ',decimal)
+    
 if remainder == 1:
     print("Repeating digit: ", digit)
     print("The answer is: ", ans,"...")
