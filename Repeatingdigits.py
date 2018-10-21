@@ -68,7 +68,7 @@ if remainder != 0:
     
 elif remainder == 0:
     print('')
-    print("# of non-repeating digits: ", digits)
+    print("# of non-repeating digits: ", digit)
     print("The answer is: ", unit,".", end="")
     for i in range(len(saveddigits)):
         print(saveddigits[i], end='')
