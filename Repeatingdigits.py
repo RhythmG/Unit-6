@@ -20,6 +20,7 @@ while remainder != 0:
         floor = decimal * math.floor(numerator/denominator)
         print('floor = ', floor)
         ans = ans + floor
+        print('answer = ', ans)
         if not firstTime:
             digit += 1
             print('digit = ', digit)
@@ -30,6 +31,7 @@ while remainder != 0:
         if remainder in visitednum:
             break
         visitednum.append(remainder)
+        print(remainder, " saved")
         print('remainder = ', remainder)
         numerator = remainder * 10
         print('numerator = ', numerator)
@@ -41,12 +43,13 @@ while remainder != 0:
             firstTime = False
         print('inflate numerator')
         visitednum.append(numerator)
+        print(numerator, " saved")
         numerator = numerator*10
         decimal = decimal * 0.1
         print('numerator = ', numerator)
         print('decimal = ',decimal)
     
-if remainder == 1:
+if remainder != 0:
     print("Repeating digit: ", digit)
     print("The answer is: ", ans,"...")
 elif remainder == 0:
