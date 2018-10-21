@@ -20,19 +20,15 @@ firstTime = True
     
 while remainder != 0:
     if numerator > denominator:
-        """print('divide')"""
         floor = math.floor(numerator/denominator)
-        """print('floor = ', floor) """
         ans = ans + floor * decimal
         if not firstTime:
             saveddigits.append(floor)
             digit += 1
-            """print('digit = ', digit) """
         else:
             firstTime = False
             unit = floor
         remainder = numerator%denominator
-        print('remainder = ', remainder)
         if remainder in visitednum:
             repeatedindex = visitednum.index(remainder)
             numofrepeateddigits = len(visitednum) - repeatedindex
@@ -41,18 +37,15 @@ while remainder != 0:
         visitednum.append(remainder)
         numerator = remainder * 10
         decimal = decimal * 0.1
-        """print('decimal =', decimal)"""
         
     else:
         if firstTime:
             firstTime = False
         visitednum.append(numerator)
-        print('remainder = ', numerator)
         if decimal < 1.0:
             saveddigits.append(0)
         numerator = numerator*10
         decimal = decimal * 0.1
-        """print('decimal = ',decimal)"""
     
 if remainder != 0:
     print('')
