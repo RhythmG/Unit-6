@@ -49,15 +49,16 @@ while remainder != 0:
         """print('decimal = ',decimal)"""
     
 if remainder != 0:
-    print("Repeating digit: ", digit)
+    print('')
+    print("# of repeating digits: ", digit)
     print("The answer is: ", unit,".", end="")
-    for j in range(2):
-        for i in range(len(saveddigits)):
-            print(saveddigits[i], end='')
+    for i in range(len(saveddigits)):
+        print(saveddigits[i], end='')
     print('...')
     
 elif remainder == 0:
-    print("Non-repeating digit: ", digit)
+    print('')
+    print("# of non-repeating digits: ", digit)
     print("The answer is: ", unit,".", end="")
     for i in range(len(saveddigits)):
         print(saveddigits[i], end='')
