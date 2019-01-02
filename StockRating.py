@@ -10,5 +10,8 @@
 #Enter the ratio for 4 or 5 other competitors
 #% diff EV: EBITDA to competitor average
 
+print("Welcome to the Stock Rating System!")
+shares = print(input("To start, please enter the company's current shares outstanding"))
+
 
 
