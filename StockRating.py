@@ -14,8 +14,8 @@ from math import *
 
 def Step1(): #EV to EBITDA ratio rating
     print("Welcome to the Stock Rating System!")
-    shares = input("To start, please enter the company's current shares outstanding: (in billions) ")
-    price = input("Next, input the stock's current price: ")
+    shares = float(input("To start, please enter the company's current shares outstanding: (in billions) "))
+    price = float(input("Next, input the stock's current price: "))
     marketcap = shares * price
     print("We are done with market capitalization. Now let's get information on the company's debt.")
     stdebt = print(input("Now, input the company's short term debt: "))
