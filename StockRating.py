@@ -25,15 +25,16 @@ def Step1(): #EV to EBITDA ratio rating
     prfereq = float(input("Now, input the company's preferred equity: "))
     cashoinv = float(input("Now, input the company's total cash and short-term investments: "))
     EV = marketcap + totaldebt + minorinter + prfereq - cashoinv
+    EBITDA = float(input("Enter the EV:EBITDA ratio for this stock: "))
+    EV:EBITDA = EV/EBITDA
     competratio1 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     competratio2 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     competratio3 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     competratio4 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
-    competratio = (competratio1+competratio2+competratio3+competratio4)
+    compEV:EBITDA = (competratio1+competratio2+competratio3+competratio4)/4
     
 
 Step1()
-print(EV)
     
 
 
