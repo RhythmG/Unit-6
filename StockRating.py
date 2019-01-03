@@ -34,7 +34,7 @@ def Step1(): #EV to EBITDA ratio rating
     competratio3 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     competratio4 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     compEV:EBITDA = (competratio1+competratio2+competratio3+competratio4)/4
-    % diff = (
+    % diff = ((EV:EBITDA - compEV:EBITDA)/compEV:EBITDA)*100
     
 
 Step1()
