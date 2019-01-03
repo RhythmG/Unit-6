@@ -1,13 +1,15 @@
 #Stephen Wang
 #Math Modeling: Stock Rating System
 
-#marketcap = shares * price
-#totaldebt = stdebt + ltdebt
-#+ Minority Shares
-#+ Preferred Equity
-#- Cash & Short-Term Investments 
-#Enter EBITDA
-#Enter the ratio for 4 or 5 other competitors
+#Have the following information at hand before running this program:
+#Current shares outstanding and stock price
+#Short-Term and Long-Term Debt
+#Minority Shares
+#Preferred Equity
+#Cash & Short-Term Investments 
+#EBITDA
+#EV:EBITDA ratio for 4 other competitors
+
 #% diff EV: EBITDA to competitor average
 
 from math import *
@@ -32,6 +34,7 @@ def Step1(): #EV to EBITDA ratio rating
     competratio3 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     competratio4 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     compEV:EBITDA = (competratio1+competratio2+competratio3+competratio4)/4
+    % diff = (
     
 
 Step1()
