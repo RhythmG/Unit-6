@@ -10,8 +10,6 @@
 #EBITDA
 #EV:EBITDA ratio for 4 other competitors
 
-#% diff EV: EBITDA to competitor average
-
 from math import *
 
 def Step1(): #EV to EBITDA ratio rating
