@@ -1,7 +1,8 @@
 #Stephen Wang
 #Math Modeling: Stock Rating System
 
-#Have the following information at hand before running this program:
+#NOTE: Anything with an input statement only serves as a placeholder for automated data retrieval
+#Have the following information at hand before running this program (part 1):
 #Stock's industry 
 #Current shares outstanding and stock price
 #Short-Term and Long-Term Debt
@@ -10,7 +11,7 @@
 #Cash & Short-Term Investments 
 #EBITDA
 #EV:EBITDA ratio for 5 other competitors
-#Anything with an input statement only serves as a placeholder for automated data retrieval
+
 
 def Step1(): #EV to EBITDA ratio rating
     print("Welcome to the Stock Rating System!")
@@ -40,17 +41,30 @@ def Step1(): #EV to EBITDA ratio rating
     print(round(step1pdiff, 2), "%")
     print("")
     print("Step 1 Rating:", round(rating1, 2))
-    
+
+#Have the following information at hand before running part 2:
+#Operating cash flow for the past 4 years
+#
+
 def Step2(): #DCF Rating (Non-cyclical stocks only)
     print("In the second step, the program will perform DCF analysis on non-cyclical stocks. If your interested stock is cyclical, then this skip is unnecessary.")
-    print("a) Healthcare, Finance, Telecomm, and Consumer Defense")) 
-    print("b) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials")
+    print("a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials")
+    print("b) Healthcare, Telecomm, and Consumer Defense")) 
+    print("c) Finance")
     sector = float(input("Please indicate the letter containing the sector in which your stock falls into."))
     if sector == "a":
-        
-    elif sector == "b":
         print("Because your stock is cyclical, we will skip to the last step.")  
         Step3()
+    elif sector == "b":
+        avgoperation = float(input("Enter the company's average operating cash flow for the past four years")
+        total = 0
+        for i in range(1, 20):
+            total = total + i
+            
+        
+    elif sector == "c":
+        avgoperation = float(input("Enter the company's average operating cash flow for the past four years")
+        
     else:
         print("
         
