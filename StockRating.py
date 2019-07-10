@@ -12,6 +12,8 @@
 #EBITDA
 #EV:EBITDA ratio for 5 other competitors
 
+from math import *
+import random
 
 def Step1(): #EV:EBITDA Rating 
     print("Welcome to the Stock Rating System!" + "\n" + "In the first step, the program will evaluate the stock in relation to its competitors" + "\n" + "Please enter all the following stock information in billions.")
@@ -60,7 +62,11 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
         
     
 def Step3(): #VaR Rating
-    print("In the last step, the program will evaluate how risky your stock is", "\n", ")
+    print("In the last step, the program will evaluate how risky your stock is. Please enter the following.", "\n")
+    meanchange = "Mean % change in stock price:"
+    stdchange = "Standard deviation % change in stock price:"
+    time = "Specify a time frame to forecast this stock (short-term recommended):"
+    gbm = price * exp(stdchange*sqrt(t)*random.uniform(0,1) + meanchange*time
     
     
 Step1()
