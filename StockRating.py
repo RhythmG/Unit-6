@@ -14,9 +14,7 @@
 
 
 def Step1(): #EV to EBITDA ratio rating
-    print("Welcome to the Stock Rating System!")
-    print("In the first step, the program will evaluate the stock in relation to its competitors")
-    print("Please enter all the following stock information in billions.")
+    print("Welcome to the Stock Rating System!" + "\n" + "In the first step, the program will evaluate the stock in relation to its competitors" + "\n" + "Please enter all the following stock information in billions.")
     shares = float(input("Company's current shares outstanding: "))
     price = float(input("Company's current stock price: "))
     marketcap = shares * price
@@ -37,16 +35,14 @@ def Step1(): #EV to EBITDA ratio rating
     competoverall = (cptratio1 + cptratio2 + cptratio3 + cptratio4 + cptratio5)/5
     step1pdiff = ((step1ratio - competoverall)/competoverall)*100
     rating1 = (-0.125*step1pdiff) + 5
-    print("")
-    print(round(step1pdiff, 2), "%")
-    print("")
-    print("Step 1 Rating:", round(rating1, 2))
+    print("\n" + round(step1pdiff, 2), "%")
+    print("\n" + ("Step 1 Rating:", round(rating1, 2)))
 
 #Have the following information at hand before running part 2:
 #Operating cash flow for the past 4 years
 #
 
-def Step2(): #DCF Rating (Non-cyclical stocks only)
+"""def Step2(): #DCF Rating (Non-cyclical stocks only)
     print("In the second step, the program will perform DCF analysis on non-cyclical stocks. If your interested stock is cyclical, then this skip is unnecessary.")
     print("a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials")
     print("b) Healthcare, Telecomm, and Consumer Defense") 
@@ -66,8 +62,7 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
         avgoperation = float(input("Enter the company's average operating cash flow for the past four years")
         
     else:
-        print("
-        
+        print(")"""
     
 def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is")
