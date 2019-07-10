@@ -40,7 +40,7 @@ def Step1(): #EV to EBITDA ratio rating
     print("")
     print("Step 1 Rating:", round(rating1, 2))
     
-#def Step2(): #DCF Rating (Non-cyclical stocks only)
+def Step2(): #DCF Rating (Non-cyclical stocks only)
     print("In the second step, the program will perform DCF analysis on non-cyclical stocks. If your interested stock is cyclical, then this skip is unnecessary.")
     print("a) Healthcare, Finance, Telecomm, and Consumer Defense")) 
     print("b) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials")
@@ -58,6 +58,7 @@ def Step1(): #EV to EBITDA ratio rating
     
 
 Step1()
+Step2()
     
 
 
