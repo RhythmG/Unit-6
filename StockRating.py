@@ -2,22 +2,23 @@
 #Math Modeling: Stock Rating System
 
 #Have the following information at hand before running this program:
+#Stock's industry 
 #Current shares outstanding and stock price
 #Short-Term and Long-Term Debt
 #Minority Shares
 #Preferred Equity
 #Cash & Short-Term Investments 
 #EBITDA
-#EV:EBITDA ratio for 4 other competitors
+#EV:EBITDA ratio for 5 other competitors
 
 from math import *
 
 def Step1(): #EV to EBITDA ratio rating
     print("Welcome to the Stock Rating System!")
+    print("Please enter the following information.")
     shares = float(input("Company's current shares outstanding (in billions): "))
     price = float(input("Company's current stock price: "))
     marketcap = shares * price
-    print("We are done with market capitalization. Now let's get information on the company's debt.")
     stdebt = float(input("Company's total short-term debt: "))
     ltdebt = float(input("Company's total long-term debt: "))
     totaldebt = stdebt + ltdebt
@@ -27,12 +28,19 @@ def Step1(): #EV to EBITDA ratio rating
     EV = marketcap + totaldebt + minorinter + prfereq - cashoinv
     EBITDA = float(input("Enter the current EBITDA for this stock: "))
     step1ratio = EV/EBITDA
-    competratio1 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
-    competratio2 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
-    competratio3 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
-    competratio4 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
-    compEV:EBITDA = (competratio1+competratio2+competratio3+competratio4)/4
-    % diff = ((EV:EBITDA - compEV:EBITDA)/compEV:EBITDA)*100
+    cptratio1 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
+    cptratio2 = float(input("Enter the EV:EBITDA ratio for the 2nd competitor of the stock: "))
+    cptratio3 = float(input("Enter the EV:EBITDA ratio for the 3rd competitor of the stock: "))
+    cptratio4 = float(input("Enter the EV:EBITDA ratio for the 4th competitor of the stock: "))
+    cptratio5 = float(input("Enter the EV:EBITDA ratio for the 5th competitor of the stock: "))
+    competoverall = (cptratio1 + cptratio2 + cptratio3 + cptratio4 + cptratio5)/5
+    step1pdiff = (abs(step1ratio - competoverall)/competoverall)*100
+    print(step1pdiff)
+    
+#def Step2(): #DCF Rating (Non-cyclical stocks only)
+
+#def Step3(): #VaR Rating
+
     
 
 Step1()
