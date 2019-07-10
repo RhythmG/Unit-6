@@ -38,7 +38,7 @@ def Step1(): #EV to EBITDA ratio rating
     rating1 = (-0.125*step1pdiff) + 5
     print(round(step1pdiff, 2), "%")
     print("")
-    print("Step 1 Rating:", rating1)
+    print("Step 1 Rating:", round(rating1, 2))
     
 #def Step2(): #DCF Rating (Non-cyclical stocks only)
 
