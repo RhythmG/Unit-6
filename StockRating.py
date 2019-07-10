@@ -65,11 +65,11 @@ def Step3(): #VaR Rating
     meanchange = float(input("Mean % change in stock price:"))
     stdchange = float(input("Standard deviation % change in stock price:"))
     time = "Specify a time frame to forecast this stock (short-term recommended):"
-    gbm = price * exp(stdchange*sqrt(t)*random.uniform(0,1) + meanchange*time
-    
+    gbm = price * exp(stdchange*sqrt(t)*random.uniform(0,1) + meanchange*time #change to repeat 1000 times
     
 Step1()
 Step2()
+Step3()
     
 
 
