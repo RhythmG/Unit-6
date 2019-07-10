@@ -50,6 +50,7 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
         print("Because your stock is cyclical, we will skip to the last step.")  
         Step3()
     elif sector == "b":
+        
         total = 0
         avgoperation = float(input("Enter the company's average operating cash flow for the past four years")
         dcf=1for i in range(1,n+1):
@@ -61,7 +62,7 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
         
     
 def Step3(): #VaR Rating
-    print("In the last step, the program will evaluate how risky your stock is")
+    print("In the last step, the program will evaluate how risky your stock is", "\n", ")
     
     
 Step1()
