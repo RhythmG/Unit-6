@@ -10,6 +10,7 @@
 #Cash & Short-Term Investments 
 #EBITDA
 #EV:EBITDA ratio for 5 other competitors
+#Anything with an input statement only serves as a placeholder for automated data retrieval
 
 def Step1(): #EV to EBITDA ratio rating
     print("Welcome to the Stock Rating System!")
@@ -48,12 +49,13 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
     if sector == "a":
         
     elif sector == "b":
-        print("Because your stock is cyclical, we will skip to the last step.")    
+        print("Because your stock is cyclical, we will skip to the last step.")  
+        Step3()
     else:
         print("
         
     
-#def Step3(): #VaR Rating
+def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is")
     
 
