@@ -15,8 +15,8 @@ from math import *
 
 def Step1(): #EV to EBITDA ratio rating
     print("Welcome to the Stock Rating System!")
-    print("Please enter the following information.")
-    shares = float(input("Company's current shares outstanding (in billions): "))
+    print("Please enter all the following information in billions.")
+    shares = float(input("Company's current shares outstanding: "))
     price = float(input("Company's current stock price: "))
     marketcap = shares * price
     stdebt = float(input("Company's total short-term debt: "))
@@ -34,8 +34,10 @@ def Step1(): #EV to EBITDA ratio rating
     cptratio4 = float(input("Enter the EV:EBITDA ratio for the 4th competitor of the stock: "))
     cptratio5 = float(input("Enter the EV:EBITDA ratio for the 5th competitor of the stock: "))
     competoverall = (cptratio1 + cptratio2 + cptratio3 + cptratio4 + cptratio5)/5
-    step1pdiff = (abs(step1ratio - competoverall)/competoverall)*100
-    print(step1pdiff)
+    step1pdiff = ((step1ratio - competoverall)/competoverall)*100
+    print(round(step1pdiff, 2), "%")
+    print("")
+    rating1 = (-0.125*step1pdiff) + 5
     
 #def Step2(): #DCF Rating (Non-cyclical stocks only)
 
