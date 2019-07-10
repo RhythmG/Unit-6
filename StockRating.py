@@ -42,13 +42,7 @@ def Step1(): #EV:EBITDA Rating
 
 #Have the following information at hand before running part 2:
 #Operating cash flow for the past 4 years
-
-def dcfsum():
-    avgoperation = float(input("Enter the company's average operating cash flow for the past four years"))
-    n = 20
-    dcf = sum([avgoperation/(1+0.06)**(i) for i in range(1,n+1)])
-    print(dcf)
-        
+   
 def Step2(): #DCF Rating (Non-cyclical stocks only)
     print("In the second step, the program will perform DCF analysis on non-cyclical stocks.", "\n", "a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials", "\n", "b) Healthcare, Telecomm, Consumer Defense", "\n", "c) Finance")
     sector = float(input("Please indicate the letter containing the sector in which your stock falls into."))
@@ -56,7 +50,11 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
         print("Because your stock is cyclical, we will skip to the last step.")  
         Step3()
     elif sector == "b":
-        dcfsum()
+        avgoperation = float(input("Enter the company's average operating cash flow for the past four years"))
+        n = 20
+        dcf = sum([avgoperation/(1+0.06)**(i) for i in range(1,n+1)])
+        print(dcf)
+        
     elif sector == "c":
         avgoperation = float(input("Enter the company's average operating cash flow for the past four years")
         
