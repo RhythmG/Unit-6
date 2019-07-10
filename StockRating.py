@@ -13,7 +13,8 @@
 
 def Step1(): #EV to EBITDA ratio rating
     print("Welcome to the Stock Rating System!")
-    print("Please enter all the following information in billions.")
+    print("In the first step, the program will evaluate the stock in relation to its competitors")
+    print("Please enter all the following stock information in billions.")
     shares = float(input("Company's current shares outstanding: "))
     price = float(input("Company's current stock price: "))
     marketcap = shares * price
@@ -40,9 +41,20 @@ def Step1(): #EV to EBITDA ratio rating
     print("Step 1 Rating:", round(rating1, 2))
     
 #def Step2(): #DCF Rating (Non-cyclical stocks only)
-
+    print("In the second step, the program will perform DCF analysis on non-cyclical stocks. If your interested stock is cyclical, then this skip is unnecessary.")
+    print("a) Healthcare, Finance, Telecomm, and Consumer Defense")) 
+    print("b) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials")
+    sector = float(input("Please indicate the letter containing the sector in which your stock falls into."))
+    if sector == "a":
+        
+    elif sector == "b":
+        print("Because your stock is cyclical, we will skip to the last step.")    
+    else:
+        print("
+        
+    
 #def Step3(): #VaR Rating
-
+    print("In the last step, the program will evaluate how risky your stock is")
     
 
 Step1()
