@@ -49,7 +49,7 @@ def Step1(): #EV to EBITDA ratio rating
 def Step2(): #DCF Rating (Non-cyclical stocks only)
     print("In the second step, the program will perform DCF analysis on non-cyclical stocks. If your interested stock is cyclical, then this skip is unnecessary.")
     print("a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials")
-    print("b) Healthcare, Telecomm, and Consumer Defense")) 
+    print("b) Healthcare, Telecomm, and Consumer Defense") 
     print("c) Finance")
     sector = float(input("Please indicate the letter containing the sector in which your stock falls into."))
     if sector == "a":
