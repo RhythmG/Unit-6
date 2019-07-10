@@ -14,19 +14,19 @@ from math import *
 
 def Step1(): #EV to EBITDA ratio rating
     print("Welcome to the Stock Rating System!")
-    shares = float(input("To start, please enter the company's current shares outstanding: (in billions) "))
-    price = float(input("Next, input the stock's current price: "))
+    shares = float(input("Company's current shares outstanding (in billions): "))
+    price = float(input("Company's current stock price: "))
     marketcap = shares * price
     print("We are done with market capitalization. Now let's get information on the company's debt.")
-    stdebt = float(input("Now, input the company's short term debt: "))
-    ltdebt = float(input("Now, input the company's long term debt: "))
+    stdebt = float(input("Company's total short-term debt: "))
+    ltdebt = float(input("Company's total long-term debt: "))
     totaldebt = stdebt + ltdebt
-    minorinter = float(input("Now, input the company's minority interest: "))
-    prfereq = float(input("Now, input the company's preferred equity: "))
-    cashoinv = float(input("Now, input the company's total cash and short-term investments: "))
+    minorinter = float(input("Company's minority interest: "))
+    prfereq = float(input("Company's preferred equity: "))
+    cashoinv = float(input("Company's total cash and short-term investments: "))
     EV = marketcap + totaldebt + minorinter + prfereq - cashoinv
-    EBITDA = float(input("Enter the EV:EBITDA ratio for this stock: "))
-    EV:EBITDA = EV/EBITDA
+    EBITDA = float(input("Enter the current EBITDA for this stock: "))
+    step1ratio = EV/EBITDA
     competratio1 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     competratio2 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     competratio3 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
