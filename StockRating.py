@@ -57,12 +57,11 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
         Step3()
     elif sector == "b":
         avgoperation = float(input("Enter the company's average operating cash flow for the past four years")
-        total = 0
+        i = 0
         for i in range(1, 20):
             i = i + 1
-            dcf = sum(avgoperation / (1 + 0.06)**(i))
-            total = total + dcf
-        print(dcf)
+            dcf = avgoperation / (1 + 0.06)**(i)
+            print(dcf)
     
     elif sector == "c":
         avgoperation = float(input("Enter the company's average operating cash flow for the past four years")
