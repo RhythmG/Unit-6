@@ -11,8 +11,6 @@
 #EBITDA
 #EV:EBITDA ratio for 5 other competitors
 
-from math import *
-
 def Step1(): #EV to EBITDA ratio rating
     print("Welcome to the Stock Rating System!")
     print("Please enter all the following information in billions.")
@@ -36,6 +34,7 @@ def Step1(): #EV to EBITDA ratio rating
     competoverall = (cptratio1 + cptratio2 + cptratio3 + cptratio4 + cptratio5)/5
     step1pdiff = ((step1ratio - competoverall)/competoverall)*100
     rating1 = (-0.125*step1pdiff) + 5
+    print("")
     print(round(step1pdiff, 2), "%")
     print("")
     print("Step 1 Rating:", round(rating1, 2))
