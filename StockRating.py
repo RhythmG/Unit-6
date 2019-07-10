@@ -35,9 +35,10 @@ def Step1(): #EV to EBITDA ratio rating
     cptratio5 = float(input("Enter the EV:EBITDA ratio for the 5th competitor of the stock: "))
     competoverall = (cptratio1 + cptratio2 + cptratio3 + cptratio4 + cptratio5)/5
     step1pdiff = ((step1ratio - competoverall)/competoverall)*100
+    rating1 = (-0.125*step1pdiff) + 5
     print(round(step1pdiff, 2), "%")
     print("")
-    rating1 = (-0.125*step1pdiff) + 5
+    print("Step 1 Rating:", rating1)
     
 #def Step2(): #DCF Rating (Non-cyclical stocks only)
 
