@@ -22,11 +22,11 @@ def Step1(): #EV:EBITDA Rating
     marketcap = shares * price
     stdebt = float(input("Company's total short-term debt: "))
     ltdebt = float(input("Company's total long-term debt: "))
-    totaldebt = stdebt + ltdebt
-    minorinter = float(input("Company's minority interest: "))
+    totdebt = stdebt + ltdebt
+    minoi = float(input("Company's minority interest: "))
     prfereq = float(input("Company's preferred equity: "))
     cashoinv = float(input("Company's total cash and short-term investments: "))
-    EV = marketcap + totaldebt + minorinter + prfereq - cashoinv
+    EV = marketcap + totdebt + minoi + prfereq - cashoinv
     EBITDA = float(input("Enter the current EBITDA for this stock: "))
     step1ratio = EV/EBITDA
     cptratio1 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
@@ -64,7 +64,7 @@ def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is. Please enter the following.", "\n")
     meanchange = float(input("Mean % change in stock price:"))
     stdchange = float(input("Standard deviation % change in stock price:"))
-    time = "Specify a time frame to forecast this stock (short-term recommended):"
+    time = float(input("Specify a time frame to forecast this stock (short-term recommended):"))
     gbm = price * exp(stdchange*sqrt(t)*random.uniform(0,1) + meanchange*time #change to repeat 1000 times
     
 Step1()
