@@ -28,14 +28,14 @@ def Step1(): #EV:EBITDA Rating
     cashinv = float(input("Company's total cash and short-term investments: "))
     EV = marketcap + totdebt + minoi + prfeq - cashinv
     EBITDA = float(input("Enter the current EBITDA for this stock: "))
-    step1ratio = EV/EBITDA
+    s1ratio = EV/EBITDA
     cptr1 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
     cptr2 = float(input("Enter the EV:EBITDA ratio for the 2nd competitor of the stock: "))
     cptr3 = float(input("Enter the EV:EBITDA ratio for the 3rd competitor of the stock: "))
     cptr4 = float(input("Enter the EV:EBITDA ratio for the 4th competitor of the stock: "))
     cptr5 = float(input("Enter the EV:EBITDA ratio for the 5th competitor of the stock: "))
     competoverall = (cptr1 + cptr2 + cptr3 + cptr4 + cptr5)/5
-    step1pdiff = ((step1ratio - competoverall)/competoverall)*100
+    step1pdiff = ((s1ratio - competoverall)/competoverall)*100
     rating1 = (-0.125*step1pdiff) + 5
     print("")
     print(round(step1pdiff, 2), "%")
