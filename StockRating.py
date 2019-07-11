@@ -24,9 +24,9 @@ def Step1(): #EV:EBITDA Rating
     ltdebt = float(input("Company's total long-term debt: "))
     totdebt = stdebt + ltdebt
     minoi = float(input("Company's minority interest: "))
-    prfereq = float(input("Company's preferred equity: "))
+    prfeq = float(input("Company's preferred equity: "))
     cashoinv = float(input("Company's total cash and short-term investments: "))
-    EV = marketcap + totdebt + minoi + prfereq - cashoinv
+    EV = marketcap + totdebt + minoi + prfeq - cashoinv
     EBITDA = float(input("Enter the current EBITDA for this stock: "))
     step1ratio = EV/EBITDA
     cptratio1 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
