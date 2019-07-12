@@ -76,9 +76,9 @@ def Step3(): #VaR Rating
     sims.sort() 
     lower = round(sims[(trials*0.05)-1],3) #What if not divisble by 5?
     upper = round(sims[(trials*0.95)-1],3)
-    loglower = (sum(sims)/len(sims)) + ((stdchange)**2/2) - lower * ((stdchange)**2/trials) + ((stdchange)**4/(2*(trials-1)))
-    logupper = (sum(sims)/len(sims)) + ((stdchange)**2/2) + upper * ((stdchange)**2/trials) + ((stdchange)**4/(2*(trials-1)))
-    print("(", exp(loglower),",", exp(logupper),")")
+    loglower = (sum(sims)/len(sims)) + ((stdchange)**2/2) - 1.96 * ((stdchange)**2/trials) + ((stdchange)**4/(2*(trials-1)))
+    logupper = (sum(sims)/len(sims)) + ((stdchange)**2/2) + 1.96 * ((stdchange)**2/trials) + ((stdchange)**4/(2*(trials-1)))
+    print("(", loglower,",", logupper,")")
 
     
 '''Step1()'''
