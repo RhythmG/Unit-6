@@ -74,8 +74,8 @@ def Step3(): #VaR Rating
         gbm = log(price * exp(stdchange*sqrt(time)*random.uniform(0,1) + meanchange*time)) #change to repeat 1000 times
         sims.append(gbm)
     sims.sort() 
-    print(sims[(trials*0.05)-1]) #What if not divisble by 5?
-    print(sims[(trials*0.95)-1])
+    print(round(sims[(trials*0.05)-1],3)) #What if not divisble by 5?
+    print(round(sims[(trials*0.95)-1],3))
 
     
 '''Step1()'''
