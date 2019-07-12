@@ -65,14 +65,15 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
 def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is. Please enter the following.", "\n")
     sims = []
-    meanchange = float(input("Mean % change in stock price:"))
-    stdchange = float(input("Standard deviation % change in stock price:"))
-    time = float(input("Specify a time frame to forecast this stock (in days, short-term recommended):"))
+    meanchange = float(input("Mean % change in stock price: "))
+    stdchange = float(input("Standard deviation % change in stock price: "))
+    time = float(input("Specify a time frame to forecast this stock (in days, short-term recommended): "))
     trials = int(input("Specify a number of trials to run this simulation: "))
     for i in range(1, trials + 1):
         gbm = price * exp(stdchange*sqrt(time)*random.uniform(0,1)) + meanchange*time #change to repeat 1000 times
         sims.append(gbm)
-        print(gbm)
+    sims.sort() 
+    print(sims)
 
 '''Step1()'''
 '''Step2()'''
