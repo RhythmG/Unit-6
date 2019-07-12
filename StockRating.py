@@ -15,7 +15,7 @@
 from math import exp, sqrt, log
 import random
 
-price = 100.20
+price = 120.47
  
 """def Step1(): #EV:EBITDA Rating 
     priprice = float(input("Company's current stock price: "))nt("Welcome to the Stock Rating System!" + "\n" + "In the first step, the program will evaluate the stock in relation to its competitors" + "\n" + "Please enter all the following stock information in billions.")
@@ -70,7 +70,7 @@ def Step3(): #VaR Rating
     time = float(input("Specify a time frame to forecast this stock (in days, short-term recommended): "))
     trials = int(input("Specify a number of trials to run this simulation: "))
     for i in range(1, trials + 1):
-        gbm = price * exp(stdchange*sqrt(time)*random.uniform(0,1)) + meanchange*time #change to repeat 1000 times
+        gbm = log(price * exp(stdchange*sqrt(time)*random.uniform(0,1) + meanchange*time)) #change to repeat 1000 times
         sims.append(gbm)
     sims.sort() 
     print(sims)
