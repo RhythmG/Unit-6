@@ -12,13 +12,15 @@
 #EBITDA
 #EV:EBITDA ratio for 5 other competitors
 
-from math import *
+from math import exp, sqrt, log
 import random
 
-def Step1(): #EV:EBITDA Rating 
-    print("Welcome to the Stock Rating System!" + "\n" + "In the first step, the program will evaluate the stock in relation to its competitors" + "\n" + "Please enter all the following stock information in billions.")
-    shares = float(input("Company's current shares outstanding: "))
+price = 100.20
+ 
+"""def Step1(): #EV:EBITDA Rating 
+    priprice = float(input("Company's current stock price: "))nt("Welcome to the Stock Rating System!" + "\n" + "In the first step, the program will evaluate the stock in relation to its competitors" + "\n" + "Please enter all the following stock information in billions.")
     price = float(input("Company's current stock price: "))
+    shares = float(input("Company's current shares outstanding: "))
     marketcap = shares * price
     stdebt = float(input("Company's total short-term debt: "))
     ltdebt = float(input("Company's total long-term debt: "))
@@ -57,18 +59,23 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
         dcf = sum([avgoper/(1+0.06)**(i) for i in range(1,n+1)])
         print(dcf)
     elif sector == "c":
-        avgoper = float(input("Enter the company's average operating cash flow for the past four years")
+        avgoper = float(input("Enter the company's average operating cash flow for the past four years")"""
         
     
 def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is. Please enter the following.", "\n")
+    sims = []
     meanchange = float(input("Mean % change in stock price:"))
     stdchange = float(input("Standard deviation % change in stock price:"))
     time = float(input("Specify a time frame to forecast this stock (short-term recommended):"))
-    gbm = price * exp(stdchange*sqrt(t)*random.uniform(0,1)) + meanchange*time #change to repeat 1000 times
-    
-Step1()
-Step2()
+    trials = int(input("Specify a number of trials to run this simulation: "))
+    for i in range(1, trials + 1):
+        gbm = price * exp(stdchange*sqrt(time)*random.uniform(0,1)) + meanchange*time #change to repeat 1000 times
+        sims.append(gbm)
+        print(gbm)
+
+'''Step1()'''
+'''Step2()'''
 Step3()
     
 
