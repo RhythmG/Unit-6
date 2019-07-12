@@ -62,7 +62,7 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
     elif sector == "c":
         avgoper = float(input("Enter the company's average operating cash flow for the past four years")"""
         
-    
+
 def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is. Please enter the following.", "\n")
     sims = []
@@ -74,8 +74,10 @@ def Step3(): #VaR Rating
         gbm = log(price * exp(stdchange*sqrt(time)*random.uniform(0,1) + meanchange*time)) #change to repeat 1000 times
         sims.append(gbm)
     sims.sort() 
-    print(round(sims[(trials*0.05)-1],3)) #What if not divisble by 5?
-    print(round(sims[(trials*0.95)-1],3))
+    lower = round(sims[(trials*0.05)-1],3) #What if not divisble by 5?
+    upper = round(sims[(trials*0.95)-1],3)
+    loglower = (sum(sims)/len(sims)) + ((stdchange)**2/2) - lower * ((stdchange)**2/trials) + ((stdchange)**4/(2*(trials-1)))
+    logupper = (sum(sims)/len(sims)) + ((stdchange)**2/2) + upper * ((stdchange)**2/trials) + ((stdchange)**4/(2*(trials-1)))
 
     
 '''Step1()'''
