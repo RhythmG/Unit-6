@@ -77,14 +77,15 @@ def Step3(): #VaR Rating
     trials = int(input("Specify a number of trials to run this simulation: "))"""
    
     for i in range(1, trials + 1):
-        gbm = log(price * exp(stdchange*sqrt(time)*random.uniform(0,1) + meanchange*time)) #change to repeat 1000 times
+        gbm = log(price * exp(stdchange*sqrt(time)*random.random() + meanchange*time))
         sims.append(gbm)
     sims.sort() 
+    print(sims)
     lower = round(sims[(trials*0.05)-1],3) #What if not divisble by 5?
     upper = round(sims[(trials*0.95)-1],3)
-    loglower = (sum(sims)/trials) + ((stdchange)**(2)/2) - lower * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
+    loglower = (sum(sims)/trials) 
     logupper = (sum(sims)/trials) + ((stdchange)**(2)/2) + upper * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
-    print("(", exp(loglower),",", exp(logupper),")")
+    print("(", loglower,",", logupper,")")
 
     
 '''Step1()'''
