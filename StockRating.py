@@ -14,7 +14,7 @@
 
 from math import exp, sqrt, log
 import random
-import numpy as np
+
 
 price = 120.47
  
@@ -74,8 +74,9 @@ def Step3(): #VaR Rating
         gbm = log(price * exp(stdchange*sqrt(time)*random.uniform(0,1) + meanchange*time)) #change to repeat 1000 times
         sims.append(gbm)
     sims.sort() 
-    print (np.percentile(sims,95))
-    print (np.percentile(sims,95))
+    print(sims[(trials*0.05)-1]) #What if not divisble by 5?
+    print(sims[(trials*0.95)-1])
+
     
 '''Step1()'''
 '''Step2()'''
