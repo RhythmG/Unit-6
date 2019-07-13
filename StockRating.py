@@ -89,9 +89,9 @@ def Step3(): #VaR Rating
         walks.clear()
         price = 120.47
         T += 1
-    print(sims)
-    lower = round(sims[(trials*0.05)-1],3) #What if not divisble by 5?
-    upper = round(sims[(trials*0.95)-1],3)
+    print("Final Stock Price (50 trials): ", round(sum(sims)/len(sims),2))
+    lower = round(sims[(len(sims)*0.05)-1],3) #What if not divisble by 5?
+    upper = round(sims[(len(sims)*0.95)-1],3)
     loglower = (sum(sims)/trials) 
     logupper = (sum(sims)/trials) + ((stdchange)**(2)/2) + upper * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
     print("(", loglower,",", logupper,")")
