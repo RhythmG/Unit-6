@@ -16,8 +16,7 @@ from math import exp, sqrt, log
 import random
 
 
-price = 120.47
-drift = 0.05/365
+
  
 """def Step1(): #EV:EBITDA Rating 
     priprice = float(input("Company's current stock price: "))nt("Welcome to the Stock Rating System!" + "\n" + "In the first step, the program will evaluate the stock in relation to its competitors" + "\n" + "Please enter all the following stock information in billions.")
@@ -66,6 +65,9 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
 
 def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is. Please enter the following.", "\n")
+    price = 120.47
+    drift = 0.05/365
+    walks = []
     sims = []
     meanchange = 4.8048
     stdchange = 0.08
@@ -77,16 +79,19 @@ def Step3(): #VaR Rating
     time = float(input("Specify a time frame to forecast this stock (in days, short-term recommended): "))
     trials = int(input("Specify a number of trials to run this simulation: "))"""
    
-    for i in range(1, trials + 1):
-        walkprice = price 
-        gbm = walkprice * exp(stdchange*sqrt(time)*random.uniform(-0.5,0.5) + drift*time)
-        sims.append(gbm)
-    """sims.sort()"""
+    for i in range(1, 500):
+        for i in range(1, trials + 1):
+            gbm = price * exp(stdchange*sqrt(time)*random.uniform(-0.5,0.5) + drift*time)
+            walks.append(gbm)
+            price = gbm
+        walks.sort()
+        print(walks)
+        sims.append(walks[trials-1])
     print(sims)
-    lower = round(sims[(trials*0.05)-1],3) #What if not divisble by 5?
-    upper = round(sims[(trials*0.95)-1],3)
-    loglower = (sum(sims)/trials) 
-    logupper = (sum(sims)/trials) + ((stdchange)**(2)/2) + upper * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
+    lower = round(walks[(trials*0.05)-1],3) #What if not divisble by 5?
+    upper = round(walks[(trials*0.95)-1],3)
+    loglower = (sum(walks)/trials) 
+    logupper = (sum(walks)/trials) + ((stdchange)**(2)/2) + upper * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
     print("(", loglower,",", logupper,")")
 
     
