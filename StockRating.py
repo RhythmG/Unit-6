@@ -71,6 +71,7 @@ def Step3(): #VaR Rating
     sims = []
     meanchange = 4.8048
     stdchange = 0.08
+    T = 0
     time = 1
     trials = 65
    
@@ -78,19 +79,21 @@ def Step3(): #VaR Rating
     stdchange = float(input("Standard deviation % change in stock price: "))
     time = float(input("Specify a time frame to forecast this stock (in days, short-term recommended): "))
     trials = int(input("Specify a number of trials to run this simulation: "))"""
-   
-    for i in range(1, trials + 1):
-        gbm = price * exp(stdchange*sqrt(time)*random.uniform(-0.5,0.5) + drift*time)
-        walks.append(gbm)
-        price = gbm
-        walks.sort()
-        for i in range (1, 51):
-            sims.append(walks[trials-1])
+    
+    while T < 50:
+        for i in range(1, trials + 1):
+            gbm = price * exp(stdchange*sqrt(time)*random.uniform(-0.5,0.5) + drift*time)
+            walks.append(gbm)
+            price = gbm
+        sims.append(walks[trials-1])
+        walks.clear()
+        price = 120.47
+        T += 1
     print(sims)
-    lower = round(walks[(trials*0.05)-1],3) #What if not divisble by 5?
-    upper = round(walks[(trials*0.95)-1],3)
-    loglower = (sum(walks)/trials) 
-    logupper = (sum(walks)/trials) + ((stdchange)**(2)/2) + upper * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
+    lower = round(sims[(trials*0.05)-1],3) #What if not divisble by 5?
+    upper = round(sims[(trials*0.95)-1],3)
+    loglower = (sum(sims)/trials) 
+    logupper = (sum(sims)/trials) + ((stdchange)**(2)/2) + upper * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
     print("(", loglower,",", logupper,")")
 
     
