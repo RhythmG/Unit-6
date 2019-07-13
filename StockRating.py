@@ -64,7 +64,7 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
         
 
 def Step3(): #VaR Rating
-    print("In the last step, the program will evaluate how risky your stock is. Please enter the following.", "\n")
+    print("In the last step, the program will evaluate how risky your stock is.","\n")
     price = 120.47
     drift = 0.05/365
     walks = []
@@ -91,10 +91,9 @@ def Step3(): #VaR Rating
         T += 1
     print("Final Stock Price (50 trials): ", round(sum(sims)/len(sims),2))
     lower = round(sims[(len(sims)*0.05)-1],3) #What if not divisble by 5?
-    upper = round(sims[(len(sims)*0.95)-1],3)
     loglower = (sum(sims)/trials) 
-    logupper = (sum(sims)/trials) + ((stdchange)**(2)/2) + upper * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
-    print("\n","(", loglower,",", logupper,")")
+    logupper = max(sims)
+    print("\n","95% CI: ","(", round(loglower,2),",", round(logupper,2),")")
 
     
 '''Step1()'''
