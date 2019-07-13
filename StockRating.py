@@ -94,7 +94,7 @@ def Step3(): #VaR Rating
     upper = round(sims[(len(sims)*0.95)-1],3)
     loglower = (sum(sims)/trials) 
     logupper = (sum(sims)/trials) + ((stdchange)**(2)/2) + upper * sqrt(((stdchange)**(2)/trials) + ((stdchange)**(4)/(2*(trials-1))))
-    print("(", loglower,",", logupper,")")
+    print("\n","(", loglower,",", logupper,")")
 
     
 '''Step1()'''
