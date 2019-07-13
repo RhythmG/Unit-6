@@ -79,13 +79,12 @@ def Step3(): #VaR Rating
     time = float(input("Specify a time frame to forecast this stock (in days, short-term recommended): "))
     trials = int(input("Specify a number of trials to run this simulation: "))"""
    
-    for i in range(1, 500):
+    for i in range(1, 50):
         for i in range(1, trials + 1):
             gbm = price * exp(stdchange*sqrt(time)*random.uniform(-0.5,0.5) + drift*time)
             walks.append(gbm)
             price = gbm
         walks.sort()
-        print(walks)
         sims.append(walks[trials-1])
     print(sims)
     lower = round(walks[(trials*0.05)-1],3) #What if not divisble by 5?
