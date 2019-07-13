@@ -17,6 +17,7 @@ import random
 
 
 price = 120.47
+drift = 0.05/365
  
 """def Step1(): #EV:EBITDA Rating 
     priprice = float(input("Company's current stock price: "))nt("Welcome to the Stock Rating System!" + "\n" + "In the first step, the program will evaluate the stock in relation to its competitors" + "\n" + "Please enter all the following stock information in billions.")
@@ -66,10 +67,10 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
 def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is. Please enter the following.", "\n")
     sims = []
-    meanchange = -0.002924
-    stdchange = 0.01
-    time = 65
-    trials = 1000
+    meanchange = 4.8048
+    stdchange = 0.08
+    time = 1
+    trials = 65
    
     """meanchange = float(input("Mean % change in stock price: "))
     stdchange = float(input("Standard deviation % change in stock price: "))
@@ -77,9 +78,10 @@ def Step3(): #VaR Rating
     trials = int(input("Specify a number of trials to run this simulation: "))"""
    
     for i in range(1, trials + 1):
-        gbm = log(price * exp(stdchange*sqrt(time)*random.random() + meanchange*time))
+        walkprice = price 
+        gbm = walkprice * exp(stdchange*sqrt(time)*random.uniform(-0.5,0.5) + drift*time)
         sims.append(gbm)
-    sims.sort() 
+    """sims.sort()"""
     print(sims)
     lower = round(sims[(trials*0.05)-1],3) #What if not divisble by 5?
     upper = round(sims[(trials*0.95)-1],3)
