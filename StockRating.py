@@ -91,7 +91,7 @@ def Step3(): #VaR Rating
         T += 1
     sims.sort()
     print("Avg. Stock Price (after", trials, "days): ", round(sum(sims)/len(sims),2))
-    print("Return: ", round((round(sum(sims)/len(sims),2)-price)/price)*100),2)),"%")
+    print("Return: ", round((sum(sims)/len(sims))-price)/price)*100),2)),"%")
     loglower = sims[len(sims)*0.05-1] #What if not divisble by 5?
     logupper = max(sims)
     print("\n","95% CI: ","(", round(loglower,2),",", round(logupper,2),")")
