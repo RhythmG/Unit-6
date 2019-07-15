@@ -66,7 +66,7 @@ def Step2(): #DCF Rating (Non-cyclical stocks only)
 def Step3(): #VaR Rating
     print("In the last step, the program will evaluate how risky your stock is.","\n")
     price = 120.47
-    drift = 0.075/365
+    drift = 0.0542/365
     walks = []
     sims = []
     meanchange = 4.8048
