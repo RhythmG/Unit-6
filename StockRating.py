@@ -12,100 +12,70 @@
 #EBITDA
 #EV:EBITDA ratio for 5 other competitors
 
-from math import exp, sqrt, log
+from math import exp, sqrt, log, floor, ceil
 import random
 
+price = 121.46 #Stock price
+shares = 0.911 #Shares outstanding
+marketcap = shares * price
+stdebt = 4.16 #Short-term debt
+ltdebt = 35.99 #Long-term debt 
+totdebt = stdebt + ltdebt
+minoi = 0.134 #Minority interest
+prfeq = 0 #Preferred equity 
+cashinv = 14.66 #Cash and investments 
 
-
- 
-"""def Step1(): #EV:EBITDA Rating 
-    priprice = float(input("Company's current stock price: "))nt("Welcome to the Stock Rating System!" + "\n" + "In the first step, the program will evaluate the stock in relation to its competitors" + "\n" + "Please enter all the following stock information in billions.")
-    price = float(input("Company's current stock price: "))
-    shares = float(input("Company's current shares outstanding: "))
-    marketcap = shares * price
-    stdebt = float(input("Company's total short-term debt: "))
-    ltdebt = float(input("Company's total long-term debt: "))
-    totdebt = stdebt + ltdebt
-    minoi = float(input("Company's minority interest: "))
-    prfeq = float(input("Company's preferred equity: "))
-    cashinv = float(input("Company's total cash and short-term investments: "))
+print("Welcome to the Stock Rating System!")
+print("Step 1: Evaluates the stock in relation to its competitors.")
+print("Step 2: Performs DCF analysis on non-cyclical stocks.")
+print("Step 3: Looks at the future risk of the stock.")
+  
+#EV:EBITDA Rating 
     EV = marketcap + totdebt + minoi + prfeq - cashinv
-    EBITDA = float(input("Enter the current EBITDA for this stock: "))
+    EBITDA = 16.79 
     s1ratio = EV/EBITDA
-    cptr1 = float(input("Enter the EV:EBITDA ratio for the 1st competitor of the stock: "))
-    cptr2 = float(input("Enter the EV:EBITDA ratio for the 2nd competitor of the stock: "))
-    cptr3 = float(input("Enter the EV:EBITDA ratio for the 3rd competitor of the stock: "))
-    cptr4 = float(input("Enter the EV:EBITDA ratio for the 4th competitor of the stock: "))
-    cptr5 = float(input("Enter the EV:EBITDA ratio for the 5th competitor of the stock: "))
-    competoverall = (cptr1 + cptr2 + cptr3 + cptr4 + cptr5)/5
-    step1pdiff = ((s1ratio - competoverall)/competoverall)*100
-    rating1 = (-0.125*step1pdiff) + 5
+    cptr1 = 7.68 #Competitor 1 EV:EBITDA
+    cptr2 = 10.80 #Competitor 2 EV:EBITDA
+    cptr3 = 15.22 #Competitor 3 EV:EBITDA
+    cptr4 = 11.29 #Competitor 4 EV:EBITDA
+    cptr5 = 12.37 #Competitor 5 EV:EBITDA
+    competoverall = (cptr1 + cptr2 + cptr3 + cptr4 + cptr5)/5 #Competitor Average
+    step1pdiff = ((s1ratio - competoverall)/competoverall)*100 # % diff w/ competitors
+    rating1 = (-0.125*step1pdiff) + 5 
     print("")
-    print(round(step1pdiff, 2), "%")
-    print("")
-    print("Step 1 Rating:", round(rating1, 2))
-
+    """print(round(step1pdiff, 2), "%")"""
+    print('\033[1m' + "Step 1 Rating:", round(rating1, 2), "\n")
+    
 #Have the following information at hand before running part 2:
 #Operating cash flow for the past 4 years
-   
-def Step2(): #DCF Rating (Non-cyclical stocks only)
-    print("In the second step, the program will perform DCF analysis on non-cyclical stocks.", "\n", "a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials", "\n", "b) Healthcare, Telecomm, Consumer Defense", "\n", "c) Finance")
-    sector = float(input("Please indicate the letter containing the sector in which your stock falls into."))
+
+#DCF Rating (Non-cyclical stocks only)
+    marketcap = 33.24972
+    avgoper = 3.77275 #average operating cash flow for past four years
+    print('\033[0m' "a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials", "\n", "b) Healthcare, Telecomm, Consumer Defense", "\n", "c) Finance")
+    sector = str(input("Please indicate the letter containing the sector in which your stock falls into."))
+    n = 20
     if sector == "a":
-        print("Because your stock is cyclical, we will skip to the last step.")  
+        print("Because your stock is cyclical, we will skip to the last step.")
         Step3()
     elif sector == "b":
-        avgoper = float(input("Enter the company's average operating cash flow for the past four years"))
-        n = 20
         dcf = sum([avgoper/(1+0.06)**(i) for i in range(1,n+1)])
-        print(dcf)
+        print("DCF: ", dcf)
     elif sector == "c":
-        avgoper = float(input("Enter the company's average operating cash flow for the past four years")"""
-        
+        dcf = sum([avgoper/(1+0.12)**(i) for i in range(1,n+1)])
+    print("DCF (in billions): ", dcf)
+    step2pdiff = round(((dcf-marketcap)/marketcap)*100,2)
+    print("% diff from market cap: ", step2pdiff)
+    rating2 = (0.133*step2pdiff) + 6.667
+    print('\033[1m' + "Step 2 Rating: ", round(rating2, 2))
 
-def Step3(): #VaR Rating
-    print("In the last step, the program will evaluate how risky your stock is.","\n")
-    price = 120.47
-    drift = 0.0542/365
-    walks = []
-    sims = []
-    meanchange = 4.8048
-    stdchange = 0.08
-    T = 0
-    time = 1
-    trials = 65
-   
-    """meanchange = float(input("Mean % change in stock price: "))
-    stdchange = float(input("Standard deviation % change in stock price: "))
-    time = float(input("Specify a time frame to forecast this stock (in days, short-term recommended): "))
-    trials = int(input("Specify a number of trials to run this simulation: "))"""
+#VaR Rating
+    time = 756 #number of days in historical data
+    fifth = ceil(time*0.05)
+    sum = -1.2705 #sum of daily % changes up to 5th percentile 
+    c_var = (1/fifth)*sum*100 #Expected shortfall, taken from the 5th %-tile of the historical % change 
+    rating3 = c_var + 10
+    print('\033[1m' + "Step 3 Rating: ", round(rating3, 2))
     
-    while T < 50:
-        for i in range(1, trials + 1):
-            gbm = price * exp(stdchange*sqrt(time)*random.uniform(-0.5,0.5) + drift*time)
-            walks.append(gbm)
-            price = gbm
-        sims.append(walks[trials-1])
-        walks.clear()
-        price = 120.47
-        T += 1
-    sims.sort()
-    avgsimsprice = round((sum(sims)/len(sims)),2)
-    print("Avg. Stock Price (after", trials, "days): ", avgsimsprice)
-    print("Return: ", round(((avgsimsprice-price)/price)*100,2),"%")
-    loglower = sims[len(sims)*0.05-1] #What if not divisble by 5?
-    logupper = max(sims)
-    print("\n","95% CI: ","(", round(loglower,2),",", round(logupper,2),")")
-
-    
-'''Step1()'''
-'''Step2()'''
-Step3()
-    
-
-
-
-
-
-
-
+final_rating = (rating1 + rating2 + rating3)/3
+print('\033[1m' + "Final Rating: ", round(final_rating, 2))
