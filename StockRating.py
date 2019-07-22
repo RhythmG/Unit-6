@@ -32,11 +32,11 @@ print("Step 3: Looks at the future risk of the stock.")
 EV = marketcap + totdebt + minoi + prfeq - cashinv
 EBITDA = 50.62
 s1ratio = EV/EBITDA
-cptr1 = 8.38 #Competitor 1 EV:EBITDA
+cptr1 = 8.38 #Competitor 1 EV:EBITDA 
 cptr2 = 8.1 #Competitor 2 EV:EBITDA
 cptr3 = 5.24 #Competitor 3 EV:EBITDA
 cptr4 = 8.85 #Competitor 4 EV:EBITDA
-cptr5 = 8.75 #Competitor 5 EV:EBITDA
+cptr5 = 8.75 #Competitor 5 EV:EBITDA; Source: Marketwatch
 competoverall = (cptr1 + cptr2 + cptr3 + cptr4 + cptr5)/5 
 step1pdiff = ((s1ratio - competoverall)/competoverall)*100
 rating1 = clamp((-0.125*step1pdiff) + 5, 0.00, 10.00)
@@ -44,7 +44,7 @@ print("")
 
 #Step 2: DCF Rating (Non-cyclical stocks only)
 avgoper = 39.47 #average operating cash flow for past 4 years
-print('\033[0m' "a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials", "\n", "b) Healthcare, Telecomm, Consumer Defense", "\n", "c) Finance")
+print('\033[0m' "a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials", "\n", "b) Healthcare, Telecomm, Consumer Defense, Finance")
 sector = str(input("Please indicate the letter containing the sector in which your stock falls into."))
 print('\n')
 n = 20
@@ -61,9 +61,8 @@ if sector == "a":
   print('\033[1m' + "Final Rating: ", round(final_rating, 2))
   sys.exit()
 elif sector == "b":
-    dcf = sum([avgoper/(1+0.066)**(i) for i in range(1,n+1)])
-elif sector == "c":
-    dcf = sum([avgoper/(1+0.12)**(i) for i in range(1,n+1)])
+    disc_rate = 0.0541 #Source: https://www.stockcalc.com/wacc.aspx
+    dcf = sum([avgoper/(1+disc_rate)**(i) for i in range(1,n+1)])
 
 step2pdiff = round(((dcf-marketcap)/marketcap)*100,2)
 rating2 = clamp((0.133*step2pdiff) + 6.667, 0.00, 10.00)
