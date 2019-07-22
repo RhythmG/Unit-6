@@ -1,13 +1,17 @@
 #Stephen Wang
 #Math Modeling: Stock Rating System
 
-#NOTE: Anything below that is a hardwired constant requires data extraction. 
+#Note: Anything below that is a hardwired constant requires data extraction. 
 #These pieces of information also have comments attached beside them. 
+#Also, the input statement for the stock's sector is a placeholder
 
 
 from math import exp, sqrt, log, floor, ceil
 import random
 import sys
+
+def clamp(n, minn, maxn):
+  return max(min(maxn, n), minn)
 
 price = 30.89 #Stock price
 shares = 7.28 #Shares outstanding
@@ -35,15 +39,7 @@ cptr4 = 8.85 #Competitor 4 EV:EBITDA
 cptr5 = 8.75 #Competitor 5 EV:EBITDA
 competoverall = (cptr1 + cptr2 + cptr3 + cptr4 + cptr5)/5 
 step1pdiff = ((s1ratio - competoverall)/competoverall)*100
-rating1 = 0 
-
-if step1pdiff <= -40:
-  rating1 = 10 
-elif step1pdiff >= 40:
-  rating1 = 0
-else:
-  rating1 = (-0.125*step1pdiff) + 5 
-  
+rating1 = clamp((-0.125*step1pdiff) + 5, 0.00, 10.00)
 print("")
 
 #Step 2: DCF Rating (Non-cyclical stocks only)
@@ -70,15 +66,7 @@ elif sector == "c":
     dcf = sum([avgoper/(1+0.12)**(i) for i in range(1,n+1)])
 
 step2pdiff = round(((dcf-marketcap)/marketcap)*100,2)
-rating2 = 0 
-
-if step2pdiff >= 25:
-  rating2 = 10 
-elif step2pdiff <= -50:
-  rating2 = 0
-else:
-  rating2 = (0.133*step2pdiff) + 6.667
-  
+rating2 = clamp((0.133*step2pdiff) + 6.667, 0.00, 10.00)
   
 print('\033[1m' + "Step 1 Rating:", round(rating1, 2))
 print('\033[1m' + "Step 2 Rating: ", round(rating2, 2))
@@ -88,9 +76,9 @@ time = 756 #number of days in historical data
 fifth = ceil(time*0.05)
 sum = -1.2705 #sum of daily % changes up to 5th percentile 
 c_var = (1/fifth)*sum*100 #Expected shortfall, taken from the 5th %-tile of the historical % change 
-rating3 = c_var + 10
+rating3 = clamp(c_var + 10, 0.00, 10.00)
 print('\033[1m' + "Step 3 Rating: ", round(rating3, 2),'\n')
-    
+
+#Final Rating
 final_rating = (rating1 + rating2 + rating3)/3
 print('\033[1m' + "Final Rating: ", round(final_rating, 2))
-
