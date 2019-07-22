@@ -35,11 +35,12 @@ cptr4 = 8.85 #Competitor 4 EV:EBITDA
 cptr5 = 8.75 #Competitor 5 EV:EBITDA
 competoverall = (cptr1 + cptr2 + cptr3 + cptr4 + cptr5)/5 
 step1pdiff = ((s1ratio - competoverall)/competoverall)*100
+rating1 = 0 
 
 if step1pdiff <= -40:
-  rating1 == 10 
+  rating1 = 10 
 elif step1pdiff >= 40:
-  rating1 == 0
+  rating1 = 0
 else:
   rating1 = (-0.125*step1pdiff) + 5 
   
@@ -65,19 +66,20 @@ if sector == "a":
   sys.exit()
 elif sector == "b":
     dcf = sum([avgoper/(1+0.066)**(i) for i in range(1,n+1)])
-    print(dcf)
 elif sector == "c":
     dcf = sum([avgoper/(1+0.12)**(i) for i in range(1,n+1)])
 
 step2pdiff = round(((dcf-marketcap)/marketcap)*100,2)
+rating2 = 0 
 
 if step2pdiff >= 25:
-  rating2 == 10 
+  rating2 = 10 
 elif step2pdiff <= -50:
-  rating2 == 0
+  rating2 = 0
 else:
   rating2 = (0.133*step2pdiff) + 6.667
-
+  
+  
 print('\033[1m' + "Step 1 Rating:", round(rating1, 2))
 print('\033[1m' + "Step 2 Rating: ", round(rating2, 2))
 
@@ -91,3 +93,4 @@ print('\033[1m' + "Step 3 Rating: ", round(rating3, 2),'\n')
     
 final_rating = (rating1 + rating2 + rating3)/3
 print('\033[1m' + "Final Rating: ", round(final_rating, 2))
+
