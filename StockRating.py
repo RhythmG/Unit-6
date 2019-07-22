@@ -1,16 +1,9 @@
 #Stephen Wang
 #Math Modeling: Stock Rating System
 
-#NOTE: Anything with an input statement only serves as a placeholder for data retrieval
-#Have the following information at hand before running this program (part 1):
-#Stock's industry 
-#Current shares outstanding and stock price
-#Short-Term and Long-Term Debt
-#Minority Shares
-#Preferred Equity
-#Cash & Short-Term Investments 
-#EBITDA
-#EV:EBITDA ratio for 5 other competitors
+#NOTE: Anything below that is a hardwired constant requires data extraction. 
+#These pieces of information also have comments attached beside them. 
+
 
 from math import exp, sqrt, log, floor, ceil
 import random
@@ -39,17 +32,14 @@ cptr2 = 10.80 #Competitor 2 EV:EBITDA
 cptr3 = 15.22 #Competitor 3 EV:EBITDA
 cptr4 = 11.29 #Competitor 4 EV:EBITDA
 cptr5 = 12.37 #Competitor 5 EV:EBITDA
-competoverall = (cptr1 + cptr2 + cptr3 + cptr4 + cptr5)/5 #Competitor Average
-step1pdiff = ((s1ratio - competoverall)/competoverall)*100 # % diff w/ competitors
+competoverall = (cptr1 + cptr2 + cptr3 + cptr4 + cptr5)/5 
+step1pdiff = ((s1ratio - competoverall)/competoverall)*100
 print("")
 rating1 = (-0.125*step1pdiff) + 5 
 
-#Have the following information at hand before running part 2:
-#Operating cash flow for the past 4 years
-
 #Step 2: DCF Rating (Non-cyclical stocks only)
 marketcap = 33.24972
-avgoper = 3.77275 #average operating cash flow for past four years
+avgoper = 3.77275 #average operating cash flow for past 4 years
 print('\033[0m' "a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials", "\n", "b) Healthcare, Telecomm, Consumer Defense", "\n", "c) Finance")
 sector = str(input("Please indicate the letter containing the sector in which your stock falls into."))
 print('\n')
