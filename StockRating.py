@@ -1,14 +1,5 @@
-#Stephen Wang
-#Math Modeling: Stock Rating System
-
-#Note: Anything below that is a hardwired constant requires data extraction. 
-#These pieces of information also have comments attached beside them. 
-#Also, the input statement for the stock's sector is a placeholder
-
-
-from math import exp, sqrt, log, floor, ceil
-from statistics import mean
-from scipy.stats import norminvgauss
+from math import ceil
+from scipy.stats import norm
 import random
 import sys
 
@@ -75,17 +66,16 @@ print('\033[1m' + "Step 2 Rating: ", round(rating2, 2))
 #Step 3: Expected Shortfall Rating
 time = 756 #number of days in historical data
 fifth = ceil(time*0.05)
-sum = -1.2705 #sum of daily % changes up to 5th percentile 
-c_var = (1/fifth)*sum*100 #Expected shortfall, taken from the 5th %-tile of the historical % change 
+sumd = -1.2705 #sum of daily % changes up to 5th percentile 
+c_var = (1/fifth)*sumd*100 #Expected shortfall, taken from the 5th %-tile of the historical % change 
 rating3 = clamp(c_var + 10, 0.00, 10.00)
 print('\033[1m' + "Step 3 Rating: ", round(rating3, 2),'\n')
 
 #Step 4: Monte Carlo VaR Rating
 print("\n")
-price = 33.87
-volatility_time = 180
-volatility_amnt= 0.1807
-daily_volatility = volatility_amnt / sqrt(volatility_time)
+price = 112.54
+mean_change = 0.0019 #mean % change of historical
+volatility = 0.0130 #standard deviation of historical 
 walks = []
 sims = []
 T = 0
@@ -93,20 +83,17 @@ time = 1 #number of days for each step
 trials = 60 #number of days in the future
 
 while T < 1000:
-  for i in range(1, trials + 1):
-    gbm = price * (1+norminvgauss.ppf(random.random(), 0, daily_volatility)
+  for i in range(1, trials+1):
+    gbm = price * (1+norm.ppf(random.random(), mean_change, volatility))
     walks.append(gbm)
     price = gbm
-    sims.append(walks[trials-1])
-    walks.clear()
-    T += 1
-sims.sort()
-avgsimsprice = round(statistics.mean(sims),2)
+  T += 1
+  price = 112.54
+  sims.append(walks[trials-1])
+  walks.clear()
+avgsimsprice = round(sum(sims)/len(sims),2)
 print("Avg. Stock Price (after", trials, "days): ", avgsimsprice)
 print("Return: ", round(((avgsimsprice-price)/price)*100,2),"%")
-loglower = sims[floor(len(sims)*0.05-1)] #What if not divisble by 5?
-logupper = max(sims)
-print("\n","95% CI: ","(", round(loglower,2),",", round(logupper,2),")")
 
 #Final Rating
 final_rating = (rating1 + rating2 + rating3)/3
