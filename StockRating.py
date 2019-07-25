@@ -13,7 +13,7 @@ import sys
 def clamp(n, minn, maxn):
   return max(min(maxn, n), minn)
 
-price = 30.89 #Stock price
+price = 33.87 #Stock price
 shares = 7.28 #Shares outstanding
 marketcap = shares * price
 stdebt = 0.002 #Short-term debt
