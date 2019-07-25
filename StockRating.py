@@ -19,7 +19,7 @@ cashinv = 8.76 #Cash and investments
 print("Welcome to the Stock Rating System!")
 print("Step 1: Evaluates the stock in relation to its competitors.")
 print("Step 2: Performs DCF analysis on non-cyclical stocks.")
-print("Step 3: Looks at the future risk of the stock.")
+print("Steps 3, 4: Assess the future risk of the stock.")
   
 #Step 1: EV-to-EBITDA Rating 
 EV = marketcap + totdebt + minoi + prfeq - cashinv
@@ -59,9 +59,6 @@ elif sector == "b":
 
 step2pdiff = round(((dcf-marketcap)/marketcap)*100,2)
 rating2 = clamp((0.133*step2pdiff) + 6.667, 0.00, 10.00)
-  
-print('\033[1m' + "Step 1 Rating:", round(rating1, 2))
-print('\033[1m' + "Step 2 Rating: ", round(rating2, 2))
 
 #Step 3: Expected Shortfall Rating
 time = 756 #number of days in historical data
@@ -69,7 +66,6 @@ fifth = ceil(time*0.05)
 sumd = -1.2705 #sum of daily % changes up to 5th percentile 
 c_var = (1/fifth)*sumd*100 #Expected shortfall, taken from the 5th %-tile of the historical % change 
 rating3 = clamp(c_var + 10, 0.00, 10.00)
-print('\033[1m' + "Step 3 Rating: ", round(rating3, 2),'\n')
 
 #Step 4: Monte Carlo VaR Rating
 print("\n")
@@ -92,9 +88,17 @@ while T < 1000:
   sims.append(walks[trials-1])
   walks.clear()
 avgsimsprice = round(sum(sims)/len(sims),2)
-print("Avg. Stock Price (after", trials, "days): ", avgsimsprice)
-print("Return: ", round(((avgsimsprice-price)/price)*100,2),"%")
+step4pdiff = round(((avgsimsprice-price)/price)*100,2)
+if step4pdiff <= 8.00:
+  rating4 = clamp(0.8*step4pdiff, 0.00, 10.00)
+else:
+  rating4 = clamp(0.2*step4pdiff + 6, 0.00, 10.00)
+print("Return: ", step4pdiff,"%")
+print('\033[1m' + "Step 1 Rating:", round(rating1, 2))
+print('\033[1m' + "Step 2 Rating: ", round(rating2, 2))
+print('\033[1m' + "Step 3 Rating: ", round(rating3, 2))
+print('\033[1m' + "Step 4 Rating: ", round(rating4, 2),'\n')
 
 #Final Rating
-final_rating = (rating1 + rating2 + rating3)/3
+final_rating = (rating1 + rating2 + rating3 + rating4)/4
 print('\033[1m' + "Final Rating: ", round(final_rating, 2))
