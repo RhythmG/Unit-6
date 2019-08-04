@@ -10,34 +10,34 @@ rating4 = 5.00
 def clamp(n, minn, maxn): #Ratings capped from 0.00 to 10.00
   return max(min(maxn, n), minn)
 
-#Stock: JNH ; Ticker: JNJ
-sector = "Healthcare" #Sector
+#Stock: UTX
+sector = "Industrials" #Sector
 
 #Step 1 Inputs 
-price = 131.49 #Stock price
-shares = 2.66 #Shares outstanding
-stdebt = 2.80 #Short-term debt
-ltdebt = 27.68 #Long-term debt 
-minoi = 0 #Minority interest
+price = 136.90 #Stock price
+shares = 1.74 #Shares outstanding
+stdebt = 0 #Short-term debt
+ltdebt = 19.25 #Long-term debt 
+minoi = 1.14 #Minority interest
 prfeq = 0 #Preferred equity 
-cashinv = 19.69 #Cash and investments 
-EBITDA = 28.18 #EBITDA
-cptr1 = 16.86 #Competitor 1 EV:EBITDA 
-cptr2 = 16.86 #Competitor 2 EV:EBITDA
-cptr3 = 16.86 #Competitor 3 EV:EBITDA
-cptr4 = 16.86 #Competitor 4 EV:EBITDA
-cptr5 = 16.86 #Competitor 5 EV:EBITDA; Source: Marketwatch
+cashinv = 2.81 #Cash and investments 
+EBITDA = 8.19 #EBITDA
+cptr1 = 7.98 #Competitor 1 EV:EBITDA 
+cptr2 = 7.98 #Competitor 2 EV:EBITDA
+cptr3 = 7.98 #Competitor 3 EV:EBITDA
+cptr4 = 7.98 #Competitor 4 EV:EBITDA
+cptr5 = 7.98 #Competitor 5 EV:EBITDA; Source: Marketwatch
 
 #Step 2 Inputs 
-avgoper = 20.398 #Net operating cash flow for past 4 years
-disc_rate = 0.0817 #Source: https://www.stockcalc.com/wacc.aspx
+avgoper = 8.520 #Net operating cash flow for past 4 years
+disc_rate = 0.0769 #Source: https://www.stockcalc.com/wacc.aspx
 
 #Step 3 Inputs
-sumd = -1.0360  #sum of daily % changes up to 5th percentile 
+sumd = -1.2094 #sum of daily % changes up to 5th percentile 
 
 #Step 4 Inputs + Re-enter stock price under while loop
-mean_change = 0.00011869 #mean % change of historical
-volatility = 0.01107689 #standard deviation of historical 
+mean_change = 0.00126183 #mean % change of historical
+volatility = 0.01350155 #standard deviation of historical 
 
 if sector == "Consumer Cyclical" or sector == "Tech" or sector == "Basic Materials" or sector == "Energy" or sector == "Industrials":
 #Step 1: EV-to-EBITDA Rating 
@@ -71,7 +71,7 @@ if sector == "Consumer Cyclical" or sector == "Tech" or sector == "Basic Materia
       walks.append(gbm)
       price = gbm
     T += 1
-    price = 38.07 #Stock price
+    price = 136.90   #Stock price
     sims.append(walks[trials-1])
     walks.clear()
   avgsimsprice = round(sum(sims)/len(sims),2)
@@ -97,7 +97,7 @@ else:
   step1pdiff = ((s1ratio - competoverall)/competoverall)*100
   rating1 = clamp((-0.125*step1pdiff) + 5, 0.00, 10.00)
   print(step1pdiff)
-  print("") 
+  print("")
 
 #Step 2: DCF Rating (Non-cyclical stocks only)
   print('\n')
@@ -126,7 +126,7 @@ else:
       walks.append(gbm)
       price = gbm
     T += 1
-    price = 38.07 #Stock price
+    price = 53.25 #Stock price
     sims.append(walks[trials-1])
     walks.clear()
   avgsimsprice = round(sum(sims)/len(sims),2)
@@ -142,6 +142,3 @@ else:
   print('\033[1m' + "Step 4 Rating: ", round(rating4, 2),'\n')
   final_rating = (rating1 + rating2 + rating3 + rating4)/4
   print('\033[1m' + "Final Rating: ", round(final_rating, 2))
-
-#str(input("Please indicate the letter containing the sector in which your stock falls into."))
-#print('\033[0m' "a) Consumer Cyclical, Tech, Basic Materials, Energy, Industrials", "\n", "b) Healthcare, Telecomm, Consumer Defense, Finance")
